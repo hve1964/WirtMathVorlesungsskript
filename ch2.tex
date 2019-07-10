@@ -1,0 +1,416 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  File name: ch2.tex
+%  Title:
+%  Version: 12.09.2015 (hve)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter[Matrizen]{Matrizen}
+\lb{ch2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In diesem Kapitel f\"uhren wir eine zweite, im Vergleich zu
+Vektoren allgemeinere Klasse von mathematischen Objekten ein,
+ebenfalls mit geeigneten Rechenoperationen und Rechenregeln.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Matrizen als lineare Abbildungen]%
+{Matrizen als lineare Abbildungen}
+\lb{sec:matlinab}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Gegeben sei jetzt eine Ansammlung von $m \times n$ beliebigen
+reellen Zahlen $a_{11}$, $a_{12}$ \ldots, $a_{ij}$, \ldots,
+$a_{mn}$, die wir nach einer einfachen Vorschrift systematisch
+zusammenfassen wollen.
+
+\medskip
+\noindent
+\underline{\bf Def.:} Eine reelle
+$\boldsymbol{(m\times n)}${\bf-Matrix}
+(engl.: matrix) sei formal durch ein Zahlenschema der Struktur
+%
+\be
+\mathbf{A}
+:= \left(\begin{array}{cccccc}
+   	a_{11} & a_{12} & \ldots & a_{1j} & \ldots & a_{1n} \\
+   	a_{21} & a_{22} & \ldots & a_{2j} & \ldots & a_{2n} \\
+    \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    a_{i1} & a_{i2} & \ldots & a_{ij} & \ldots & a_{in} \\
+    \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    a_{m1} & a_{m2} & \ldots & a_{mj} & \ldots & a_{mn}
+	\end{array}\right) \ ,
+\ee
+%
+mit $a_{ij} \in {\mathbb R}$,	$i=1, \dots, m; j=1, \dots, n$,
+definiert.
+
+\noindent
+Schreibweise: $\mathbf{A} \in \mathbb{R}^{m \times n}$.
+
+\medskip
+\noindent
+Besondere Eigenschaften dieses Zahlenschemas sind:
+%
+\begin{itemize}
+	\item $m$ ist die Anzahl der {\bf Zeilen} (engl.: rows) von 
+	$\mathbf{A}$, $n$ die Anzahl der {\bf Spalten} (engl.: columns) 
+	von $\mathbf{A}$.
+	
+	\item $a_{ij}$ sind die {\bf Elemente} (engl.: elements) von 
+	$\mathbf{A}$;
+	$a_{ij}$ steht im Kreuzungspunkt von $i$-ter Zeile und $j$-ter
+	Spalte von $\mathbf{A}$.
+	
+	\item Elemente der $i$-ten Zeile bilden den {\bf Zeilenvektor}
+	$\left(a_{i1}, a_{i2}, \ldots, a_{ij}, \ldots, a_{in}\right)$,
+	Elemente der $j$-ten Spalte den {\bf Spaltenvektor}
+	$\left(\begin{array}{c} a_{1j} \\ a_{2j} \\ \vdots \\ a_{ij} \\
+	\vdots \\ a_{mj}
+	\end{array}\right)$.
+\end{itemize}
+%
+Spaltenvektoren sind also formal $(n\times 1)$-Matrizen,
+Zeilenvektoren formal $(1\times n)$-Matrizen. Matrizen
+mit {\em gleicher\/} Anzahl von Zeilen und Spalten, also $m=n$,
+werden {\bf quadratische Matrizen} (engl.: quadratic matrices) 
+genannt. Unter den quadratischen Matrizen hat die
+$\boldsymbol{(n \times n)}${\bf-Einheitsmatrix} (engl.: unit 
+matrix)
+%
+\be
+\lb{einmatr}
+\mathbf{1} := \left(\begin{array}{cccccc}
+   	1 & 0 & \ldots & 0 & \ldots & 0 \\
+   	0 & 1 & \ldots & 0 & \ldots & 0 \\
+    \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    0 & 0 & \ldots & 1 & \ldots & 0 \\
+    \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    0 & 0 & \ldots & 0 & \ldots & 1
+	\end{array}\right)
+\ee
+%
+ausgezeichneten Status.
+
+\medskip
+\noindent
+Als n\"achstes kl\"aren wir, in welchem Sinne wir
+$(m\times n)$-Matrizen als mathematische Objekte
+begreifen wollen.
+
+\medskip
+\noindent
+\underline{\bf Def.:} Eine Matrix $\mathbf{A} \in
+\mathbb{R}^{m \times n}$ definiert \"uber die Rechenoperation
+%
+\bea
+\lb{matabb}
+\mathbf{A}\vec{x}
+& := & \left(\begin{array}{cccccc}
+   	a_{11} & a_{12} & \ldots & a_{1j} & \ldots & a_{1n} \\
+   	a_{21} & a_{22} & \ldots & a_{2j} & \ldots & a_{2n} \\
+    \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    a_{i1} & a_{i2} & \ldots & a_{ij} & \ldots & a_{in} \\
+    \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    a_{m1} & a_{m2} & \ldots & a_{mj} & \ldots & a_{mn}
+	\end{array}\right)
+	\left(\begin{array}{c}
+x_{1} \\ x_{2} \\ \vdots \\ x_{j} \\ \vdots \\ x_{n}
+\end{array}\right) \nonumber \\
+& := & \left(\begin{array}{c}
+a_{11}x_{1}+a_{12}x_{2}+\ldots+a_{1j}x_{j}+\ldots+a_{1n}x_{n} \\
+a_{21}x_{1}+a_{22}x_{2}+\ldots+a_{2j}x_{j}+\ldots+a_{2n}x_{n} \\
+\vdots \\
+a_{i1}x_{1}+a_{i2}x_{2}+\ldots+a_{ij}x_{j}+\ldots+a_{in}x_{n} \\
+\vdots \\
+a_{m1}x_{1}+a_{m2}x_{2}+\ldots+a_{mj}x_{j}+\ldots+a_{mn}x_{n}
+\end{array}\right)
+%= \left(
+%\begin{array}{c}
+%\sum_{j=1}^{n}a_{1j}x_{j} \\
+%\sum_{j=1}^{n}a_{2j}x_{j} \\
+%\vdots \\
+%\sum_{j=1}^{n}a_{mj}x_{j}
+%\end{array}
+%\right)
+=: \left(
+\begin{array}{c}
+y_{1} \\
+y_{2} \\
+\vdots \\
+y_{i} \\
+\vdots \\
+y_{m}
+\end{array}
+\right)
+= \vec{y} \ .
+\eea
+%
+eine {\bf Abbildung} (engl.: mapping) $\mathbf{A}: \mathbb{R}^{n 
+\times 1} \rightarrow \mathbb{R}^{m \times 1}$, d.h. eine 
+Abbildung der Menge der $n$-komponentigen Spaltenvektoren (hier: 
+$\vec{x}$) in die Menge der $m$-komponentigen Spaltenvektoren 
+(hier: $\vec{y}$).
+
+\medskip
+\noindent
+In loser Analogie repr\"asentieren $\vec{x}$ das "`Objekt"',
+$\mathbf{A}$ die "`Kamera"' und $\vec{y}$ das "`Bild"'.
+
+\medskip
+\noindent
+Da diese durch $\mathbf{A} \in \mathbb{R}^{m \times n}$
+gegebene Art von Abbildungsvorschrift, f\"ur Vektoren
+$\vec{x}_{1},\vec{x}_{2} \in \mathbb{R}^{n \times 1}$ und
+reelle Zahlen $\lambda \in \mathbb{R}$, die zwei besonderen
+Eigenschaften
+%
+\be
+\lb{lin}
+\fbox{$\displaystyle\begin{array}{c}
+\mathbf{A}(\vec{x}_{1}+\vec{x}_{2})
+= (\mathbf{A}\vec{x}_{1})+(\mathbf{A}\vec{x}_{2}) \\[5mm]
+\mathbf{A}(\lambda\vec{x}_{1})
+= \lambda(\mathbf{A}\vec{x}_{1})
+\end{array}
+$}
+\ee
+%
+aufweist, stellen Matrizenabbildungen so genannte {\bf
+lineare Abbildungen} (engl.: linear mappings) dar.\footnote{An 
+dieser Stelle soll ausdr\"ucklich darauf hingewiesen werden, dass 
+in konkreten praktischen Anwendungen quantitative Relationen die
+Bedingungen (\ref{lin}) h\"aufig {\em nicht\/} erf\"ullen,
+man es also mit {\em nichtlinearen Abbildungen\/} zu tun hat.
+Lineare Methoden k\"onnen jedoch oft hilfreiche erste
+N\"aherungen zur Verf\"ugung stellen.}
+
+\medskip
+\noindent
+Jetzt gehen wir kurz auf die wichtigsten Rechenoperationen
+f\"ur $(m \times n)$-Matrizen sowie deren Rechenregeln ein.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Grundbegriffe und Grundrechenarten]%
+{Grundbegriffe und Grundrechenarten}
+\lb{sec:matrech}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\noindent
+\underline{\bf Def.:}
+{\bf Transponieren} (engl.: transpose) von Matrizen
+
+\noindent
+F\"ur $\mathbf{A} \in \mathbb{R}^{m \times n}$:
+%
+\be
+\fbox{$\displaystyle
+\mathbf{A}^{T}\!: \quad
+a_{ij}^{T} := a_{ji} \ ,
+$}
+\ee
+%
+mit $i=1,\ldots,m$ und $j=1,\ldots,n$. Beachte, dass
+$\mathbf{A}^{T} \in \mathbb{R}^{n \times m}$.
+
+\medskip
+\noindent
+Beim Transponieren einer $(m \times n)$-Matrix werden ganz
+einfach deren Zeilen mit deren Spalten (und umgekehrt)
+vertauscht; in der entsprechenden Reihenfolge werden dabei die
+Elemente der ersten Zeile die Elemente der ersten Spalte, usw. Hieraus folgt insbesondere die Eigenschaft
+%
+\be
+(\mathbf{A}^{T})^{T} = \mathbf{A} \ .
+\ee
+%
+
+\medskip
+\noindent
+F\"ur quadratische Matrizen (mit $m=n$) k\"onnen zwei
+Spezialf\"alle auftreten:
+%
+\begin{itemize}
+	\item Falls $\mathbf{A}^{T}=\mathbf{A}$, wird von einer
+	{\bf symmetrischen Matrix} (engl.: symmetric matrix) gesprochen,
+	\item Falls $\mathbf{A}^{T}=-\mathbf{A}$, von einer
+	{\bf antisymmetrischen Matrix} (engl.: antisymmetric matrix).
+\end{itemize}
+%
+
+\medskip
+\noindent
+\underline{\bf Def.:}
+{\bf Addition} von Matrizen (engl.: addition of matrices)
+
+\noindent
+F\"ur $\mathbf{A}, \mathbf{B} \in \mathbb{R}^{m \times n}$
+sei
+%
+\be
+\fbox{$
+\displaystyle
+\mathbf{A} + \mathbf{B} =: \mathbf{C}\!: \quad
+a_{ij} + b_{ij} =: c_{ij} \ .
+$}
+\ee
+%
+mit $i=1,\ldots,m$ und $j=1,\ldots,n$.
+
+\medskip
+\noindent
+Beachte, dass nur Matrizen von {\em gleichem Format\/}
+miteinander addiert werden k\"onnen.
+
+\pagebreak
+\medskip
+\noindent
+\underline{\bf Def.:}
+{\bf Skalieren} von Matrizen (engl.: scaling of matrices)
+
+\noindent
+F\"ur $\mathbf{A} \in \mathbb{R}^{m \times n}$
+und $\lambda \in \mathbb{R}\backslash \{0\}$ sei
+%
+\be
+\fbox{$\displaystyle
+\lambda\mathbf{A} =: \mathbf{C}\!: \quad
+\lambda a_{ij} =: c_{ij} \ ,
+$}
+\ee
+%
+mit $i=1,\ldots,m$ und $j=1,\ldots,n$.
+
+\medskip
+\noindent
+Beim Skalieren einer Matrix werden alle ihre Elemente
+mit der gleichen reellen Zahl $\lambda$ multipliziert.
+
+\medskip
+\noindent
+{\bf Rechenregeln f\"ur Addition und Skalierung
+von Matrizen}
+
+\noindent
+F\"{u}r Matrizen $\mathbf{A}, \mathbf{B}, \mathbf{C}
+\in \mathbb{R}^{m \times n}$ gelten:
+
+\begin{enumerate}
+	\item $\mathbf{A}+\mathbf{B} = \mathbf{B}+\mathbf{A}$
+	\hfill ({\bf Kommutativit\"at})
+	\item $\mathbf{A}+(\mathbf{B}+\mathbf{C})
+	= (\mathbf{A}+\mathbf{B})+\mathbf{C}$
+	\hfill ({\bf Assoziativit\"at})
+	\item Zu $\mathbf{A}$ und $\mathbf{B}$ gibt es genau ein
+	$\mathbf{Z}$, sodass $\mathbf{A}+\mathbf{Z}=\mathbf{B}$.
+	\hfill ({\bf Umkehrbarkeit})
+	\item $(\lambda\mu)\mathbf{A}=\lambda(\mu\mathbf{A})$
+	mit $\lambda,\mu	\in \mathbb{R} \backslash \{0\}$ 
+	\hfill ({\bf Assoziativit\"at})
+	\item $1\mathbf{A}=\mathbf{A}$
+	\hfill ({\bf Skalenfestlegung})
+	\item $\lambda(\mathbf{A}+\mathbf{B})
+	= \lambda\mathbf{A}+\lambda\mathbf{B}$;
+	
+	$(\lambda+\mu)\mathbf{A} = \lambda\mathbf{A}+\mu\mathbf{A}$
+	mit $\lambda, \mu	\in \mathbb{R} \backslash \{0\}$
+	\hfill ({\bf Distributivit\"at})
+	
+	\item $(\mathbf{A}+\mathbf{B})^{T} = \mathbf{A}^{T} + \mathbf{B}^{T}$ \hfill ({\bf Transpositionsregel 1})
+	
+	\item $(\lambda\mathbf{A})^{T} = \lambda\mathbf{A}^{T}$ mit $\lambda \in \mathbb{R} \backslash \{0\}$. \hfill ({\bf Transpositionsregel 2})
+\end{enumerate}
+
+\medskip
+\noindent
+Nun besprechen wir eine f\"ur Matrizen besonders n\"utzliche
+Rechenoperation.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Matrizenmultiplikation]%
+{Matrizenmultiplikation}
+\lb{sec:matmult}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\noindent
+\underline{\bf Def.:}
+F\"ur eine $(m \times n)$-Matrix $\mathbf{A}$ und eine
+$(n \times r)$-Matrix $\mathbf{B}$
+definiert das {\bf Matrizenprodukt} (engl.: matrix multiplication)
+%
+\be
+\fbox{$
+\displaystyle\begin{array}{c}
+\mathbf{A}\mathbf{B} =: \mathbf{C} \\[5mm]
+a_{i1}b_{1j}+\ldots+a_{ik}b_{kj}+\ldots
++a_{in}b_{nj}
+=: \sum_{k=1}^{n}a_{ik}b_{kj} =: c_{ij} \ ,
+\end{array}
+$}
+\ee
+%
+mit $i=1,\ldots,m$ und $j=1,\ldots,r$, eine
+$(m \times r)$-Matrix $\mathbf{C}$, d.h. $\mathbf{C} \in
+\mathbb{R}^{m \times r}$.
+
+\medskip
+\noindent
+Das Element am Kreuzungspunkt der $i$-ten Zeile und $j$-ten
+Spalte von $\mathbf{C}$ ist bestimmt durch die Vorschrift
+%
+\be
+c_{ij} = \text{Skalarprodukt zwischen $i$-tem Zeilenvektor von
+$\mathbf{A}$ und $j$-tem Spaltenvektor von $\mathbf{B}$} \ .
+\ee
+%
+Beachten Sie bitte: die Definition der oben eingef\"uhrten
+Matrizenmultiplikation h\"angt essenziell von der Tatsache ab, dass
+die im Produkt {\em links stehende Matrix $\mathbf{A}$ genau so
+viele (!) Spalten haben muss wie die rechts stehende Matrix
+$\mathbf{B}$ Zeilen.\/} Anderfalls l\"asst sich die
+Matrizenmultiplikation nicht sinnvoll definieren.
+
+\medskip
+\noindent
+\underline{\bf GTR:} F\"ur eingespeicherte Matrizen ${\tt [A]}$
+und ${\tt [B]}$, von passenden Formaten, berechnet sich das
+Matrizenprodukt im Modus {\tt MATRIX} $\rightarrow$ {\tt NAMES}
+\"uber ${\tt [A]*[B]}$.
+
+%\vspace{5mm}
+%\pagebreak
+\medskip
+\noindent
+{\bf Rechenregeln f\"ur die Matrizenmultiplikation}
+
+\noindent
+F\"{u}r $\mathbf{A}, \mathbf{B}, \mathbf{C}$ reelle Matrizen
+von entsprechendem Format gelten:
+
+\begin{enumerate}
+	\item $\mathbf{A}\mathbf{B} = \mathbf{0}$ ist m\"oglich
+	mit $\mathbf{A}\neq\mathbf{0},\mathbf{B}\neq\mathbf{0}$.
+	\hfill ({\bf Nullteiler})
+	\item $\mathbf{A}(\mathbf{B}\mathbf{C})
+	= (\mathbf{A}\mathbf{B})\mathbf{C}$
+	\hfill ({\bf Assoziativit\"at})
+	\item $\mathbf{A}
+	\underbrace{\mathbf{1}}_{\in \mathbb{R}^{n \times n}}
+	=\underbrace{\mathbf{1}}_{\in \mathbb{R}^{m \times m}}
+	\mathbf{A}=\mathbf{A}$
+	\hfill ({\bf Neutrale Elemente})
+	\item $(\mathbf{A}+\mathbf{B})\mathbf{C}
+	= \mathbf{A}\mathbf{C}+\mathbf{B}\mathbf{C}$
+	
+	$\mathbf{C}(\mathbf{A}+\mathbf{B})
+	= \mathbf{C}\mathbf{A}+\mathbf{C}\mathbf{B}$
+	\hfill ({\bf Distributivit\"at})
+	\item $\mathbf{A}(\lambda\mathbf{B})
+	=(\lambda\mathbf{A})\mathbf{B}
+	=\lambda(\mathbf{A}\mathbf{B})$
+	mit $\lambda \in \mathbb{R}$ 
+	\hfill ({\bf Homogenit\"at})
+	\item $(\mathbf{A}\mathbf{B})^{T}
+	=\mathbf{B}^{T}\mathbf{A}^{T}$
+	\hfill ({\bf Transponierungsregel}).
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

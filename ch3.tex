@@ -1,0 +1,572 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  File name: ch3.tex
+%  Title:
+%  Version: 12.09.2015 (hve)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter[Lineare Gleichungssysteme]{Lineare Gleichungssysteme}
+\lb{ch3}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hfill\hbox{\fbox{\vbox{\hsize=10cm
+Der Inhalt dieses Kapitels ist relevant f\"ur das
+Verst\"andnis der in Kapitel 5.2
+des Lehrbuchs von Schrey\"ogg und Koch (2010)~\ct{schkoc2010}
+behandelten quantitativen Themen.
+%Gleichfalls f\"ur Kapitel 10.5, 11.4 des Lehrbuchs von
+%Schmalen und Pechtl 2006~\ct{schpec2006}.
+}}}
+
+\vspace{10mm}
+\noindent
+In diesem Kapitel wenden wir uns nun einem anwendungsbezogenen
+Einsatzgebiet von Matrizen und Vektoren, also von linearen
+Abbildungen, zu.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Grundbegriffe]%
+{Grundbegriffe}
+\lb{sec:lgsgrund}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Ausgangspunkt ist ein System von $m$ Gleichungen, welche, jede
+f\"ur sich, eine {\em lineare Bedingung\/} an die Werte von $n$
+Variablen $x_{1}, %\ldots, x_{j},
+\ldots, x_{n} \in \mathbb{R}$ stellt. Diese Bedingungen
+sind simultan zu erf\"ullen. Wir finden Probleme dieser Art,
+so genannte {\bf lineare Gleichungssysteme (LGS)} (engl.: 
+systems of linear equations), h\"aufig in der Form geschrieben:
+
+\medskip
+\noindent
+$\bullet$ Darstellung 1:\\[-7mm]
+%
+\bea
+a_{11}x_{1}+\ldots+a_{1j}x_{j}+\ldots+a_{1n}x_{n} & = & b_{1} 
+\nonumber \\
+%
+ & \vdots & \nonumber \\
+%
+a_{i1}x_{1}+\ldots+a_{ij}x_{j}+\ldots+a_{in}x_{n} & = & b_{i} \\
+%
+ & \vdots & \nonumber \\
+%
+a_{m1}x_{1}+\ldots+a_{mj}x_{j}+\ldots+a_{mn}x_{n} & = & b_{m}
+\nonumber \ .
+\eea
+%
+Je nach Verh\"altnis der das Format des LGS festlegenden
+nat\"urlichen Zahlen $m$ und $n$ zueinander, werden LGS wie
+folgt klassifiziert:\\[-7mm]
+%
+\begin{itemize}
+\item $m < n$: weniger Gleichungen als Variablen;
+das LGS ist {\bf unterbestimmt} \\
+(engl.: under-determined),\\[-7mm]
+
+\item $m = n$: gleich viel Gleichungen wie Variablen;
+das LGS ist {\bf wohlbestimmt} \\
+(engl.: well-determined),\\[-7mm]
+
+\item $m > n$: mehr Gleichungen als Variablen;
+das LGS ist {\bf \"uberbestimmt} \\
+(engl.: over-determined).\\[-7mm]
+\end{itemize}
+%
+Eine kompaktere Darstellungsweise eines LGS vom Format
+$(m \times n)$ liefert die folgende Variante:
+
+\medskip
+\noindent
+$\bullet$ Darstellung 2:
+%
+\be
+\fbox{$\displaystyle
+\mathbf{A}\vec{x} =
+\left(\begin{array}{ccccc}
+a_{11} & \ldots & a_{1j} & \ldots & a_{1n} \\
+\vdots & \ddots & \vdots & \ddots & \vdots \\
+a_{i1} & \ldots & a_{ij} & \ldots & a_{in} \\
+\vdots & \ddots & \vdots & \ddots & \vdots \\
+a_{m1} & \ldots & a_{mj} & \ldots & a_{mn}
+\end{array}\right)
+\left(\begin{array}{c}
+x_{1} \\
+\vdots \\
+x_{j} \\
+\vdots \\
+x_{n}
+\end{array}\right)
+= \left(
+\begin{array}{c}
+b_{1} \\
+\vdots \\
+b_{i} \\
+\vdots \\
+b_{m}
+\end{array}\right)
+= \vec{b} \ .
+$}
+\ee
+%
+Hierbei haben wir uns folgender mathematischer Objekte
+zur B\"undelung relevanter Informationen bedient: $\mathbf{A}$
+ist die so genannte {\bf Koeffizientenmatrix} (engl.: coefficient 
+matrix) des LGS, vom Format $(m \times n)$, $\vec{x}$ der {\bf 
+Variablenvektor} (engl.: variable vector), vom Format $(n \times 
+1)$, und $\vec{b}$ der {\bf Absolutgliedvektor} (engl.: image 
+vector), vom Format $(m \times 1)$.
+
+\medskip
+\noindent
+Die zentrale Frage bei der Besch\"aftigung mit LGS,
+in dieser zweiten Darstellung, lautet:
+
+\medskip
+\noindent
+\underline{\bf Frage:}
+%Liegt der Vektor $\vec{b}$ im Bildraum der durch die
+%Matrix $\mathbf{A}$ definierten linearen Abbildung?
+Gibt es einen {\bf Objektvektor} $\vec{x}$, der sich durch die
+vorgegebene {\bf Matrix} $\mathbf{A}$ auf den vorgegebenen
+{\bf Bildvektor} $\vec{b}$ abbilden l\"asst?
+
+\medskip
+\noindent
+Erfreulicherweise steht uns eine einfache systematische Methode
+zur Verf\"ugung, diese Frage zu beantworten, also LGS zu l\"osen.
+Es handelt sich hierbei um einen Algorithmus, der von dem
+deutschen Mathematiker und Astronomen
+\href{http://www-groups.dcs.st-and.ac.uk/~history/Biographies/Gauss.html}{Carl
+Friedrich Gau\ss\ (1777--1855)} entwickelt wurde.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Gau\ss scher Algorithmus]%
+{Gau\ss scher Algorithmus}
+\lb{sec:lgsgauss}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Der von Gau\ss\ entwickelte L\"osungsalgorithmus (engl.: Gau\ss 
+ian elimination) basiert auf der Einsicht: die L\"osungsmenge 
+eines {\bf linearen Gleichungssystems} von $m$ Gleichungen f\"{u}r $n$ Variablen,
+%
+\be
+\fbox{$\displaystyle
+\mathbf{A}\vec{x} = \vec{b} \ ,
+$}
+\ee
+%
+bleibt durch folgende {\bf \"aquivalente Umformungen} (engl.: 
+algebraic equivalence transformations) unver\"andert:
+%
+\begin{enumerate}
+\item Vertauschen zweier Gleichungen.
+\item Multiplizieren einer Gleichung mit einer reellen Zahl
+$c \neq 0$.
+\item Addieren eines Vielfachen einer Gleichung zu einer zweiten.
+\item \"Andern der Reihenfolge der Variablen.
+\end{enumerate}
+%
+Letztendlich bedeutet dies, wir k\"onnen ein gegebenes LGS
+mithilfe dieser vier \"Aquivalenzschritte beliebig manipulieren,
+ohne seinen Gehalt, sprich: seine Identit\"at, zu ver\"andern.
+Nat\"urlich sollen im konkreten Fall die vier \"Aquivalenzschritte
+nicht wahllos zum Einsatz kommen; der Gau\ss sche Algorithmus
+zeichnet eine zielgerichtete L\"osungsstrategie vor.
+
+\medskip
+\noindent
+\underline{\bf Ziel:} Die {\bf erweiterte Koeffizientenmatrix}
+$(\mathbf{A}|\vec{b})$ (engl.: augmented coefficient matrix), also 
+das Zahlenschema
+%
+\be
+\begin{array}{ccccc|c}
+a_{11} & \ldots & a_{1j} & \ldots & a_{1n} & b_{1} \\
+\vdots & \ddots & \vdots & \ddots & \vdots & \vdots \\
+a_{i1} & \ldots & a_{ij} & \ldots & a_{in} & b_{i} \\
+\vdots & \ddots & \vdots & \ddots & \vdots & \vdots \\
+a_{m1} & \ldots & a_{mj} & \ldots & a_{mn} & b_{m}
+\end{array} \ ,
+\ee
+%
+soll, wenn m\"oglich, durch Anwendung von \"aquivalenten
+Umformungen auf so genannte {\bf obere Dreiecksgestalt} (engl.: 
+upper triangular form)
+%
+\be
+\begin{array}{ccccc|c}
+1 & \ldots & \tilde{a}_{1j} & \ldots & \tilde{a}_{1n} & \tilde{b}_{1} \\
+\vdots & \ddots & \vdots & \ddots & \vdots & \vdots \\
+0 & \ldots & \tilde{a}_{ij} & \ldots & \tilde{a}_{in} & \tilde{b}_{i} \\
+\vdots & \ddots & \vdots & \ddots & \vdots & \vdots \\
+0 & \ldots & 0 & \ldots & \tilde{a}_{mn} & \tilde{b}_{m}
+\end{array}
+\ee
+%
+transformiert werden, um sodann das diesem Endschema unterliegende
+einfachere lineare Gleichungssystem durch {\bf r\"uckwertige
+Substitution} (engl.: backward substitution) explizit zu l\"osen.
+
+\medskip
+\noindent
+Drei F\"alle {\bf resultierender L\"osungsm\"oglichkeiten}
+k\"onnen nun auftreten. Das LGS hat entweder
+%
+\begin{enumerate}
+\item {\em keine\/} L\"osung (engl.: no solution), oder eine
+
+\item {\em eindeutige\/} L\"osung (engl.: unique solution), oder 
+eine
+
+\item {\em mehrdeutige\/} L\"osung (engl.: multiple solutions).
+\end{enumerate}
+%
+\underline {\bf Bem:} Unterbestimmte LGS, also wenn $m < n$,
+sind niemals eindeutig l\"osbar. Denn es gibt dann zu wenig
+Bedingungen, um den Wert einer jeden der $n$ Variablen
+festzulegen.
+
+\medskip
+\noindent
+\underline {\bf GTR:} F\"ur eine eingespeicherte erweiterte
+Koeffizientenmatrix ${\tt [A]}$ vom Format $(m \times n+1)$
+eines gegebenen LGS vom Format $(m \times n)$ kann im Modus
+{\tt MATRIX} $\rightarrow$ {\tt MATH} die Funktion
+${\tt rref([A])}$ angewendet werden. Je nach L\"osungsfall
+ist die r\"uckwertige Substitution m\"oglicherweise von
+Hand durchzuf\"uhren.
+
+\medskip
+\noindent
+Der Vollst\"andigkeit halber wollen wir uns kurz der Theorie
+der L\"osbarkeit eines LGS vom Format $(m \times n)$ zuwenden.
+Hierzu ben\"otigen wir den im n\"achsten Abschnitt definierten
+Begriff.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Rang einer Matrix]%
+{Rang einer Matrix}
+\lb{sec:lgsrang}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\noindent
+\underline{\bf Def.:}
+Eine Matrix $\mathbf{A} \in \mathbb{R}^{m \times n}$ besitzt den
+{\bf Rang} (engl.: rank)
+%
+\be
+\fbox{$\displaystyle
+\text{Rg}(\mathbf{A}) = r \ , \qquad
+r \leq \text{min}\{m,n\}
+$}
+\ee
+%
+genau dann, wenn $r$ die {\bf maximale Anzahl} voneinander
+linear unabh\"angiger Zeilen- bzw.\ Spaltenvektoren von
+$\mathbf{A}$ ist. $r$ kann nur so gro\ss\ sein, wie die kleinere
+der das Format von $\mathbf{A}$ bestimmenden Zahlen $m$ und $n$.
+
+\medskip
+\noindent
+F\"ur {\bf quadratische Matrizen} $\mathbf{A} \in
+\mathbb{R}^{n \times n}$ kann ein alternatives, eleganteres
+Kriterium zur Bestimmung des Ranges der Matrix $\mathbf{A}$
+herangezogen werden. Man arbeitet dabei mit einer
+(z.B. mit dem GTR zu berechnenden) Kennzahl, die
+die {\bf Determinante} (engl.: determinant) der quadratischen 
+Matrix $\mathbf{A}$, $\det(\mathbf{A})$, genannt wird.
+
+\medskip
+\noindent
+\underline{\bf Def.:}
+%
+\begin{itemize}
+\item[(i)]~Wenn $\mathbf{A} \in \mathbb{R}^{2 \times 2}$,
+ist die {\bf Determinante} von $\mathbf{A}$ durch
+%
+\be
+\det(\mathbf{A})
+:= \left|\begin{array}{cc}
+   	a_{11} & a_{12} \\
+   	a_{21} & a_{22}
+	\end{array}\right|
+:= a_{11}a_{22} - a_{12}a_{21}
+\ee
+%
+definiert, also durch die Differenz der Produkte der Hauptdiagonal-
+und der Nebendiagonalelemente von $\mathbf{A}$.
+
+\item[(ii)]~Falls $\mathbf{A} \in \mathbb{R}^{3 \times 3}$, gilt
+%
+\bea
+\det(\mathbf{A})
+& := & \left|\begin{array}{ccc}
+   	a_{11} & a_{12} & a_{13} \\
+   	a_{21} & a_{22} & a_{23} \\
+   	a_{31} & a_{32} & a_{33}
+	\end{array}\right| \nonumber \\
+	%
+& := & a_{11}(a_{22}a_{33}-a_{32}a_{23})
++ a_{21}(a_{32}a_{13}-a_{12}a_{33})
++ a_{31}(a_{12}a_{23}-a_{22}a_{13}) \ .
+\eea
+%
+Beachte hierbei das zyklische Vertauschen von Term zu Term
+jeweils des ersten Index eines Elements $a_{ij}$ von $\mathbf{A}$
+nach der Regel $1 \rightarrow 2 \rightarrow 3 \rightarrow 1$.
+
+\item[(iii)]~Die Definition der {\bf 
+Determinante}~$\det(\mathbf{A})$ f\"ur den allgemeinen Fall 
+$\mathbf{A} \in \mathbb{R}^{n \times n}$ ist z.B. in Bronstein 
+\emph{et al} (2005)~\ct[S.~267]{broetal2005} zu finden.
+\end{itemize}
+%
+
+\medskip
+\noindent
+Zur Bestimmung des Rangs einer quadratischen Matrix $\mathbf{A}
+\in \mathbb{R}^{n \times n}$ wird nun festgelegt:
+$\text{Rg}(\mathbf{A}) = r = n$, falls
+$\det(\mathbf{A}) \neq 0$,
+und $\text{Rg}(\mathbf{A}) = r < n$, falls
+$\det(\mathbf{A}) = 0$. Im ersten Fall hei\ss t $\mathbf{A}$
+{\bf regul\"ar} (engl.: regular), im zweiten Fall {\bf singul\"ar} 
+(engl.: singular). F\"ur singul\"are quadratische Matrizen 
+$\mathbf{A}$ ist der Rang $\text{Rg}(\mathbf{A}) = r$ (mit $r < 
+n$) bestimmt durch die Anzahl $r$ der Zeilen (Spalten) der 
+gr\"o\ss tm\"oglichen von Null verschiedenen Unterdeterminante von 
+$\mathbf{A}$.
+
+\medskip
+\noindent
+\underline {\bf GTR:} F\"ur eine eingespeicherte quadratische
+Matrix ${\tt [A]}$ kann im Modus {\tt MATRIX} $\rightarrow$
+{\tt MATH} ihre Determinante leicht \"uber die Funktion
+${\tt det([A])}$ berechnet werden.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[L\"{o}sbarkeitskriterien]%
+{L\"{o}sbarkeitskriterien f\"{u}r lineare Gleichungssysteme}
+\lb{sec:lgsloes}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Auf die Theorie der L\"osbarkeit eines LGS vom Format
+$(m \times n)$ kann nun kurz in tabellarischer Form eingegangen
+werden. F\"ur lineare Gleichungssysteme
+%
+$$
+\mathbf{A}\vec{x} = \vec{b}
+$$
+%
+mit $\mathbf{A} \in \mathbb{R}^{m \times n}$, $\vec{x} \in
+\mathbb{R}^{n \times 1}$ und $\vec{b} \in \mathbb{R}^{m \times 1}$,
+gilt:
+
+%
+\begin{center}
+	\begin{tabular}[h]{c|c|c}
+		\hline\hline
+		 & & \\
+		 & $\vec{b} \neq \vec{0}$ &
+		 $\vec{b} = \vec{0}$ \\
+		 & & \\
+		\hline
+		 & & \\
+		1. $\text{Rg}(\mathbf{A}) \neq \text{Rg}(\mathbf{A}|\vec{b})$ &
+		unl\"osbar & -------- \\
+		 & & \\
+		\hline
+		 & & \\
+		2. $\text{Rg}(\mathbf{A}) = \text{Rg}(\mathbf{A}|\vec{b}) = r$ &
+		& \\
+		 & & \\
+		(a) \quad $r = n$ & eindeutig & $\vec{x} = \vec{0}$ \\
+		 & l\"osbar & \\
+		 & & \\
+		(b) \quad $r < n$ & mehrdeutig & mehrdeutig \\
+		 & l\"osbar, & l\"osbar, \\
+		 & $n-r$ freie &  $n-r$ freie \\
+		 & Parameter & Parameter \\
+		 & & \\
+		\hline\hline
+	 \end{tabular}
+\end{center}
+%
+
+\noindent
+$(\mathbf{A}|\vec{b})$ bezeichnet die {\bf erweiterte
+Koeffizientenmatrix} (engl.: augmented coefficient matrix).
+
+\medskip
+\noindent
+Dieses Kapitel abschlie\ss end wenden wir uns nun einer besonderen,
+f\"ur Anwendungen \"au\ss erst n\"utzlichen Eigenschaft der
+Klasse von {\em regul\"aren\/} quadratischen Matrizen zu.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Inverse einer regul\"{a}ren $(n\times n)$-Matrix]%
+{Inverse einer regul\"{a}ren $\boldsymbol{(n\times n)}$-Matrix}
+\lb{sec:lgsinv}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\noindent
+\underline{\bf Def.:}
+Sei $\mathbf{A} \in
+\mathbb{R}^{n \times n}$ eine {\bf regul\"are}
+quadratische Matrix, d.h. $\det(\mathbf{A}) \neq 0$. Dann ist
+die {\bf Inverse} $\mathbf{A}^{-1}$ (engl.: inverse matrix) von 
+$\mathbf{A}$ definiert durch die Relationen
+%
+\be
+\fbox{$\displaystyle
+\mathbf{A}^{-1}\mathbf{A} = \mathbf{A}\mathbf{A}^{-1}
+= \mathbf{1} \ ,
+$}
+\ee
+%
+wobei $\mathbf{1}$ die $\boldsymbol{(n \times 
+n)}${\bf-Einheitsmatrix} bezeichnet [vgl.\ Gl.~(\ref{einmatr})].
+
+\medskip
+\noindent
+Von Hand berechnet man die zu einer regul\"aren quadratischen
+Matrix $\mathbf{A}$ Inverse $\mathbf{A}^{-1}$ \"uber
+Anwendung des {\bf simultanen Gau\ss schen Algorithmus} (engl.: 
+simultaneous Gau\ss ian elimination).
+
+\medskip
+\noindent
+\underline{\bf GTR:} F\"ur eine eingespeicherte regul\"are
+quadratische Matrix ${\tt [A]}$ kann die Inverse \"uber
+${\tt [A]}^{-1}$ berechnet werden. Beachten Sie, dass
+hierbei die $x^{-1}$-Funktionstaste zu verwenden ist.
+
+\pagebreak
+\medskip
+\noindent
+{\bf Rechenregeln f\"ur Inversbildungen}
+
+\nopagebreak
+\noindent
+F\"ur $\mathbf{A},\mathbf{B} \in \mathbb{R}^{n \times n}$
+mit $\det(\mathbf{A}) \neq 0 \neq \det(\mathbf{B})$
+gilt:
+
+\begin{enumerate}
+\item $(\mathbf{A}^{-1})^{-1} = \mathbf{A}$
+\item $(\mathbf{A}\mathbf{B})^{-1}
+= \mathbf{B}^{-1}\mathbf{A}^{-1}$
+\item $(\mathbf{A}^{T})^{-1} = (\mathbf{A}^{-1})^{T}$
+\item $\displaystyle (\lambda\mathbf{A})^{-1}
+= \frac{1}{\lambda}\,\mathbf{A}^{-1}$.
+\end{enumerate}
+
+\medskip
+\noindent
+F\"ur Anwendungen ist das Konzept einer inversen Matrix
+aus folgendem Grunde von Interesse. Gegeben sei ein LGS
+\[
+\mathbf{A}\vec{x}=\vec{b}
+\]
+vom Format $(n \times n)$, mit {\em regul\"arer\/} quadratischer
+Koeffizientenmatrix $\mathbf{A}$, also $\det(\mathbf{A})
+\neq 0$. Dann existiert eine zu $\mathbf{A}$ inverse Matrix
+$\mathbf{A}^{-1}$. Matrizenmultiplizieren wir beide Seiten des
+LGS von {\em links\/}~(!) mit der Inversen $\mathbf{A}^{-1}$,
+so ergibt sich dadurch
+%
+\be
+\underbrace{\mathbf{A}^{-1}(\mathbf{A}\vec{x})
+= (\mathbf{A}^{-1}\mathbf{A})\vec{x}
+= \mathbf{1}\vec{x}
+= \vec{x}}_{\text{linke Seite}}
+= \underbrace{\mathbf{A}^{-1}\vec{b}}_{\text{rechte Seite}} \ .
+\ee
+%
+Die eindeutige (!) L\"osung $\vec{x}=\mathbf{A}^{-1}\vec{b}$ des
+LGS l\"asst sich in diesem Fall elegant durch eine einfache
+Matrizenmultiplikation mit der zu $\mathbf{A}$ Inversen erhalten.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Ausblick]{Ausblick}
+\lb{sec:lgsausblick}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Die {\bf Lineare Algebra} beinhaltet viele spannende
+weiterf\"uhrende Themen. Von besonderer Relevanz f\"ur praktische
+Anwendungen ist das Thema der {\bf Eigenwerte} (engl.: 
+eigenvalues) und den zugeordneten {\bf Eigenvektoren} (engl.: 
+eigenvectors) von {\bf quadratischen Matrizen}, welche
+letztere in besonderer Art und Weise charakterisieren. Die
+Fragestellung ist hierbei die folgende: F\"ur eine gegebene
+quadratische reellwertige Matrix $\mathbf{A}
+\in \mathbb{R}^{n \times n}$,
+existieren reelle Zahlenwerte $\lambda_{n} \in \mathbb{R}$ und
+reellwertige Vektoren $\vec{v}_{n} \in \mathbb{R}^{n}$, die die
+Bedingung
+%
+\be
+\lb{eigenveq1}
+\mathbf{A}\vec{v}_{n} \stackrel{!}{=} \lambda_{n}\vec{v}_{n}
+\ee
+%
+erf\"ullen? Anders gewendet lautet das Problem: F\"ur welche
+Vektoren $\vec{v}_{n} \in \mathbb{R}^{n}$ l\"asst sich deren
+Abbildung durch eine vorgegebene Matrix $\mathbf{A}
+\in \mathbb{R}^{n \times n}$ auf ein einfaches Skalieren
+dieser Vektoren mit Zahlenwerten $\lambda_{n} \in \mathbb{R}$
+zur\"uckf\"uhren?
+
+\medskip
+\noindent
+Durch Umstellen und Ausklammern erh\"alt man aus
+Gl.~(\ref{eigenveq1}) die alternative Bedingung
+%
+\be
+\lb{eigenveq2}
+\boldsymbol{0} \stackrel{!}{=}
+\left(\mathbf{A}-\lambda_{n}\boldsymbol{1}\right)\vec{v}_{n} \ ,
+\ee
+%
+mit $\boldsymbol{1}$ einer $(n \times n)$-Einheitsmatrix
+[vgl.\ Gl.~(\ref{einmatr})] und $\boldsymbol{0}$
+einem $n$-komponentigen Nullvektor.
+Diese Bedingung entspricht einem zu l\"osenden homogenen LGS
+vom Format $(n \times n)$. Nichttriviale L\"osungen dieses
+homogenen LGS, also L\"osungen f\"ur den Fall $\vec{v}_{n}
+\neq \boldsymbol{0}$, existieren unter der Voraussetzung,
+dass die durch ein Polynom vom Grad $n$ (vgl.
+Abschnitt~\ref{subsec:polynomials}) gegebene
+{\bf charakteristische Gleichung} (engl.: characteristic equation)
+%
+\be
+0 \stackrel{!}{=} 
+\det\left(\mathbf{A}-\lambda_{n}\boldsymbol{1}\right)
+\ee
+%
+reellwertige Nullstellen $\lambda_{n} \in \mathbb{R}$ besitzt.
+Symmetrische quadratische Matrizen (vgl. Abschnitt 
+\ref{sec:matrech}) besitzen ausschlie\ss lich reelle Eigenwerte 
+$\lambda_{n}$.
+
+\medskip
+\noindent
+Kenntnis des Spektrums der {\bf Eigenwerte}
+$\lambda_{n} \in \mathbb{R}$ und der {\bf Eigenvektoren}
+$\vec{v}_{n} \in \mathbb{R}^{n}$ einer reellwertigen Matrix
+$\mathbf{A} \in \mathbb{R}^{n \times n}$ bildet die Grundlage
+einer Transformation von $\mathbf{A}$ auf {\bf Diagonalgestalt}
+$\mathbf{A}_{\lambda_{n}}$ (engl.: diagonal form), wobei die 
+Eigenwerte $\lambda_{n}$ die Diagonalelemente von 
+$\mathbf{A}_{\lambda_{n}}$ bilden. Details dieser Fragestellung 
+sind z.B. in Arens {\em et al\/} (2008) \ct[S.~585ff]{areetal2008} 
+zu finden.
+
+\medskip
+\noindent
+Eine besondere Rolle spielt das Konzept der Eigenwerte und
+Eigenvektoren von quadratischen reellwertigen Matrizen z.B.
+in der {\bf Statistik}, im Rahmen explorativer
+{\bf Hauptkomponentenanalysen} (engl.: exploratory principal 
+component analysis) multivariater Datens\"atze
+zur Identifikation von dominanten datenintrinsischen Strukturen;
+vgl. z.B. Rinne (2008) \ct[S.~699ff]{rin2008}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

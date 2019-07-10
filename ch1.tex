@@ -1,0 +1,512 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  File name: ch1.tex
+%  Title:
+%  Version: 11.10.2013 (hve)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter[Vektorrechnung im Euklidischen Raum ${\mathbb R}^{n}$
+]{Vektorrechnung im Euklidischen Raum ${\mathbb R}^{n}$}
+\lb{ch1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Wir beginnen unsere Betrachtungen mit der Einf\"uhrung einer
+speziellen Klasse von mathematischen Objekten, die uns sp\"ater
+behilflich sein werden, geeignete Probleme quantitativer Natur
+mathematisch m\"oglichst elegant und kompakt zu formulieren.
+Neben diesen mathematischen Objekten m\"ussen wir zus\"atzlich
+definieren, welche Rechenoperationen wir auf diese Objekte
+anwenden k\"onnen, und welche Regeln hierbei zu beachten sind.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Grundbegriffe und Grundrechenarten]%
+{Grundbegriffe und Grundrechenarten}
+\lb{sec:vekeinf}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Gegeben sei eine Menge $V$ von mathematischen Objekten $\vec{a}$,
+die wir %alle zun\"achst
+als eine Ansammlung von jeweils $n$ beliebigen reellen Zahlen
+$a_{1}$, \ldots, $a_{i}$, \ldots, $a_{n}$ betrachten wollen, also
+%
+\be
+\lb{vecsp}
+V =  \left\{
+\vec{a} = \left(
+\begin{array}{c}
+a_{1} \\ \vdots \\ a_{i} \\ \vdots \\ a_{n}
+\end{array}\right)
+\left|\, a_{i} \in {\mathbb R},\hspace{1mm}
+i=1, \dots, n\right.\right\} \ .
+\ee
+%
+Diese $n$ reellen Zahlen k\"onnen wir formal entweder in einer
+Spalte oder aber in einer Zeile anordnen. Wir definieren:
+
+\medskip
+\noindent
+\underline{\bf Def.:}
+Reellwertiger {\bf Spaltenvektor} (engl.: column vector) mit $n$ 
+Komponenten
+%
+\be
+\fbox{$\displaystyle
+\vec{a} := \left(
+\begin{array}{c}
+a_{1} \\ \vdots \\ a_{i} \\ \vdots \\ a_{n}
+\end{array}
+\right) \ ,
+\hspace{10mm}
+a_{i} \in {\mathbb R},\hspace{3mm}
+i=1, \dots, n \ ,
+$}
+\ee
+%
+Schreibweise: $\vec{a} \in \mathbb{R}^{n \times 1}$,
+
+\medskip
+\noindent
+und
+
+\medskip
+\noindent
+\underline{\bf Def.:}
+Reellwertiger {\bf Zeilenvektor} (engl.: row vector) mit $n$ 
+Komponenten
+%
+\be
+\fbox{$\displaystyle
+\vec{a}^{T} := \left(
+a_{1}, \dots, a_{i}, \dots, a_{n}\right) \ ,
+\hspace{10mm}
+a_{i} \in {\mathbb R},\hspace{3mm}
+i=1, \dots, n \ ,
+$}
+\ee
+%
+Schreibweise: $\vec{a}^{T} \in \mathbb{R}^{1 \times n}$.
+
+\medskip
+\noindent
+Entsprechend werden die durch
+%
+\be
+\vec{0} := \left(
+\begin{array}{c}
+0 \\ \vdots \\ 0 \\ \vdots \\ 0
+\end{array}
+\right)
+\qquad\text{und}\qquad
+\vec{0}^{T} := \left(
+0, \dots, 0, \dots, 0\right)
+\ee
+%
+definierten Objekte $n$-komponentige {\bf Nullvektoren} (engl.: 
+zero vector) genannt.
+
+\medskip
+\noindent
+Als n\"achstes definieren wir f\"ur gleichartige Elemente
+aus der Menge $V$, also entweder f\"ur $n$-komponentige
+Spaltenvektoren oder f\"ur $n$-komponentige Zeilenvektoren,
+zwei einfache Rechenoperationen:
+
+\medskip
+\noindent
+\underline{\bf Def.:}
+{\bf Addition} von Vektoren (engl.: addition of vectors)
+%
+\be
+\lb{vekadd}
+\fbox{$\displaystyle
+\vec{a} + \vec{b}
+:= \left(
+\begin{array}{c}
+a_{1} \\ \vdots \\ a_{i} \\ \vdots \\ a_{n}
+\end{array}
+\right)
++ \left(
+\begin{array}{c}
+b_{1} \\ \vdots \\ b_{i} \\ \vdots \\ b_{n}
+\end{array}
+\right)
+= \left(
+\begin{array}{c}
+a_{1}+b_{1} \\ \vdots \\ a_{i}+b_{i} \\ \vdots \\
+a_{n}+b_{n}
+\end{array}
+\right) \ ,
+\hspace{10mm}
+a_{i}, b_{i} \in {\mathbb R} \ ,
+$}
+\ee
+%
+
+\medskip
+\noindent
+und
+
+\medskip
+\noindent
+\underline{\bf Def.:}
+{\bf Skalieren} von Vektoren (engl.: scaling of vectors)
+%
+\be
+\lb{vekskal}
+\fbox{$\displaystyle
+\lambda\vec{a}
+:= \left(
+\begin{array}{c}
+\lambda a_{1} \\ \vdots \\ \lambda a_{i} \\ \vdots \\
+\lambda a_{n}
+\end{array}
+\right) \ ,
+\hspace{10mm}
+\lambda, a_{i} \in {\mathbb R} \ .
+$}
+\ee
+%
+
+\medskip
+\noindent
+Das Skalieren eines Vektors $\vec{a}$ mit einer von Null
+verschiedenen reellen Zahl $\lambda$ hat folgende Auswirkungen
+auf diesen:
+\begin{itemize}
+	\item $|\lambda| > 1$ --- Streckung der L\"ange von $\vec{a}$
+	\item $0 < |\lambda| < 1$ --- Stauchung der L\"ange von
+	$\vec{a}$
+	\item $\lambda < 0$ --- Richtungsumkehr von $\vec{a}$;
+\end{itemize}
+den Begriff der L\"ange eines Vektors $\vec{a}$ werden wir
+in K\"urze pr\"azisieren. Bei der Addition bzw.\ dem
+Skalieren von $n$-komponentigen Vektoren sind folgende
+Rechenregeln zu beachten:
+
+\medskip
+\noindent
+{\bf Rechenregeln f\"ur Addition und Skalierung
+von Vektoren}
+
+\noindent
+F\"ur Vektoren
+$\vec{a}, \vec{b}, \vec{c} \in {\mathbb R}^{n}$:
+
+\begin{enumerate}
+	\item $\vec{a}+\vec{b} = \vec{b}+\vec{a}$
+	\hfill ({\bf Kommutativit\"at})
+	\item $\vec{a}+(\vec{b}+\vec{c}) = (\vec{a}+\vec{b})+\vec{c}$
+	\hfill ({\bf Assoziativit\"at})
+	\item Zu $\vec{a}$ und $\vec{b}$ gibt es genau ein $\vec{x}$,
+	sodass $\vec{a}+\vec{x}=\vec{b}$ \hfill ({\bf Umkehrbarkeit})
+	\item $(\lambda\mu)\vec{a}=\lambda(\mu\vec{a})$ mit $\lambda
+	\in {\mathbb R}$ \hfill ({\bf Assoziativit\"at})
+	\item $1\vec{a}=\vec{a}$ \hfill ({\bf Skalenfestlegung})
+	\item $\lambda(\vec{a}+\vec{b}) = \lambda\vec{a}+\lambda\vec{b}$;
+	
+	$(\lambda+\mu)\vec{a} = \lambda\vec{a}+\mu\vec{a}$ mit $\lambda,
+	\mu	\in {\mathbb R}$ \hfill ({\bf Distributivit\"at}).
+\end{enumerate}
+
+\medskip
+\noindent
+Wir bemerken zum Schluss:
+jede entsprechend Gl.~(\ref{vecsp}) konstruierte Menge $V$ von
+Objekten, f\"ur deren Elemente eine Addition sowie eine
+Skalierung wie in Gln.~(\ref{vekadd}) und~(\ref{vekskal})
+definiert sind, und die den angef\"uhrten
+Rechenregeln gen\"ugen, wird {\bf linearer Vektorraum \"uber
+dem Euklidischen Raum} ${\mathbb R}^{n}$
+genannt (engl.: linear vector space over Euclidian space ${\mathbb 
+R}^{n}$).\footnote{Benannt nach dem griechischen Mathematiker
+\href{http://www-groups.dcs.st-and.ac.uk/~history/Biographies/Euclid.html}{Euklid von Alexandria (ca. 325~v.~Chr.--ca. 265~v.~Chr.)}.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Dimension und Basis des ${\mathbb R}^{n}$]%
+{Dimension und Basis des ${\mathbb R}^{n}$}
+\lb{sec:vekdim}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Gegeben seien $m$ $n$-komponentige Vektoren\footnote{Zur
+Kennzeichnung $n$-komponentiger
+Spaltenvektoren $\vec{a} \in \mathbb{R}^{n\times 1}$ schreibt man
+oft auch verk\"urzend $\vec{a} \in \mathbb{R}^{n}$; gelegentlich
+ebenfalls $\vec{a}^{T} \in \mathbb{R}^{n}$ f\"{u}r
+$n$-komponentige Zeilenvektoren $\vec{a}^{T} \in
+\mathbb{R}^{1\times n}$.} $\vec{a}_{1}, \ldots,
+\vec{a}_{i}, \ldots, \vec{a}_{m} \in
+{\mathbb R}^{n}$ sowie $m$ reelle Zahlen
+$\lambda_{1}, \ldots, \lambda_{i}, \ldots, \lambda_{m}
+\in {\mathbb R}$. Wird aus diesen unter Anwendung der 
+oben eingef\"uhrten Rechenoperationen Addition und Skalierung von
+Vektoren ein neuer $n$-komponentiger Vektor $\vec{b}$ nach der
+Vorschrift
+%
+\be
+\lb{linkomb}
+\fbox{$\displaystyle
+\vec{b} = \lambda_{1}\vec{a}_{1}+\ldots+\lambda_{i}\vec{a}_{i}
++\ldots+\lambda_{m}\vec{a}_{m}
+=: \sum_{i=1}^{m}\lambda_{i}\vec{a}_{i} \in {\mathbb R}^{n}
+$}
+\ee
+%
+konstruiert, so nennt man $\vec{b}$ eine {\bf Linearkombination} 
+(engl.: linear combination) der $m$ Vektoren $\vec{a}_{i},\,i=1, 
+\ldots, m$.
+
+\medskip
+\noindent
+\underline{\bf Def.:} $m$ Vektoren $\vec{a}_{1}, \ldots,
+\vec{a}_{i}, \ldots, \vec{a}_{m} \in {\mathbb R}^{n}$ hei\ss en
+voneinander {\bf linear unabh\"angig} (engl.: linearly 
+independent), wenn aus der Bedingung
+%
+\be
+\lb{linunabh}
+\boldsymbol{0} \stackrel{!}{=} \lambda_{1}\vec{a}_{1}+\ldots
++\lambda_{i}\vec{a}_{i}+\ldots+\lambda_{m}\vec{a}_{m}
+= \sum_{i=1}^{m}\lambda_{i}\vec{a}_{i} \ ,
+\ee
+%
+also der Aufgabe, aus den $m$ Vektoren $\vec{a}_{1}, \ldots,
+\vec{a}_{i}, \ldots, \vec{a}_{m} \in {\mathbb R}^{n}$ durch
+Linearkombination den {\bf Nullvektor} $\boldsymbol{0}$ zu
+konstruieren, zwingend als einzige L\"osung
+$0=\lambda_{1}=\ldots=\lambda_{i}=\ldots=\lambda_{m}$ folgt.
+Kann diese Bedingung hingegen mit $\lambda_{i} \neq 0$
+erf\"ullt werden, so hei\ss en die $m$ Vektoren $\vec{a}_{1},
+\ldots, \vec{a}_{i}, \ldots,\vec{a}_{m} \in {\mathbb R}^{n}$
+voneinander {\bf linear abh\"angig} (engl.: linearly 
+dependent).
+
+\medskip
+\noindent
+Im Euklidischen Raum ${\mathbb R}^{n}$ k\"onnen maximal
+$n$ (!) Vektoren
+voneinander linear unabh\"angig sein. Diese Maximalzahl linear
+unabh\"angiger Vektoren hei\ss t {\bf Dimension des Euklidischen
+Raumes} ${\mathbb R}^{n}$ (engl.: dimension of Euclidian space 
+${\mathbb R}^{n}$). Jede Menge von $n$ linear unabh\"angigen
+Vektoren des Euklidischen Raumes ${\mathbb R}^{n}$ bildet
+eine m\"ogliche {\bf Basis des Euklidischen Raumes} ${\mathbb 
+R}^{n}$ (engl.: basis of Euclidian space ${\mathbb R}^{n}$).
+Ist $\{\vec{a}_{1}, \ldots, \vec{a}_{i}, \ldots,\vec{a}_{n}\}$
+eine Basis des ${\mathbb R}^{n}$, so gilt f\"ur alle weiteren
+Vektoren $\vec{b} \in {\mathbb R}^{n}$
+%
+\be
+\vec{b} = \beta_{1}\vec{a}_{1}+\ldots+\beta_{i}\vec{a}_{i}
++\ldots+\beta_{n}\vec{a}_{n}
+= \sum_{i=1}^{n}\beta_{i}\vec{a}_{i} \ .
+\ee
+%
+Die Zahlen $\beta_{i}\in{\mathbb R}$ hei\ss en die
+{\bf Komponenten von} $\vec{b}$ {\bf bez\"uglich der Basis}
+$\{\vec{a}_{1}, \ldots, \vec{a}_{i}, \ldots, \vec{a}_{n}\}$ 
+(engl.: components of $\vec{b}$ with respect to the given basis).
+
+\vspace{5mm}
+\noindent
+\underline{\bf Bem.:} Die $n$ Einheitsvektoren (engl.: unit 
+vectors)
+%
+\be
+\lb{kanbasis}
+\vec{e}_{1} := \left(
+\begin{array}{c}
+1 \\ 0 \\ \vdots \\ 0
+\end{array}
+\right) \ , \hspace{5mm}
+\vec{e}_{2} := \left(
+\begin{array}{c}
+0 \\ 1 \\ \vdots \\ 0
+\end{array}
+\right) \ , \hspace{5mm}
+\dots \ , \hspace{5mm}
+\vec{e}_{n} := \left(
+\begin{array}{c}
+0 \\ 0 \\ \vdots \\ 1
+\end{array}
+\right) \ , \hspace{5mm}
+\ee
+%
+bilden die sogenannte {\bf kanonische Basis des Euklidischen
+Raumes} ${\mathbb R}^{n}$ (engl.: canonical basis of Euclidian 
+space ${\mathbb R}^{n}$). Bez\"uglich dieser sind alle Vektoren 
+$\vec{b} \in \mathbb{R}^{n}$ als Linearkombinationen
+%
+\be
+\vec{b} = \left(
+\begin{array}{c}
+b_{1} \\ b_{2} \\ \vdots \\ b_{n}
+\end{array}
+\right)
+= b_{1}\vec{e}_{1}+b_{2}\vec{e}_{2}+\dots
++b_{n}\vec{e}_{n}
+= \sum_{i=1}^{n}b_{i}\vec{e}_{i}
+\ee
+%
+darstellbar.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Euklidisches Skalarprodukt]%
+{Euklidisches Skalarprodukt}
+\lb{sec:vekskal}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Schlie\ss lich f\"uhren wir noch eine dritte Rechenoperation f\"ur
+Vektoren des $\mathbb{R}^{n}$ ein.
+
+\medskip
+\noindent
+\underline{\bf Def.:} F\"ur einen $n$-komponentigen Zeilenvektor
+$\vec{a}^{T} \in \mathbb{R}^{1 \times n}$ und einen
+$n$-komponentigen Spaltenvektor $\vec{b} \in
+\mathbb{R}^{n \times 1}$ definiert das {\bf Euklidische
+Skalarprodukt} (engl.: Euclidian scalar product)
+%
+\be
+\lb{skalprod}
+\fbox{$\displaystyle
+\vec{a}^{T}\cdot\vec{b}
+:= \left(
+a_{1}, \ldots, a_{i}, \ldots a_{n}\right)
+\left(
+\begin{array}{c}
+b_{1} \\ \vdots \\ b_{i} \\ \vdots \\ b_{n}
+\end{array}
+\right)
+= a_{1}b_{1}+\ldots+a_{i}b_{i}\ldots+a_{n}b_{n}
+=: \sum_{i=1}^{n}a_{i}b_{i}
+$}
+\ee
+%
+eine Abbildung $f: \mathbb{R}^{1 \times n}\times
+\mathbb{R}^{n \times 1} \rightarrow \mathbb{R}$, d.h. eine
+Abbildung dieser beiden Vektoren in die Menge der reellen
+Zahlen.
+
+\medskip
+\noindent
+Beachten Sie, dass im Unterschied zur Addition oder dem Skalieren
+von Vektoren das Resultat einer Skalarproduktbildung {\em eine
+einzige reelle Zahl\/} darstellt.
+
+\medskip
+\noindent
+Zwei Vektoren $\vec{a}, \vec{b} \in {\mathbb R}^{n}$ (mit $\vec{a}
+\neq \vec{0} \neq \vec{b}$) werden zueinander {\bf orthogonal}
+genannt, wenn sie die Eigenschaft
+$0 = \vec{a}^{T}\cdot\vec{b} = \vec{b}^{T}\cdot\vec{a}$
+aufweisen.
+
+%\pagebreak
+\medskip
+\noindent
+{\bf Rechenregeln f\"ur das Skalarprodukt von Vektoren}
+
+\noindent
+F\"ur Vektoren
+$\vec{a}, \vec{b}, \vec{c} \in {\mathbb R}^{n}$:
+
+\begin{enumerate}
+	\item $(\vec{a}+\vec{b})^{T}\cdot\vec{c}
+	= \vec{a}^{T}\cdot\vec{c}+\vec{b}^{T}\cdot\vec{c}$
+	\hfill ({\bf Distributivit\"at})
+	\item $\vec{a}^{T}\cdot\vec{b} = \vec{b}^{T}\cdot\vec{a}$
+	\hfill ({\bf Kommutativit\"at})
+	\item $(\lambda\vec{a}^{T})\cdot\vec{b} =
+	\lambda(\vec{a}^{T}\cdot\vec{b})$ mit $\lambda \in {\mathbb R}$
+	\hfill ({\bf Homogenit\"at})
+	\item $\vec{a}^{T}\cdot\vec{a} > 0$ f\"ur alle $\vec{a}
+	\neq \vec{0}$ \hfill ({\bf positive Definitheit}).
+\end{enumerate}
+
+\medskip
+\noindent
+Nun wenden wir uns dem Begriff der L\"ange eines $n$-komponentigen
+Vektors zu.
+
+\medskip
+\noindent
+\underline{\bf Def.:} Die {\bf L\"ange} (engl.: length) eines 
+Vektors $\vec{a} \in \mathbb{R}^{n}$ ist definiert als
+%
+\be
+\fbox{$\displaystyle
+|\vec{a}| :=
+\sqrt{\vec{a}^{T}\cdot\vec{a}}
+= \sqrt{a_{1}^{2}+\ldots+a_{i}^{2}+\ldots+a_{n}^{2}}
+=: \sqrt{\sum_{i=1}^{n}a_{i}^{2}} \ .
+$}
+\ee
+%
+
+\medskip
+\noindent
+Die nichtnegative reelle Zahl $|\vec{a}|$ wird technisch auch
+Betrag von $\vec{a}$ bzw.\ Euklidische Norm
+von $\vec{a}$ genannt. Die L\"ange von $\vec{a} \in
+\mathbb{R}^{n}$ gen\"ugt folgenden Eigenschaften: 
+%
+\begin{itemize}
+	\item $|\vec{a}| \geq 0$; $|\vec{a}|=0 \Leftrightarrow
+	\vec{a}=\vec{0}$;
+	\item $|\lambda\vec{a}| = |\lambda||\vec{a}|$ f\"ur $\lambda \in
+	{\mathbb R}$;
+	\item $|\vec{a}+\vec{b}| \leq |\vec{a}|+|\vec{b}|$
+	\hfill ({\bf Dreiecksungleichung}).
+\end{itemize}
+
+\medskip
+\noindent
+Jeder Vektor $\vec{a} \in \mathbb{R}^{n}$ mit $|\vec{a}|>0$
+kann durch seine L\"ange dividiert (mit dem Kehrwert seiner
+L\"ange skaliert) werden.
+
+\medskip
+\noindent
+\underline{\bf Def.:}
+{\bf Normieren} (engl.: normalisation) eines Vektors $\vec{a} \in
+\mathbb{R}^{n}$;
+%
+\be
+\hat{\vec{a}} := \frac{\vec{a}}{|\vec{a}|}
+\qquad\Rightarrow\qquad
+|\hat{\vec{a}}| = 1 \ .
+\ee
+%
+
+\medskip
+\noindent
+Dadurch erh\"alt man einen Vektor der L\"ange $1$, einen
+{\bf Einheitsvektor} $\hat{\vec{a}}$. Zur Kennzeichnung dessen
+verwenden wir das Symbol "`Dach"'.
+
+\medskip
+\noindent
+Abschlie\ss end f\"uhren wir \"uber das Skalarprodukt
+den zwischen zwei Vektoren von L\"ange ungleich Null
+eingeschlossenen Winkel ein.
+
+\medskip
+\noindent
+\underline{\bf Def.:}
+{\bf Winkel} (engl.: angle) zwischen $\vec{a},\vec{b} \neq \vec{0}
+\in {\mathbb R}^{n}$ 
+%
+\be
+\fbox{$\displaystyle
+\cos[\varphi(\vec{a},\vec{b})]
+= \frac{\vec{a}^{T}}{|\vec{a}|}\cdot
+\frac{\vec{b}}{|\vec{b}|}
+= \hat{\vec{a}}{}^{T}\cdot\hat{\vec{b}}
+\hspace{5mm} \Rightarrow \hspace{5mm}
+\varphi(\vec{a},\vec{b})
+= \cos^{-1}(\hat{\vec{a}}{}^{T}\cdot\hat{\vec{b}}) \ .
+$}
+\ee
+%
+\underline{\bf Bem.:} Die inverse Kosinusfunktion\footnote{Der
+Begriff einer inversen Funktion wird in Kapitel~\ref{ch7}
+gekl\"art werden.} $\cos^{-1}(\ldots)$ wird durch jeden GTR zur
+Verf\"ugung gestellt.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

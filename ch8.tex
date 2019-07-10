@@ -1,0 +1,338 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  File name: ch8.tex
+%  Title:
+%  Version: 22.08.2012 (hve)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter[Integralrechnung bei reellen Funktionen]%
+{Integralrechnung bei reellen Funktionen einer Variablen}
+\lb{ch8}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hfill\hbox{\fbox{\vbox{\hsize=10cm
+Der Inhalt dieses Kapitels dient unter anderem der Vorbereitung
+auf elementare Teilaspekte der Wahrscheinlichkeitstheorie, welche
+im Rahmen der Module 0.1.3 WISS: Einf\"uhrung in das
+wissenschaftliche Arbeiten und die empirische Sozialforschung
+und 1.3.2 MARE: Marketing Research in der Schlie\ss enden 
+Statistik ben\"otigt wird.
+}}}
+
+\vspace{10mm}
+\noindent
+Im letzten Kapitel dieser Vorlesungsnotizen besprechen wir in
+einer kurzen \"Ubersicht die wesentlichen Definitionen und Regeln
+der Integralrechnung bei reellen Funktionen einer Variablen. Daran
+anschlie\ss end betrachten wir eine einfache \"okonomische
+Anwendung dieses mathematischen Werkzeuges.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Unbestimmte Integrale]{Unbestimmte Integrale}
+\lb{sec:unbint}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\underline{\bf Def.:} $f$ sei eine stetige reelle Funktion und
+$F$ eine differenzierbare reelle Funktion, mit $D(f)=D(F)$. Gilt
+zwischen $f$ und $F$ die Beziehung
+%
+\be
+\fbox{$\displaystyle
+F^{\prime}(x) = f(x)
+\qquad\text{{\em f\"ur alle\/}}\qquad x\in D(f) \ ,
+$}
+\ee
+%
+so hei\ss t $F$ {\bf Stammfunktion} (engl.: primitive) von $f$.
+
+\medskip
+\noindent
+\underline{\bf Bem:} F\"ur eine gegebene stetige reelle
+Funktion $f$ ist eine Stammfunktion niemals eindeutig. Denn nach
+den in Abschnitt~\ref{sec:ablt} besprochenen
+Differenziationsregeln ist neben $F$ auch immer $F+c$, mit
+$c \in \mathbb{R}$ einer reellwertigen Konstante, Stammfunktion
+zu~$f$, da $(c)^{\prime} = 0$.
+
+\medskip
+\noindent
+\underline{\bf Def.:} Ist $F$ Stammfunktion zu einer stetigen
+reellen Funktion $f$, so hei\ss t
+%
+\be
+\fbox{$\displaystyle
+\int f(x)\,{\rm d}x = F(x) + c \ , \quad
+c~=~\text{konst.}~\in~\mathbb{R} \ ,
+\quad \text{mit}\ F^{\prime}(x) = f(x)
+$}
+\ee
+%
+{\bf Unbestimmtes Integral} (engl.: indefinite integral) der 
+Funktion $f$. In diesem Ausdruck werden
+%
+\begin{itemize}
+\item $x$ --- {\bf Integrationsvariable} (engl.: integration 
+variable),
+\item $f(x)$ --- {\bf Integrand} (engl.: integrand),
+\item ${\rm d}x$ --- {\bf Integrationsdifferenzial} (engl.: 
+differential), und
+\item $c$ --- {\bf Integrationskonstante} (engl.: constant of integration)
+\end{itemize}
+%
+genannt.
+
+\medskip
+\noindent
+Speziell f\"ur die in Abschnitt~\ref{sec:fkt} besprochenen
+Familien elementarer stetiger reeller Funktionen einer
+Variablen gelten folgende Integrationsregeln:
+
+\medskip
+\noindent
+{\bf Integrationsregeln}
+%
+\begin{enumerate}
+\item $\int \alpha\,{\rm d}x = \alpha x + c$ mit $\alpha
+= \text{konstant} \in \mathbb{R}$ \hfill ({\bf Konstanten})
+\item $\displaystyle \int x\,{\rm d}x = \frac{x^{2}}{2} + c$
+ \hfill ({\bf Lineare Funktion})
+\item $\displaystyle \int x^{n}\,{\rm d}x = \frac{x^{n+1}}{n+1} + c$
+f\"ur $n \in \mathbb{N}$ \hfill ({\bf Nat\"urliche Potenzfunktionen})
+\item $\displaystyle \int x^{\alpha}\,{\rm d}x = \frac{x^{\alpha+1}}{\alpha+1}
++ c$ f\"ur $\alpha \in \mathbb{R}\backslash\{-1\}$ und
+$x \in \mathbb{R}_{> 0}$
+\hfill ({\bf Allgemeine Potenzfunktionen})
+\item $\displaystyle \int a^{x}\,{\rm d}x = \frac{a^{x}}{\ln(a)} + c$
+f\"ur $a \in \mathbb{R}_{> 0}\backslash\{1\}$
+\hfill ({\bf Exponentialfunktionen})
+\item $\displaystyle \int e^{ax}\,{\rm d}x = \frac{e^{ax}}{a} + c$
+f\"ur $a \in \mathbb{R}\backslash\{0\}$
+\hfill ({\bf Nat\"urliche Exponentialfunktionen})
+\item $\int x^{-1}\,{\rm d}x = \ln|x| + c$
+f\"ur $x \in \mathbb{R}\backslash\{0\}$.
+\end{enumerate}
+%
+Die Integration zusammengesetzer Funktionen erfordert
+im allgemeinen die Anwendung besonderer Integrationsmethoden.
+Nachfolgend listen wir die f\"ur diese Zwecke g\"angigen
+Standardmethoden auf. F\"ur differenzierbare reelle
+Funktionen $f$ und $g$ gilt:\footnote{(Engl.: summation rule, 
+integration by parts, substitution method, logarithmic 
+integration.)}
+%
+\begin{enumerate}
+\item $\int(\alpha f(x) \pm \beta g(x))\,{\rm d}x
+= \alpha\int f(x)\,{\rm d}x \pm \beta\int g(x)\,{\rm d}x$ \\
+mit $\alpha,\beta = \text{konstant} \in \mathbb{R}$
+\hfill ({\bf Summenregel})
+\item $\int f(x)g^{\prime}(x)\,{\rm d}x = f(x)g(x)
+- \int f^{\prime}(x)g(x)\,{\rm d}x$
+\hfill ({\bf Partielle Integration})
+\item $\int f(g(x))g^{\prime}(x)\,{\rm d}x
+\overbrace{=}^{u=g(x)\ \text{und}\ {\rm d}u=g^{\prime}(x){\rm d}x}
+\int f(u)\,{\rm d}u = F(g(x)) + c$
+\hfill ({\bf Substitutionsmethode})
+\item $\displaystyle \int\frac{f^{\prime}(x)}{f(x)}\,{\rm d}x
+= \ln|f(x)| + c$ f\"ur $f(x) \neq 0$
+\hfill ({\bf Logarithmische Integration}).
+\end{enumerate}
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Bestimmte Integrale]{Bestimmte Integrale}
+\lb{sec:bint}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\medskip
+\noindent
+\underline{\bf Def.:} Sei $f$ eine auf dem Intervall $[a,b]
+\subset D(f)$ stetige reelle Funktion einer Variablen, und $F$ eine
+beliebige Stammfunktion von $f$. Dann definiert der Ausdruck
+%
+\be
+\fbox{$\displaystyle
+\int_{a}^{b}f(x)\,{\rm d}x = \left.F(x)\right|_{x=a}^{x=b}
+= F(b) - F(a)
+$}
+\ee
+%
+das {\bf bestimmte Integral} (engl.: definite integral) von $f$ in 
+den {\bf Integrationsgrenzen} (engl.: limits of integration) $a$ 
+und $b$.
+
+\medskip
+\noindent
+F\"ur bestimmte Integrale gelten allgemein die Regeln:
+%
+\begin{enumerate}
+\item $\int_{a}^{a}f(x)\,{\rm d}x = 0$
+\hfill ({\bf Zusammenfallende Integrationsgrenzen})
+\item $\int_{b}^{a}f(x)\,{\rm d}x = -\int_{a}^{b}f(x)\,{\rm d}x$
+\hfill ({\bf Vertauschte Integrationsgrenzen})
+\item $\int_{a}^{b}f(x)\,{\rm d}x = \int_{a}^{c}f(x)\,{\rm d}x
++ \int_{c}^{b}f(x)\,{\rm d}x$ f\"ur $c \in [a,b]$
+\hfill ({\bf Integrationszwischenstelle}).
+\end{enumerate}
+%
+
+\medskip
+\noindent
+\underline{\bf Bem:} Der wesentliche qualitative Unterschied
+zwischen (i)~einem unbestimmten und (ii)~einem bestimmten
+Integral einer stetigen reellen Funktion einer Variablen ist
+durch die Art des Ergebnisses bedingt: (i)~liefert als Resultat
+eine reelle (Stamm-){\em Funktion\/}, (ii)~eine einzige reelle
+{\em Zahl\/}.
+
+\medskip
+\noindent
+\underline{\bf GTR:} Die Berechnung von bestimmten Integralen
+%der Form $\int_{a}^{b}f(x)\,{\rm d}x$
+kann f\"ur eine eingespeicherte Funktion im Modus {\tt CALC} mit
+der vorprogrammierten Funktion $\int${\tt f(x)dx} durchgef\"uhrt
+werden. Die Eingabe der erforderlichen Integrationsgrenzen erfolgt
+hierbei interaktiv.
+
+\medskip
+\noindent
+Wie schon in Abschnitt \ref{sec:elast} angedeutet, spielen
+in praktischen Anwendungen skaleninvariante allgemeine
+Potenzfunktionen $f(x)=x^{\alpha}$ f\"ur $\alpha \in \mathbb{R}$
+und $x \in \mathbb{R}_{> 0}$ eine bedeutsame Rolle. Mit $x \in
+\left[a,b\right] \subset \mathbb{R}_{> 0}$ und $\alpha \neq -1$
+gilt also
+%
+\be
+\int_{a}^{b}x^{\alpha}\,{\rm d}x
+= \left.\frac{x^{\alpha+1}}{\alpha+1}\right|_{x=a}^{x=b}
+= \frac{1}{\alpha+1}\left(b^{\alpha+1}-a^{\alpha+1}\right) \ .
+\ee
+%
+Problematisch k\"onnen in diesem Zusammenhang
+Grenzwertbetrachtungen der Art $a \to 0$ bzw. $b \to \infty$
+werden. Denn die Forderungen
+%
+\begin{itemize}
+\item[(i)] Fall $\alpha < -1$:
+%
+\be
+\lim_{a \to 0}\int_{a}^{b}x^{\alpha}\,{\rm d}x \to \infty \ ,
+\ee
+%
+\item[(ii)] Fall $\alpha > -1$:
+%
+\be
+\lim_{b \to \infty}\int_{a}^{b}x^{\alpha}\,{\rm d}x \to \infty \ ,
+\ee
+%
+\end{itemize}
+%
+f\"uhren jeweils zu {\bf divergenten} (engl.: divergent) 
+mathematischen Ausdr\"ucken.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[\"Okonomische Anwendungen]{\"Okonomische Anwendungen}
+\lb{sec:intanw}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Ausgangspunkt sei eine vereinfachte Marktsituation f\"ur ein
+einziges Produkt. Die Marktsituation werde einerseits durch eine
+Nachfragefunktion $N(p)$ (in ME) beschrieben, welche auf dem
+Preisintervall $[p_{u},p_{o}]$ monoton fallend sei. Die Werte
+$p_{u}$ und $p_{o}$ bezeichen Mindest-- und H\"ochstst\"uckpreise
+(in GE/ME) f\"ur das Produkt. Andererseits werde die Marktsituation
+beschrieben durch eine Angebotsfunktion $A(p)$ (in ME), die auf dem
+Preisintervall $[p_{u},p_{o}]$ monoton steigend sei.
+
+\medskip
+\noindent
+Der {\bf Marktpreis} (engl.: equilibrium price) $p_{M}$ (in GE/ME) 
+f\"ur das Produkt definiert sich \"uber den Zustand des {\bf 
+\"okonomischen Gleichgewichtes} (engl.: economic equilibrium), 
+d.h.\ durch die Bedingung
+%
+\be
+A(p_{M}) = N(p_{M}) \ ,
+\ee
+%
+wodurch ein gemeinsamer Schnittpunkt f\"ur die beiden Funktionen
+$A(p)$ und $N(p)$ beschrieben wird.
+
+\medskip
+\noindent
+\underline{\bf GTR:} F\"ur eingespeicherte Funktionen $f$ und $g$
+k\"onnen gemeinsame Schnittpunkte leicht im Modus {\tt CALC}
+mit der vorprogrammierten interaktiven Funktion {\tt intersect}
+bestimmt werden.
+
+\medskip
+\noindent
+In stark vereinfachter Weise wollen wir nun den von den
+Anbietern unter drei unterschiedlichen
+{\bf Markteinf\"uhrungsstrategien} f\"ur das Produkt erzielten
+Umsatz berechnen.
+%
+\begin{enumerate}
+
+\item {\bf Strategie 1:} Werden die angebotenen Mengen des Produktes
+direkt zum Marktpreis $p_{M}$ verkauft, so betr\"agt der Umsatz der
+Anbieter
+%
+\be
+U_{1} = U(p_{M}) = p_{M}N(p_{M}) \ .
+\ee
+%
+
+\item {\bf Strategie 2:} Manche Konsumenten des Produktes w\"aren
+bereit, dieses bei Markteinf\"uhrung auch zu einem h\"oheren
+St\"uckpreis als $p_{M}$ zu erwerben. Entscheiden sich also die
+Anbieter f\"ur einen Einf\"uhrungsst\"uckpreis $p_{o}$, um sodann,
+mit der Absicht die Nachfrage zu steigern, den St\"uckpreis
+stetig\footnote{Dies ist eine drastisch vereinfachendene Annahme,
+die die bei der anstehenden Berechnung durchzuf\"uhrenden
+mathematischen Schritte erleichtern soll.} (!) bis auf $p_{M}$ zu
+reduzieren, bel\"auft sich der erzielte Umsatz auf den h\"oheren
+Wert
+%
+\be
+U_{2} = U(p_{M}) + \int_{p_{M}}^{p_{o}}N(p)\,{\rm d}p \ .
+\ee
+%
+Da der durch
+%
+\be
+K := \int_{p_{M}}^{p_{o}}N(p)\,{\rm d}p \qquad
+(\text{in\ GE})
+\ee
+%
+definierte Geldbetrag von den Konsumenten gespart wird, wenn
+das Produkt nach Strategie~1 in den Markt eingef\"uhrt wird,
+wird dieser in der wirtschaftswissenschaftlichen Fachliteratur
+{\bf Konsumentenrente} (engl.: consumer surplus) genannt.
+
+\item {\bf Strategie 3:} Manche Produzenten w\"aren bereit, das
+Produkt bei Markteinf\"uhrung auch zu einem niedrigeren
+St\"uckpreis als $p_{M}$ anzubieten. Entscheiden sich die Anbieter
+also f\"ur einen Einf\"uhrungsst\"uckpreis $p_{u}$, um sodann
+den St\"uckpreis stetig\footnote{Dies ist eine drastisch
+vereinfachendene Annahme, die die bei der anstehenden Berechnung
+durchzuf\"uhrenden mathematischen Schritte erleichtern soll.} (!)
+bis auf $p_{M}$ zu erh\"ohen, bel\"auft sich der erzielte Umsatz
+auf den niedrigeren Wert
+%
+\be
+U_{3} = U(p_{M}) - \int_{p_{u}}^{p_{M}}A(p)\,{\rm d}p \ .
+\ee
+%
+Da die Produzenten den durch
+%
+\be
+P := \int_{p_{u}}^{p_{M}}A(p)\,{\rm d}p \qquad
+(\text{in\ GE})
+\ee
+%
+definierten Geldbetrag mehr einnehmen, wenn sie das Produkt nach
+Strategie~1 in den Markt einf\"uhren, wird dieser in der
+wirtschaftswissenschaftlichen Fachliteratur {\bf Produzentenrente}
+(engl.: producer surplus) genannt.
+
+\end{enumerate}
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

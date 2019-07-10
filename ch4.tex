@@ -1,0 +1,627 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  File name: ch4.tex
+%  Title:
+%  Version: 10.09.2015 (hve)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter[Leontiefsches 
+Input--Output--Matrizenmodell]{Station\"{a}res Leontiefsches
+Input--Output--Matrizenmodell}
+\lb{ch4}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hfill\hbox{\fbox{\vbox{\hsize=10cm
+Der Inhalt dieses Kapitels ist relevant f\"ur das
+Verst\"andnis der in Kapitel 5.2 des Lehrbuchs von Schrey\"ogg
+und Koch (2010)~\ct{schkoc2010} behandelten quantitativen Themen.
+%Gleichfalls f\"ur Kapitel 10.5 des Lehrbuchs von Schmalen und
+%Pechtl 2006~\ct{schpec2006}.
+}}}
+
+\vspace{10mm}
+\noindent
+Dieses Kapitel befasst sich mit einem Teilbereich der
+Wirtschaftstheorie, in welchem einfache, in den vorangegangenen
+Kapiteln besprochene Methoden der linearen
+Algebra herangezogen werden, um Prozesse des G\"uteraustauschs
+zwischen wirtschaftstreibenden Akteuren m\"oglichst realit\"atsnah
+quantitativ zu modellieren.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Allgemeines]%
+{Allgemeines}
+\lb{sec:leongrund}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Das zu betrachtende Modell (engl.: Leontief's stationary 
+input--output matrix model) dient der quantitativen Beschreibung 
+von G\"uterstr\"omen in
+%einer Volkswirtschaft
+einem wirtschaftlichen System mit
+$\boldsymbol{n}$~{\bf interdependenten Produktionssektoren} 
+w\"ahrend eines vorgegebenen Zeitraums. Es
+wurde in seinen Grundlagen von dem russischen
+Wirtschaftswissenschaftler
+\href{http://en.wikipedia.org/wiki/Leontief}{Wassily Wassiljewitsch
+Leontief (1905--1999)} entwickelt, vgl.~Leontief 
+(1936)~\ct{leo1936}, der, unter anderem f\"ur diese Leistung, im 
+Jahre 1973 mit dem
+\href{http://www.nobelprize.org/nobel_prizes/economics/laureates/1973/}{Preis f\"ur Wirtschaftswissenschaften im Gedenken an Alfred 
+Nobel} ausgezeichnet wurde.
+
+\medskip
+\noindent
+Der Einfachheit halber wegen stelle jeder der $n$, der Annahme nach
+interdependenten (d.h., %(zu Teilen)
+aufeinander angewiesenen) Produktionssektoren genau {\em ein\/}
+Gut her; die im betrachteten
+Zeitraum brutto produzierten und auch ausgelieferten Mengen
+dieser $n$~G\"uter sind die {\bf OUTPUT--Gr\"o\ss en} des Modells. 
+Die {\bf INPUT--Gr\"o\ss en} des betrachteten Produktionsmodells 
+gliedern sich in {\em zwei\/} Bereiche. Einerseits gibt es so 
+genannte {\bf exogene} INPUT--Gr\"o\ss en; darunter verstehen wir 
+hier die Mengen von $m$~verschiedenen {\bf Rohstoffen}, aus 
+welchen, in unterschiedlichen Mischungsverh\"altnissen, die 
+$n$~G\"uter gefertigt werden. Andererseits gibt es so genannte 
+{\bf endogene} INPUT--Gr\"o\ss en; dies sind hier Mengen der 
+{\bf G\"uter der Nachbarproduzenten}, die ein einzelner Produzent 
+zus\"atzlich (neben den Rohstoffen), im Sinne von Zulieferungen, 
+zur Fertigung seines eigenen Gutes  ben\"otigt. Die 
+OUTPUT--Gr\"o\ss en des
+Modells, also die im betrachteten Zeitraum produzierten und
+ausgelieferten Mengen der $n$~verschiedenen G\"uter,
+flie\ss en durch {\em zwei\/} Kan\"ale ab: (i) zu Teilen durch
+einen {\bf exogenen} Kanal zu den {\bf Endverbrauchern} des offenen
+Marktes, und (ii) zu Teilen durch einen {\bf endogenen} Kanal
+zu den {\bf Nachbarproduzenten}. Als Impulsgeber der zu 
+betrachtenden G\"{u}terstr\"{o}me gilt die {\bf Wertsch\"{o}pfung}.
+
+\medskip
+\noindent
+Das Leontiefsche Modell basiert auf den folgenden drei 
+grundlegenden
+
+\medskip
+\noindent
+{\bf Annahmen}:
+%
+\begin{enumerate}
+\item F\"ur alle G\"{u}ter sei der funktionale Zusammenhang
+zwischen den INPUT-- und den OUTPUT--Mengen von
+{\bf linearer Natur} [vgl.\ Gl.~(\ref{lin})].
+
+\item Die Mengenverh\"altnisse "`INPUT zu OUTPUT"' seien
+\"uber den betrachteten Zeitraum hinweg {\bf konstant}
+gehalten, die G\"{u}terstr\"{o}me also als {\bf station\"{a}r} 
+(engl.: stationary) anzusehen.
+
+\item Es herrsche {\bf \"okonomisches Gleichgewicht} (engl.: 
+economic equilibrium): die
+im betrachteten Zeitraum produzierte Mengen der G\"uter
+entsprechen ihren in diesem Zeitraum (aufgrund
+entsprechender Nachfrage) abgesetzten Mengen.
+\end{enumerate}
+%
+Zur mathematischen Formulierung von Leontiefs quantitativem
+Modell bedienen wir uns folgender
+
+\medskip
+\noindent
+{\bf Vektor- und matrizenwertige Gr\"o\ss en}:\footnote{Die
+Abk\"urzung ME steht f\"ur "`Mengeneinheiten"'.}
+%
+\begin{enumerate}
+
+\item $\vec{q}$ --- {\bf Bruttoproduktionsvektor}
+$\in \mathbb{R}^{n \times 1}$, $q_{i} \geq 0$~ME
+\hfill (dim: ME)
+
+(engl.: total output vector)
+
+\item $\vec{y}$ --- {\bf Endnachfragevektor}
+$\in \mathbb{R}^{n \times 1}$, $y_{i} \geq 0$~ME
+\hfill (dim: ME)
+
+(engl.: final demand vector)
+
+\item $\mathbf{P}$ --- {\bf Input--Output--Matrix}
+{\bf (Direktbedarfsmatrix)}
+$\in \mathbb{R}^{n \times n}$, $P_{ij} \geq 0$
+\hfill (dim: 1)
+
+(engl.: input--output matrix)
+
+\item $(\mathbf{1}-\mathbf{P})$ --- {\bf Technologiematrix}
+$\in \mathbb{R}^{n \times n}$, invertierbar
+\hfill (dim: 1)
+
+(engl.: technology matrix)
+
+\item $(\mathbf{1}-\mathbf{P})^{-1}$ --- {\bf Gesamtbedarfsmatrix}
+$\in \mathbb{R}^{n \times n}$
+\hfill (dim: 1)
+
+(engl.: total demand matrix)
+
+\item $\vec{v}$ --- {\bf Rohstoffvektor}
+$\in \mathbb{R}^{m \times 1}$, $v_{i} \geq 0$~ME
+\hfill (dim: ME)
+
+(engl.: resource vector)
+
+\item $\mathbf{R}$ --- {\bf Rohstoffverbrauchsmatrix}
+$\in \mathbb{R}^{m \times n}$, $R_{ij} \geq 0$,
+\hfill (dim: 1)
+
+(engl.: resource consumption matrix)
+
+\end{enumerate}
+%
+wobei $\mathbf{1}$ die {\bf $\boldsymbol{(n \times 
+n)}$-Einheitsmatrix}
+bezeichnet [vgl.\ Gl.~(\ref{einmatr})]. Beachten Sie, dass die
+Komponenten aller Vektoren sowie der Input--Output--Matrix und
+der Rohstoffverbrauchsmatrix nur {\em nichtnegative Werte (!)\/}
+annehmen k\"onnen.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Input--Output--Matrix und Rohstoffverbrauchsmatrix]%
+{Input--Output--Matrix und Rohstoffverbrauchsmatrix}
+\lb{sec:inoutmat}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Wir wenden uns nun den Definitionen und Eigenschaften der zwei
+zentralen matrizenwertigen Gr\"o\ss en des Leontiefschen Modells
+zu.
+
+%------------------------------------------------------------------
+\subsection{Input--Output--Matrix}
+%------------------------------------------------------------------
+Wir beginnen mit einer {\bf Bilanzierung} der OUTPUT--Mengen eines
+jeden der $n$~Produktionssektoren, d.h.\ bestimmte
+{\bf G\"utermengen} (engl.: amounts of goods) und die 
+handelsbedingten, der Annahme nach station\"{a}ren {\bf 
+G\"uterstr\"ome} (engl.: flows of goods), die sie ausbilden,
+stehen im Fokus des wirtschaftstheoretischen Interesses. Wir nehmen
+an, dass im betrachteten Zeitraum Sektor~$1$ von seinem Gut an sich
+selbst die Menge $n_{11}$ lieferte, an Sektor~$2$ die Menge
+$n_{12}$, an Sektor~$3$ die Menge $n_{13}$, usw.; schlie\ss lich
+an Sektor~$n$ die Menge $n_{1n}$. An die Endverbraucher lieferte
+Sektor~$1$ im gleichen Zeitraum die Menge $y_{1}$. In Summe ergibt
+sich somit f\"ur die im betrachteten Zeitraum von Sektor $1$ brutto
+produzierte (und, nach Annahme~3, auch ausgelieferte) G\"utermenge
+der Wert
+$q_{1}:=n_{11} + \ldots + n_{1j} + \ldots + n_{1n} + y_{1}$.
+Analog verfahren wir mit den von den anderen $n-1$ der
+$n$~Produktionssektoren brutto ausgelieferten G\"utermengen
+$q_{2}$, $q_{3}$, \ldots, $q_{n}$. Somit erhalten wir das
+Zwischenresultat
+%
+\begin{eqnarray}
+q_{1} & = & n_{11} + \ldots + n_{1j} + \ldots + n_{1n} + y_{1} > 0
+\\
+ & \vdots & \nonumber \\
+q_{i} & = & n_{i1} + \ldots + n_{ij} + \ldots + n_{in} + y_{i} > 0
+\\
+ & \vdots & \nonumber \\
+q_{n} & = & n_{n1} + \ldots + n_{nj} + \ldots + n_{nn} + y_{n} > 0
+\ .
+\end{eqnarray}
+%
+Diese einfache Bilanz l\"asst sich \"ubersichtlich
+in einer {\bf Input--Output--Tabelle} (engl.: input--output table) 
+zusammenfassen:
+%
+\begin{center}
+    \begin{tabular}[h]{c|ccccc|c|c}
+    \hline\hline
+    [Werte in ME] & Sektor~$1$ & $\cdots$ & Sektor~$j$ & $\cdots$ & Sektor~$n$ & Endverbraucher & $\Sigma$: Bruttomengen  \\
+    \hline
+    Sektor~$1$ & $n_{11}$ & $\ldots$ & $n_{1j}$ & $\ldots$ & $n_{1n}$ & $y_{1}$ & $q_{1}$ \\
+    $\vdots$ & $\vdots$ & $\ddots$ & $\vdots$ & $\ddots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
+    Sektor~$i$ & $n_{i1}$ & \ldots & $n_{ij}$ & \ldots & $n_{in}$ & $y_{i}$ & $q_{i}$ \\
+    $\vdots$ & $\vdots$ & $\ddots$ & $\vdots$ & $\ddots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
+    Sektor~$n$ & $n_{n1}$ & \ldots & $n_{nj}$ & \ldots & $n_{nn}$ & $y_{n}$ & $q_{n}$ \\
+    \hline\hline
+    \end{tabular}
+\end{center}
+%
+In der ersten Spalte dieser Tabelle werden die Namen aller
+$n$~{\bf G\"uterstromsender} (also der Quellen der verschiedenen
+G\"uterstr\"ome; auch: Anbieter von G\"utern) angegeben,
+in der ersten Zeile die Namen aller
+$n+1$~{\bf G\"uterstromempf\"anger} (also der Senken der
+verschiedenen G\"uterstr\"ome; auch: Verbraucher von G\"utern).
+In der letzten Spalte finden wir die von jedem
+der $n$~G\"uterstromsender im betrachteten
+Zeitraum brutto ausgesendeten G\"utermengen.
+
+\medskip
+\noindent
+Nun bilden wir f\"ur jeden der $n$~Produktionssektoren die
+{\em nichtnegativen Mengenverh\"altniszahlen\/} (engl.: ratios)
+%
+\be
+P_{ij} := \frac{\text{INPUT\ in\ ME\ von\ Sektor\ $i$\ an
+\ Sektor $j$\ (im\ betrachteten\ Zeitraum)}}{
+\text{OUTPUT\ in\ ME\ von\ Sektor\ $j$\ (im\ betrachteten
+\ Zeitraum)}} \ ,
+\ee
+%
+bzw.\ in kompakter Notation\footnote{Beachten Sie,
+dass als Normierungsgr\"o\ss en in den $P_{ij}$-Quotienten die
+Bruttoproduktionsmengen $q_{j}$ der G\"uterstromempf\"anger~$j$
+auftreten, und {\em nicht\/} die $q_{i}$
+der G\"uterstromsender~$i$. In letzterem Fall entspr\"achen die
+$P_{ij}$ prozentualen Anteilen der $q_{i}$.}
+%
+\be
+\fbox{$\displaystyle
+P_{ij} := \frac{n_{ij}}{q_{j}} \ ,
+$}
+\ee
+%
+mit $i,j = 1, \ldots, n$. Wir betrachten diese
+$n \cdot n = n^{2}$ Zahlenwerte als die Elemente
+einer quadratischen Matrix $\mathbf{P}$ vom Format $(n \times n)$.
+Allgemein hat diese quadratische Matrix das Aussehen
+%
+\be
+\fbox{$\displaystyle
+\mathbf{P} =
+\left(\begin{array}{ccccc}
+\frac{n_{11}}{n_{11}+\ldots+n_{1j}+\ldots+n_{1n}+y_{1}} &
+\ldots &
+\frac{n_{1j}}{n_{j1}+\ldots+n_{jj}+\ldots+n_{jn}+y_{j}} &
+\ldots &
+\frac{n_{1n}}{n_{n1}+\ldots+n_{nj}+\ldots+n_{nn}+y_{n}} \\
+\vdots & \ddots & \vdots & \ddots & \vdots \\
+\frac{n_{i1}}{n_{11}+\ldots+n_{1j}+\ldots+n_{1n}+y_{1}} &
+\ldots &
+\frac{n_{ij}}{n_{j1}+\ldots+n_{jj}+\ldots+n_{jn}+y_{j}} &
+\ldots &
+\frac{n_{in}}{n_{n1}+\ldots+n_{nj}+\ldots+n_{nn}+y_{n}} \\
+\vdots & \ddots & \vdots & \ddots & \vdots \\
+\frac{n_{n1}}{n_{11}+\ldots+n_{1j}+\ldots+n_{1n}+y_{1}} &
+\ldots &
+\frac{n_{nj}}{n_{j1}+\ldots+n_{jj}+\ldots+n_{jn}+y_{j}} &
+\ldots &
+\frac{n_{nn}}{n_{n1}+\ldots+n_{nj}+\ldots+n_{nn}+y_{n}}
+\end{array}\right) \ ,
+$}
+\ee
+%
+und wird {\bf Input--Output--Matrix} (oder Direktbedarfsmatrix; 
+engl.: input--output matrix) des zu analysierenden station\"{a}ren 
+wirtschaftlichen Systems genannt.
+%$P_{ij} \geq 0$ (Voraussetzung: $q_{i} > 0$).
+
+\medskip
+\noindent
+Im relativ einfachen, \"uberschaubaren Fall mit nur $n=3$
+Produktionssektoren nimmt die Input--Output--Matrix die
+explizite Gestalt
+%
+\[
+\displaystyle
+\mathbf{P} =
+\left(\begin{array}{ccc}
+\frac{n_{11}}{n_{11}+n_{12}+n_{13}+y_{1}} &
+\frac{n_{12}}{n_{21}+n_{22}+n_{23}+y_{2}} &
+\frac{n_{13}}{n_{31}+n_{32}+n_{33}+y_{3}} \\
+\frac{n_{21}}{n_{11}+n_{12}+n_{13}+y_{1}} &
+\frac{n_{22}}{n_{21}+n_{22}+n_{23}+y_{2}} &
+\frac{n_{23}}{n_{31}+n_{32}+n_{33}+y_{3}} \\
+\frac{n_{31}}{n_{11}+n_{12}+n_{13}+y_{1}} &
+\frac{n_{32}}{n_{21}+n_{22}+n_{23}+y_{2}} &
+\frac{n_{33}}{n_{31}+n_{32}+n_{33}+y_{3}}
+\end{array}\right)
+\]
+%
+an. Wir betonen, dass f\"ur ein gegebenes wirtschaftliches System
+eine Input--Output--Matrix $\mathbf{P}$ erst {\em nach Ablauf
+eines betrachteten Referenzzeitraums\/} erstellt werden kann.
+
+\medskip
+\noindent
+Der Nutzen des station\"{a}ren Leontiefschen Matrizenmodells liegt 
+in der {\bf Extrapolation} (engl.: extrapolation) der G\"ultigkeit 
+der Input--Output--Matrix $\mathbf{P}_{\text{Referenzperiode}}$ 
+hinein in einen nachfolgenden, hinreichend begrenzten Zeitraum, 
+d.h. in der {\em Annahme\/}
+%
+\be
+\fbox{$\displaystyle
+\mathbf{P}_{\text{kommende\ Periode}}
+\approx
+\mathbf{P}_{\text{Referenzperiode}} \ ,
+$}
+\ee
+%
+bzw. in Matrizenkomponenten
+%
+\be
+\left.P_{ij}\right|_{\text{kommende\ Periode}}
+= \left.\frac{n_{ij}}{q_{j}}\right|_{\text{kommende\ Periode}}
+\approx
+\left.\frac{n_{ij}}{q_{j}}\right|_{\text{Referenzperiode}}
+= \left.P_{ij}\right|_{\text{Referenzperiode}}
+\ .
+\ee
+%
+Hierdurch werden Berechnungen von ben\"otigten
+INPUT--Mengen f\"ur eine kommende Produktionsperiode aus bekannten
+vorgegebenen OUTPUT--Mengen erm\"oglicht. Langj\"ahrige
+Erfahrungen in der Praxis belegen, dass diese Vorgehensweise zu
+durchaus brauchbaren Ergebnissen f\"uhrt. Dieser Art von
+Berechnungen unterliegen lineare station\"{a}re 
+G\"uterstromrelationen, deren Besprechung wir uns in K\"urze 
+zuwenden wollen.
+
+%------------------------------------------------------------------
+\subsection{Rohstoffverbrauchsmatrix}
+%------------------------------------------------------------------
+Eine zweite zentrale matrizenwertige Gr\"o\ss e des Leontiefschen
+Modells ist durch die {\bf Rohstoffverbrauchsmatrix} (engl.: 
+resource consumption matrix) gegeben. Sie
+kann als "`Kochrezept"' bzgl.\ der Mischungsverh\"altnisse
+zwischen den INPUT--Gr\"o\ss en "`$m$~Rohstoffe"' und den
+OUTPUT--Gr\"o\ss en "`$n$~G\"uter"' aufgefasst werden. Ihre
+Elemente sind durch die Angaben
+%
+\be
+\fbox{$\displaystyle
+R_{ij} := \text{Ben\"otigte\ Menge\ in\ ME\ von\ Rohstoff\ $i$
+\ pro\ eine\ Einheit\ in\ ME\ von\ Produkt\ $j$} \ ,
+$}
+\ee
+%
+mit $i=1,\ldots,m$ und $j=1,\ldots,n$, gegeben. Zeilenweise liegen
+in der Matrix $\mathbf{R}$ also Informationen bzgl.\ der
+$m$~Rohstoffe, spaltenweise Informationen bzgl.\ der $n$~G\"uter
+vor. Beachten Sie, dass die Rohstoffverbrauchsmatrix~$\mathbf{R}$
+im allgemeinen {\em keine (!)\/} quadratische (und somit keine
+invertierbare) Matrix ist; generell hat sie das
+Format~$(m \times n)$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Station\"{a}re lineare G\"uterstromrelationen]%
+{Station\"{a}re lineare G\"uterstromrelationen}
+\lb{sec:qstroeme}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%------------------------------------------------------------------
+\subsection{G\"uterstr\"ome endogener INPUT zu gesamtem OUTPUT}
+%------------------------------------------------------------------
+Wir wenden uns nun der quantitativen Beschreibung der mit den
+im betrachteten Zeitraum brutto produzierten
+{\bf G\"utermengen}~$\vec{q}$ verbundenen station\"{a}ren {\bf 
+G\"uterstr\"omen} zu. Nach Leontiefs Annahme~1 besteht zwischen 
+den endogenen INPUT--Mengen~$\vec{q}-\vec{y}$ und den gesamten
+OUTPUT--Mengen~$\vec{q}$ ein {\em linearer\/} funktionaler
+Zusammenhang. Dieser wird durch die Matrizenrelation
+%
+\be
+\lb{strom1}
+\fbox{$\displaystyle
+\vec{q}-\vec{y} = \mathbf{P}\vec{q}
+\quad \Leftrightarrow \quad
+q_{i}-y_{i} = \sum_{j=1}^{n}P_{ij}q_{j} \ ,
+$}
+\ee
+%
+mit $i = 1, \ldots, n$, zum Ausdruck gebracht, in welcher die
+Input--Output--Matrix~$\mathbf{P}$ die Rolle der Zuordnung
+(Abbildung!) zwischen beiden Mengen \"ubernimmt. Nach Annahme~2
+bleiben die Elemente von $\mathbf{P}$ im betrachteten
+Zeitraum konstant, die betrachteten G\"{u}terstr\"{o}me also 
+station\"{a}r.
+
+\medskip
+\noindent
+Die Relation~(\ref{strom1}) l\"asst sich auch sehr gut
+aus einer alternativen, naturwissenschaftlich orientierten
+Perspektive heraus motivieren. Die im
+betrachteten Zeitraum brutto produzierten und, nach Annahme~3,
+ausgelieferten Mengen~$\vec{q}$ der $n$~G\"uter
+des Modells unterliegen einem {\bf Erhaltungssatz} (engl.: 
+conservation law): "`im
+betrachteten Zeitraum geht nichts von ihnen verloren."'
+Quantitativ formuliert schreiben wir diese Feststellung
+als die Aussage
+%
+\[
+\underbrace{\vec{q}}_{\text{Bruttoproduktionsmengen}}
+=\underbrace{\vec{y}}_{\text{Endverbrauchermengen (exogen)}}
++\underbrace{\mathbf{P}\vec{q}}_{\text{Zulieferungsmengen an}\ n
+\ \text{Produktionssektoren (endogen)}}
+\]
+%
+auf.
+
+\medskip
+\noindent
+F\"ur Anwendungszwecke kann die zentrale station\"{a}re
+G\"uterstromrelation~(\ref{strom1}) beliebig umgestellt werden.
+Dabei greifen wir auf die Matrizenidentit\"at
+$\vec{q}=\mathbf{1}\vec{q}$ zur\"uck, in welcher $\mathbf{1}$ die
+$\boldsymbol{(n \times n)}${\bf -Einheitsmatrix} bezeichnet
+[vgl.\ Gl.~(\ref{einmatr})].
+
+
+%\pagebreak
+%\medskip
+\noindent
+{\bf Beispiele:}
+
+\medskip
+\noindent
+(i) vorgegeben: $\mathbf{P}$, $\vec{q}$
+
+\medskip
+\noindent
+Dann ist
+%
+\be
+\lb{strom12}
+\vec{y} = (\mathbf{1}-\mathbf{P})\vec{q}
+\quad \Leftrightarrow \quad
+y_{i} = \sum_{j=1}^{n}(\delta_{ij}-P_{ij})q_{j} \ ,
+\ee
+%
+mit $i = 1, \ldots, n$; $(\mathbf{1}-\mathbf{P})$ steht f\"ur
+die invertierbare {\bf Technologiematrix} (engl.: technology 
+matrix) des Systems.
+
+\medskip
+\noindent
+(ii) vorgegeben: $\mathbf{P}$, $\vec{y}$
+
+\medskip
+\noindent
+Dann ist
+%
+\be
+\lb{strom13}
+\vec{q} = (\mathbf{1}-\mathbf{P})^{-1}\vec{y}
+\quad \Leftrightarrow \quad
+q_{i} = \sum_{j=1}^{n}(\delta_{ij}-P_{ij})^{-1}y_{j} \ ,
+\ee
+%
+mit $i = 1, \ldots, n$; $(\mathbf{1}-\mathbf{P})^{-1}$ steht f\"ur
+die {\bf Gesamtbedarfsmatrix} (engl.: total demand matrix) des 
+Systems, die die Inverse der Technologiematrix bildet.
+
+%------------------------------------------------------------------
+\subsection{G\"uterstr\"ome exogener INPUT zu gesamtem OUTPUT}
+%------------------------------------------------------------------
+Auch zwischen den exogenen INPUT--Mengen~$\vec{v}$ und den gesamten
+OUTPUT--Mengen~$\vec{q}$ wird nach Annahme~1 ein {\em linearer\/}
+funktionaler Zusammenhang vorausgesetzt. Dieser wird durch die
+Matrizenrelation
+
+%
+\be
+\lb{strom2}
+\fbox{$\displaystyle
+\vec{v} = \mathbf{R}\vec{q}
+\quad\Leftrightarrow\quad
+v_{i} = \sum_{j=1}^{n}R_{ij}q_{j} \ ,
+$}
+\ee
+%
+mit $i = 1, \ldots, m$, zum Ausdruck gebracht. Nach Annahme~2
+bleiben die Elemente der
+{\bf Rohstoffverbrauchsmatrix}~$\mathbf{R}$ im betrachteten
+Zeitraum konstant, die betrachteten Rohstoffmengenstr\"{o}me also 
+station\"{a}r.
+
+\medskip
+\noindent
+Durch Kombination von Gl.~(\ref{strom2}) mit Gl.~(\ref{strom13})
+erhalten wir die M\"oglichkeit, die zur Deckung von vorgegebenen
+Nachfragemengen~$\vec{y}$ f\"ur die $n$~G\"uter (im betrachteten
+Zeitraum) ben\"otigten Rohstoffmengen~$\vec{v}$ zu berechnen. Es
+gilt
+%
+\be
+\lb{strom22}
+\vec{v} = \mathbf{R}\vec{q}
+= \mathbf{R}(\mathbf{1}-\mathbf{P})^{-1}\vec{y}
+\quad\Leftrightarrow\quad
+v_{i} = \sum_{j=1}^{n}\sum_{k=1}^{n}R_{ij}
+(\delta_{jk}-P_{jk})^{-1}y_{k} \ ,
+\ee
+%
+mit $i = 1, \ldots, m$.
+
+\medskip
+\noindent
+\underline{\bf GTR:} Resultate im Sinne der
+Relationen~(\ref{strom12}), (\ref{strom13}) und (\ref{strom22})
+lassen sich in F\"allen mit $n \leq 5$, f\"ur vorgegebene
+Matrizen $\mathbf{P}$ und $\mathbf{R}$ und vorgegebene Vektoren
+$\vec{q}$ oder $\vec{y}$, leicht unmittelbar mit dem GTR berechnen.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Ausblick]%
+{Ausblick}
+\lb{sec:geldstroeme}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Das Leontiefsche Modell l\"asst sich in einfacher Weise auf
+weiterf\"uhrende wirtschaftstheoretische \"Uberlegungen 
+erweitern. F\"ur ein aus $n$ interdependenten Produktionssektoren
+bestehendes, (idealisiert!) abgeschlossenes
+wirtschaftliches System $G$, das nicht notwendigerweise 
+station\"{a}r ist, k\"onnen die INPUT--Gr\"o\ss en
+"`Rohstoffmengen"'~$\vec{v}$ sowie die OUTPUT--Gr\"o\ss en
+"`Bruttoproduktionsmengen"'~$\vec{q}$ und
+"`Nettoabsatzmengen"'~$\vec{y}$ jeweils mit Geldbetr\"agen
+bewertet werden. Neben G\"utermengen und deren Str\"ome bzgl.~$G$
+w\"ahrend eines vorgegebenen Zeitraums, k\"onnen dann zus\"atzlich
+an erste gekoppelte {\bf Geldmengen} und die damit verbundenen
+{\bf Geldstr\"ome} zeitlich und r\"aumlich analysiert werden.
+Allerdings gen\"ugen Geldmengen, im Gegensatz zu G\"utermengen,
+im allgemeinen {\em keinem\/} Erhaltungssatz; dieser Umstand kann
+die mathematische Analyse von Geldstr\"omen erschweren. Denn im
+Sinne von {\bf Wertsch\"opfung} {\em kann Geld in $G$ w\"ahrend
+eines betrachteten Zeitraums auch erzeugt oder vernichtet
+werden\/}; es muss nicht auf Zufluss nach bzw.\ Abfluss von $G$
+beschr\"ankt bleiben. Zentral f\"ur derartige \"Uberlegungen
+ist eine {\bf Bilanzgleichung} (engl.: balance equation) f\"ur die 
+\"uber einen
+gegebenen Zeitraum hinweg in $G$ enthaltene Geldmenge.
+Diese Bilanzgleichung besitzt die in der {\bf Physik} sehr 
+vertraute Struktur\footnote{Die Abk\"urzungen GE und ZE stehen 
+f\"ur "`Geldeinheiten"' bzw.\ "`Zeiteinheiten"'.} (vgl. Herrmann 
+(2003) \ct[S.~7ff]{her2003})
+%
+\[
+\left(\begin{array}{c}
+\text{{\bf Zeitliche \"Anderungsrate}} \\
+\text{{\bf der Geldmenge} in}\ G\ \text{(in GE/ZE)}
+\end{array}\right)
+= \left(\begin{array}{c}
+\text{{\bf Geldstrom}} \\
+\text{nach}\ G\ \text{(in GE/ZE)}
+\end{array}\right)
++ \left(\begin{array}{c}
+\text{{\bf Gelderzeugungsrate}} \\
+\text{in}\ G\ \text{(in GE/ZE)}
+\end{array}\right) \ .
+\]
+%
+Beachten Sie, dass, bezogen auf $G$, Geldstr\"ome und
+Gelderzeugungsraten prinzipiell sowohl positive als auch
+negative Vorzeichen haben k\"onnen. Zur konkreten quantitativen
+Behandlung dieser Thematik ben\"otigt man als mathematische
+Werkzeuge die Differenzial- und Integralrechnung, auf
+welche wir in den Kapiteln~\ref{ch7} und~\ref{ch8}
+einf\"uhrend eingehen werden. Wir tangieren hier unmittelbar
+den relativ jungen, interdiziplin\"ar agierenden
+Wissenschaftszweig der {\bf Econophysics} (vgl. z.B. Bouchaud
+und Potters (2003) \ct{boupot2003}), dessen Zielsetzung
+wir an dieser Stelle jedoch nicht weiter vertiefen wollen.
+
+
+\medskip
+\noindent
+Durch die hier angedeutete Erweiterung des Leontiefschen
+Modells k\"onnen  neben wirtschaftsbezogenen
+Verh\"altnisgr\"o\ss en der Art
+%
+\[
+\frac{\text{OUTPUT (in ME)}}{\text{INPUT (in ME)}} \ ,
+\]
+%
+wie sie in der Einleitung betrachtet wurden, zus\"atzlich
+{\bf Wirtschaftlichkeit} (engl.: economic efficiency) genannte 
+dimensionslose Verh\"altnisgr\"o\ss en der Form
+%
+\[
+\frac{\text{ERTRAG (in GE)}}{\text{KOSTEN (in GE)}}
+\]
+%
+f\"ur verschiedene wirtschaftliche Systeme bzw.\ deren
+Produktionssektoren gebildet und miteinander verglichen werden.
+In Kapitel~\ref{ch7} werden wir auf diesen Aspekt kurz
+zur\"uckkommen.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

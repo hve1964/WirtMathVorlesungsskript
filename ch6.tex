@@ -1,0 +1,1008 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  File name: ch6.tex
+%  Title:
+%  Version: 06.12.2016 (hve)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter[Elementare Finanzmathematik]%
+{Elementare Finanzmathematik}
+\lb{ch6}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hfill\hbox{\fbox{\vbox{\hsize=10cm
+Der Inhalt dieses Kapitels diskutiert grundlegende
+finanzmathematische Themen,
+welche im Rahmen des Drittsemestermoduls 0.3.2 RESO: Resources:
+Financial Resources, Human Resources, Organisation wiederkehren
+werden.
+}}}
+
+\vspace{10mm}
+\noindent
+In diesem Kapitel wenden wir uns kurz den quantitativen
+Grundlagen des auf jegliches unternehmerisches %wirtschaftliches
+Handeln Einfluss nehmenden Finanzwesens zu.
+Wie wir im Folgenden aufzeigen wollen, beruhen viele grundlegende,
+f\"ur die praktische Anwendung hochrelevante \"Uberlegungen
+der {\bf Finanzmathematik} auf zwei einfach zug\"anglichen
+mathematischen Strukturen, den sogenannten arithmetischen und
+geometrischen reellen Zahlenfolgen und ihren zugeordneten
+endlichen Reihen.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Arithmetische und geometrische Folgen und Reihen]%
+{Arithmetische und geometrische Zahlenfolgen und Reihen}
+\lb{sec:folgreih}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%------------------------------------------------------------------
+\subsection{Arithmetische Zahlenfolge und Reihe}
+\lb{subsec:arithseq}
+%------------------------------------------------------------------
+Eine {\bf arithmetische reelle Zahlenfolge} (engl.: arithmetical 
+real-valued sequence) mit $n \in \mathbb{N}$ Gliedern,
+%
+\[
+(a_{n})_{n \in \mathbb{N}} \ ,
+\]
+%
+ist definiert durch die Eigenschaft einer {\em konstant\/}
+bleibenden {\bf Differenz} (engl.: difference) $d$ zwischen 
+benachbarten Gliedern der Folge, d.h. f\"ur $n>1$ gilt
+%
+\be
+\lb{arifolrek}
+\fbox{$\displaystyle
+a_{n}-a_{n-1}=:d=\text{konstant}\neq 0 \ ,
+$}
+\ee
+%
+mit $a_{n}, a_{n-1}, d \in \mathbb{R}$. Daraus l\"asst sich das
+einfache explizite {\bf Bildungsgesetz} (engl.: explicit 
+representation)
+%
+\be
+\lb{arifolex}
+a_{n} = a_{1} + (n-1)d
+\quad\text{mit}\quad
+n \in \mathbb{N}
+\ee
+%
+ableiten. Man sieht also, dass bei Kenntnis der Werte der zwei
+freien Parameter: Startglied $a_{1}$ und konstante Differenz $d$,
+die Glieder {\em jeder\/} arithmetischen reellen Zahlenfolge
+{\em eindeutig\/} bestimmt sind. Wie Gl.~(\ref{arifolex}) zeigt,
+wachsen/fallen die Glieder $a_{n}$ {\bf linear} (engl.: linear 
+growth) mit $n$.
+
+\medskip
+\noindent
+Betrachtet man f\"ur eine arithmetische reelle Zahlenfolge
+mit $n+1$ Gliedern f\"ur die Nachbarglieder von $a_{n}$
+(mit $n \geq 2$) den {\bf arithmetischen Mittelwert} (engl.: 
+arithmetical mean), so findet man das Resultat
+%
+\be
+\frac{1}{2}\,(a_{n-1}+a_{n+1})
+= \frac{1}{2}\left(a_{1}+(n-2)d+a_{1}+nd\right)
+= a_{1}+(n-1)d
+= a_{n} \ .
+\ee
+%
+
+\medskip
+\noindent
+Das Aufsummieren der ersten $n$ Glieder einer beliebigen
+arithmetischen reellen Zahlenfolge f\"uhrt zur {\bf endlichen
+arithmetischen Reihe} (engl.: finite arithmetical series)
+%
+\be
+S_{n} := a_{1}+a_{2}+\ldots+a_{n} = \sum_{k=1}^{n}a_{k}
+= \sum_{k=1}^{n}\left[a_{1} + (k-1)d\right]
+= na_{1}+ \frac{d}{2}\,(n-1)n \ .
+\ee
+%
+Im letzten Schritt wurde Gebrauch gemacht von der Gau\ss schen
+{\bf Identit\"at}\footnote{Analog gilt die Gau\ss sche Identit\"at
+$\displaystyle \sum_{k=1}^{n}(2k-1) \equiv n^{2}$.} (engl.: 
+identity) (siehe z.B. Bosch (2003)~\ct[S.21]{bos2003})
+%
+\be
+\lb{id1}
+\fbox{$\displaystyle
+\sum_{k=1}^{n-1}k \equiv \frac{1}{2}\,(n-1)n \ .
+$}
+\ee
+%
+
+%------------------------------------------------------------------
+\subsection{Geometrische Zahlenfolge und Reihe}
+\lb{subsec:geomseq}
+%------------------------------------------------------------------
+Eine {\bf geometrische reelle Zahlenfolge} (engl.: geometrical 
+real-valued sequence) mit $n \in \mathbb{N}$ Gliedern,
+%
+\[
+(a_{n})_{n \in \mathbb{N}} \ ,
+\]
+%
+ist definiert durch die Eigenschaft eines {\em konstant\/}
+bleibenden {\bf Quotienten} (engl.: quotient) $q$ zwischen 
+benachbarten Gliedern der Folge, d.h. f\"ur $n>1$ gilt
+%
+\be
+\lb{geofolrek}
+\fbox{$\displaystyle
+\frac{a_{n}}{a_{n-1}}=:q=\text{konstant}\neq 0 \ ,
+$}
+\ee
+%
+mit $a_{n}, a_{n-1} \in \mathbb{R}$
+und $q \in \mathbb{R}\backslash\{0,1\}$.
+Daraus l\"asst sich das einfache explizite {\bf Bildungsgesetz} 
+(engl.: explicit representation)
+%
+\be
+\lb{geofolex}
+a_{n} = a_{1}q^{n-1}
+\quad\text{mit}\quad
+n \in \mathbb{N}
+\ee
+%
+ableiten. Man sieht also, dass bei Kenntnis der Werte der zwei
+freien Parameter: Startglied $a_{1}$ und konstanter Quotient $q$,
+die Glieder {\em jeder\/} geometrischen reellen Zahlenfolge
+{\em eindeutig\/} bestimmt sind. Wie Gl.~(\ref{geofolex}) zeigt,
+wachsen/fallen die Glieder $a_{n}$ {\bf exponentiell} (engl.: 
+exponential growth) mit $n$ (vgl. 
+Abschnitt~\ref{subsec:exponentials}).
+
+\medskip
+\noindent
+Betrachtet man f\"ur eine geometrische reelle Zahlenfolge
+mit $n+1$ Gliedern f\"ur die Nachbarglieder von $a_{n}$
+(mit $n \geq 2$) den {\bf geometrischen Mittelwert} (engl.: 
+geometrical mean), so findet man das Resultat
+%
+\be
+\sqrt{a_{n-1}\cdot a_{n+1}}
+= \sqrt{a_{1}q^{n-2}\cdot a_{1}q^{n}}
+= a_{1}q^{n-1}
+= a_{n} \ .
+\ee
+%
+
+\medskip
+\noindent
+Das Aufsummieren der ersten $n$ Glieder einer beliebigen
+geometrischen reellen Zahlenfolge f\"uhrt zur {\bf endlichen
+geometrischen Reihe} (engl.: finite geometrical series)
+%
+\be
+S_{n} := a_{1}+a_{2}+\ldots+a_{n} = \sum_{k=1}^{n}a_{k}
+= \sum_{k=1}^{n}\left[a_{1}q^{k-1}\right]
+= a_{1}\sum_{k=0}^{n-1}q^{k}
+= a_{1}\,\frac{q^{n}-1}{q-1} \ .
+\ee
+%
+Im letzten Schritt wurde Gebrauch gemacht von der
+{\bf Identit\"at} (engl.: identity) (siehe z.B. Bosch 
+(2003)~\ct[S.27]{bos2003})
+%
+\be
+\lb{id2}
+\fbox{$\displaystyle
+\sum_{k=0}^{n-1}q^{k} \equiv \frac{q^{n}-1}{q-1}
+\quad\text{f\"ur}\quad
+q \in \mathbb{R}\backslash\{0,1\} \ .
+$}
+\ee
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Zins und Zinseszins]%
+{Zins und Zinseszins}
+\lb{sec:zins}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Gegeben seien ein {\bf Anfangskapital} (engl.: initial capital) 
+des positiven Werts $K_{0}$ (in GE), und ein Betrachtungszeitraum 
+von $n \in \mathbb{N}$ gleich langen {\bf Perioden} (engl.: 
+periods). Das Anfangskapital soll jeweils zum Ende jeder Periode 
+(d.h. "`nachsch\"ussig"') zu einem in Prozent
+anzugebenden {\bf Zinsfu\ss} (engl.: interest rate) $p>0$ mit 
+Zinseszins verzinst werden. \"Uber den durch\footnote{Durch 
+Umkehrung ergibt sich hieraus die Relation $p=100\cdot(q-1)$.}
+%
+\be
+q:=1+\frac{p}{100}>1
+\ee
+%
+definierten dimensionslosen {\bf Aufzinsfaktor} (engl.: interest 
+factor) folgt, dass sich nach Ablauf von einer Zinsperiode ein 
+Kapital vom Wert
+%
+\[
+K_{1} = K_{0} + K_{0}\cdot\frac{p}{100}
+= K_{0}\left(1+\frac{p}{100}\right) = K_{0}q
+\]
+%
+angesammelt haben wird. Nach Ablauf von insgesamt
+$n$ Zinsperioden wird also ein {\bf Endkapital} (engl.: final 
+capital) vom Wert (in GE)
+%
+\be
+\lb{kap1}
+\fbox{$\displaystyle
+\text{rekursiv:}\ K_{n}=K_{n-1}q \ , \quad
+n\in\mathbb{N} \ ,
+$}
+\ee
+%
+vorliegen, wobei $K_{n-1}$ den Wert des
+Kapitals nach $n-1$ Verzinsungen bezeichnet. Aus dieser
+rekursiven Darstellung des durch $n$-malige Verzinsung
+mit Zinseszins bedingten Wachstums eines Anfangskapitals
+$K_{0}$ geht sofort der Bezug der hier aufgezeigten
+zeitlichen Entwicklung zur geometrischen Zahlenfolge
+(\ref{geofolrek}) hervor.
+
+\medskip
+\noindent
+Wie sich leicht zeigen l\"asst, h\"angen Endkapital
+$K_{n}$ und Anfangskapital $K_{0}$ \"uber
+%
+\be
+\lb{kap2}
+\fbox{$\displaystyle
+\text{explizit:}\ K_{n}=K_{0}q^{n} \ , \quad
+n\in\mathbb{N} \ ,
+$}
+\ee
+%
+zusammen. Durch diese Gleichung werden die vier Gr\"o\ss en
+$K_{n}$, $K_{0}$, $q$ und $n$ zueinander in Relation gesetzt.
+Bei Kenntnis von jeweils drei dieser Gr\"o\ss en kann somit
+der Wert der vierten ausgerechnet werden. Beispielsweise
+findet man durch Aufl\"osen von Gl.~(\ref{kap2}) nach $K_{0}$
+das Ergebnis
+%
+\be
+K_{0} = \frac{K_{n}}{q^{n}} =: B_{0} \ .
+\ee
+%
+In dieser Variante wird von $K_{0}$ als dem {\bf Barwert} (engl.: 
+present value) $B_{0}$ des Kapitals $K_{n}$ gesprochen; dieser 
+ergibt sich durch $n$-maliges Abzinsen von $K_{n}$ mit $q$. Weitere
+M\"oglichkeiten sind:
+%
+\begin{itemize}
+\item[(i)] Aufl\"osen von Gl.~(\ref{kap2}) nach dem
+{\bf Aufzinsfaktor} (engl.: interest factor) $q$:
+%
+\be
+q = \sqrt[n]{\frac{K_{n}}{K_{0}}} \ ,
+\ee
+%
+\item[(ii)] Aufl\"osen von Gl.~(\ref{kap2}) nach
+der {\bf Laufzeit} (engl.: contract period) $n$:
+%
+\be
+n = \frac{\ln\left(K_{n}/K_{0}\right)}{\ln(q)} \ .
+\ee
+%
+\end{itemize}
+%
+Im Folgenden sei die Dauer einer {\bf Zinsperiode} (engl.: 
+interest rate period) ein Kalenderjahr.
+
+\medskip
+\noindent
+Wird ein {\bf Anfangskapital} (engl.: initial capital) $K_{0}>0$ 
+\"uber ein Kalenderjahr hinweg $m$-malig anteilsm\"a\ss ig 
+nachsch\"ussig zu einem {\bf nominalen Jahreszinsfu\ss} (engl.: 
+annual nominal interest rate) $p_{\rm nom}>0$ verzinst, so ist 
+$K_{0}$ am Ende des ersten von $m$ Teiljahren auf den Betrag
+%
+\[
+K_{1/m} = K_{0} + K_{0}\cdot\frac{p_{\rm nom}}{m\cdot 100}
+= K_{0}\left(1+\frac{p_{\rm nom}}{m\cdot 100}\right) \ ,
+\quad
+m \in \mathbb{N} \ ,
+\]
+%
+angewachsen. Nach Ablauf von $k$ von $m$ Teiljahren gilt
+%
+\[
+K_{k/m} = K_{0}\left(1+\frac{p_{\rm nom}}{m\cdot 100}\right)^{k} \ ,
+\quad
+k \leq m \ ;
+\]
+%
+der anteilsm\"a\ss ige Aufzinsfaktor $\displaystyle
+\left(1+\frac{p_{\rm nom}}{m\cdot 100}\right)$
+ist also $k$-mal auf $K_{0}$ anzuwenden.
+Am Ende eines vollen Kalenderjahrs ist $K_{0}$ auf den Wert
+%
+\[
+K_{1} = K_{m/m} = K_{0}\left(1+\frac{p_{\rm nom}}{m\cdot 100}
+\right)^{m} \ , \quad
+m \in \mathbb{N} \ ,
+\]
+%
+angewachsen. Diese Relation definiert den {\bf effektiven
+Aufzinsfaktor} (engl.: effective interest factor)
+%
+\be
+\lb{qeff}
+q_{\rm eff} := \left(1+\frac{p_{\rm nom}}{m\cdot 100}
+\right)^{m} \ ,
+\ee
+%
+welchem, wegen $\displaystyle
+q_{\rm eff}=1+\frac{p_{\rm eff}}{100}$, \"uber Umstellen
+der {\bf effektive Jahreszinsfu\ss} (engl.: effective annual 
+interest rate)
+%
+\be
+\lb{peff}
+\fbox{$\displaystyle
+p_{\rm eff} = 100\cdot\left[\left(1+\frac{p_{\rm nom}}{m\cdot 100}
+\right)^{m}-1\right] \ , \quad m\in\mathbb{N} \ ,
+$
+}
+\ee
+%
+zugeordnet ist.
+
+\medskip
+\noindent
+Nach Ablauf von $n$ Kalenderjahren ist das
+Anfangskapital $K_{0}$ bei der hier beschriebenen
+anteilsm\"a\ss igen Verzinsungsvariante schlie\ss lich
+auf den Endwert
+%
+\be
+\lb{kap3}
+\fbox{$\displaystyle
+K_{n}=K_{0}\left(1+\frac{p_{\rm nom}}{m\cdot 100}\right)^{n\cdot m}
+= K_{0}q_{\rm eff}^{n} \ , \quad n,m\in\mathbb{N} \ ,
+$}
+\ee
+%
+angewachsen. Als Barwert von $K_{n}$ haben wir also in diesem Fall
+%
+\be
+B_{0} = \frac{K_{n}}{q_{\rm eff}^{n}} = K_{0} \ .
+\ee
+%
+
+\medskip
+\noindent
+Zum Ende dieses Abschnitts wollen wir uns kurz mit dem
+{\bf vorsch\"ussigen Ratensparen} (engl.: installment savings) 
+befassen. Der Einfachheit halber beschr\"anken wir uns auf den 
+Fall von $n$ j\"ahrlichen vorsch\"ussigen Einzahlungen vom
+{\em konstanten\/} Betrag $E>0$ (in GE) auf ein Konto mit
+Startwert $K_{0}=0$, welches jeweils zum Ende eines
+Kalenderjahres mit einem Zinsfu\ss\ $p>0$ (also $q>1$)
+verzinst wird. Nach Ablauf des ersten Kalenderjahres lautet
+dann der neue Kontostand
+%
+\[
+K_{1} = E + E\cdot\frac{p}{100}
+= E\left(1+\frac{p}{100}\right)
+= Eq \ .
+\]
+%
+Der Kontostand nach Ablauf von zwei Kalenderjahren ist auf
+den Wert
+%
+\[
+K_{2} = (K_{1}+E)q = (Eq+E)q = E(q^{2}+q) = Eq(q+1)
+\]
+%
+angewachsen. Nach Ablauf von insgesamt $n$ Kalenderjahren
+gilt
+%
+\[
+K_{n} = (K_{n-1}+E)q = E(q^{n}+\ldots+q^{2}+q)
+= Eq(q^{n-1}+\ldots+q+1)
+= Eq\sum_{k=0}^{n-1}q^{k} \ .
+\]
+%
+Unter Anwendung der Identit\"at~(\ref{id2}), da $q>1$,
+l\"asst sich dieses Ergebnis f\"ur den {\bf Kontostand}
+(engl.: account balance) nach $n$ Kalenderjahren $K_{n}$ auf die 
+Form
+%
+\be
+\lb{kap4}
+\fbox{$\displaystyle
+K_{n}=Eq\,\frac{q^{n}-1}{q-1} \ , \quad
+q \in \mathbb{R}_{>1} \ , \quad
+n\in\mathbb{N} \ ,
+$}
+\ee
+%
+reduzieren. Der $K_{n}$ zugeordnete {\bf Barwert} (engl.: present 
+value) $B_{0}$ wird definiert \"uber $n$-maliges Abzinsen von 
+$K_{n}$ mit $q$:
+%
+\be
+B_{0} := \frac{K_{n}}{q^{n}}
+\overbrace{=}^{\text{Gl.}~\ref{kap4}}
+ = \frac{E(q^{n}-1)}{q^{n-1}(q-1)} \ .
+\ee
+%
+Er gibt an welches Anfangskapital $B_{0}$ nach $n$-maligem
+Aufzinsen mit $q$ den Wert $K_{n}$ erreicht.
+
+\medskip
+\noindent
+Aufl\"osen von Gl.~(\ref{kap4}) nach der {\bf Laufzeit} (engl.: 
+contract period) $n$ f\"uhrt zum Ergebnis:
+%
+\be
+n = \frac{\ln\left[1+(q-1)(K_{n}/Eq)\right]}{\ln(q)} \ .
+\ee
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Tilgung in konstanten Annuit\"aten]%
+{Tilgung in konstanten Annuit\"aten}
+\lb{sec:tilg}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Ausgangspunkt der folgenden Betrachtung ist ein {\bf Darlehen} 
+(engl.: mortgage, loan of money) vom Betrag $R_{0}>0$ (in GE), 
+welches ein Kunde zu Honorarzahlungen mit einem {\bf 
+Jahreszinsfu\ss} $p>0$ (d.h. $q>1$)
+von einer Bank ausleiht. Die vertraglichen Vereinbarungen zwischen
+beiden Parteien sehen vor, dass der Kunde dieses Darlehen an die
+Bank mit einem {\bf anf\"anglichen Tilgungsprozentsatz} (engl.: 
+initial percentage rate of redemption payments) $t>0$ in
+{\em konstant\/} bleibenden nachsch\"ussigen {\bf Annuit\"aten}
+(engl.: annuities, annual installments) (d.h. j\"ahrlichen 
+Zahlungen) vom Betrag $A>0$ (in GE)
+zur\"uckzahlt. Die Annuit\"at $A$ setzt sich zusammen aus der
+variablen {\bf $n$-ten Zinszahlung} (engl.: interest payment) 
+$Z_{n}$ (in GE) und der
+variablen {\bf $n$-ten Tilgungszahlung} (engl.: redemption 
+payment) $T_{n}$ (in GE), die in
+ihrer {\em Summe\/} \"uber vollst\"andige Kalenderjahre hinweg
+konstant bleiben m\"ussen, also
+%
+\be
+\lb{annuity1}
+A = Z_{n} + T_{n}
+\stackrel{!}{=} \text{konstant} \ .
+\ee
+%
+Mit $n=1$ bspw., l\"asst sich dieser Ausdruck darstellen
+als
+%
+\be
+\lb{annuity2}
+A = Z_{1} + T_{1}
+= R_{0}\cdot\frac{p}{100} + R_{0}\cdot\frac{t}{100}
+= R_{0}\left(\frac{p+t}{100}\right)
+= R_{0}\left[(q-1)+\frac{t}{100}\right]
+\stackrel{!}{=} \text{konstant} \ .
+\ee
+%
+F\"ur das erste Kalenderjahr des laufenden Darlehensvertrags
+haben also die Zinsschuld, der Tilgungsbetrag und die nach
+Zahlung der ersten Annuit\"at bestehende Restschuld die Werte
+%
+\begin{eqnarray*}
+Z_{1} & = & R_{0}\cdot\frac{p}{100} \ = \ R_{0}(q-1) \\
+%
+T_{1} & = & A - Z_{1} \\
+%
+R_{1} & = & R_{0} + Z_{1} - A
+\ \overbrace{=}^{\text{Einsetzten f\"ur}\ Z_{1}}
+\ R_{0} + R_{0}\cdot\frac{p}{100} - A
+\ = \ R_{0}q - A \ .
+\end{eqnarray*}
+%
+Am Ende eines zweiten Kalenderjahres gilt
+%
+\begin{eqnarray*}
+Z_{2} & = & R_{1}(q-1) \\
+%
+T_{2} & = & A - Z_{2} \\
+%
+R_{2} & = & R_{1} + Z_{2} - A
+\ \overbrace{=}^{\text{Einsetzten f\"ur}\ Z_{2}}
+\ R_{1}q - A
+\ \overbrace{=}^{\text{Einsetzten f\"ur}\ R_{1}}
+\ R_{0}q^{2} - A(q+1) \ .
+\end{eqnarray*}
+%
+Die sich hier andeutenden Schemata der Bildung
+mathematischer Terme setzten sich mit zunehmender
+Tilgungsdauer fort. Die {\bf Zinsschuld} (engl.: remaining 
+interest debt) f\"ur Kalenderjahr $n$ des Darlehensvertrags hat den
+Wert (rekursiv)
+%
+\be
+\lb{zinsn}
+Z_{n}=R_{n-1}(q-1) \ , \quad n\in\mathbb{N} \ ,
+\ee
+%
+mit $R_{n-1}$ der Restschuld am Ende des vorangegangenen
+Kalenderjahrs. Der {\bf Tilgungsbetrag} (engl.: redemption 
+payment) im Kalenderjahr $n$ ist gegeben durch (rekursiv)
+%
+\be
+\lb{tilgn}
+T_{n} = A - Z_{n} \ , \quad n\in\mathbb{N} \ .
+\ee
+%
+Die {\bf Restschuld} (engl.: remaining debt) am Ende von 
+Kalenderjahr $n$ (in GE) lautet
+%
+\be
+\lb{remdebtrek}
+\fbox{$\displaystyle
+\text{rekursiv:} \quad
+R_{n} = R_{n-1}+Z_{n}-A
+\ = \ R_{n-1}q-A \ , \quad n\in\mathbb{N} \ .
+$}
+\ee
+%
+Durch sukzessive r\"uckwertige Substitution f\"ur $R_{n-1}$, 
+l\"asst sich dieser Ausdruck in die Gestalt
+%
+\[
+R_{n} = R_{0}q^{n}-A(q^{n-1}+\ldots+q+1)
+= R_{0}q^{n}-A\sum_{k=0}^{n-1}q^{k} 
+\]
+%
+\"uberf\"uhren. Unter Anwendung der Identit\"at~(\ref{id2})
+findet man schlie\ss lich (da $q>1$)
+%
+\be
+\lb{remdebtex}
+\fbox{$\displaystyle
+\text{explizit:} \quad
+R_{n} = R_{0}q^{n}-A\,\frac{q^{n}-1}{q-1} \ , \quad
+n\in\mathbb{N} \ .
+$}
+\ee
+%
+Die hier vorgestellten Ergebnisse bilden die Basis
+eines {\bf Tilgungsplans} (engl.: redemption payment plan) 
+mit tabellarisch geordneten Angaben zu den Gr\"o\ss en $\{n, Z_{n}, 
+T_{n}, R_{n}\}$, d.h. einem Schema
+%
+\begin{center}
+		\begin{tabular}{c||c|c|c}
+		$n$ & $Z_{n}$ [GE] & $T_{n}$ [GE] & $R_{n}$ [GE] \\
+		\hline\hline
+		$0$ & -- & -- & $R_{0}$ \\
+		$1$ & $Z_{1}$ & $T_{1}$ & $R_{1}$ \\
+		$2$ & $Z_{2}$ & $T_{2}$ & $R_{2}$ \\
+		\vdots & \vdots & \vdots & \vdots
+		\end{tabular} \ ,
+\end{center}
+%
+wie es Banken ihren Kreditkunden zur finanziellen
+Orientierung zur Verf\"ugung stellen (m\"ussen).
+
+\medskip
+\noindent
+\underline{\bf Bem.:} Zur Erstellung eines Tilgungsplans lassen
+sich die rekursiven Formeln (\ref{zinsn}), (\ref{tilgn}) und
+(\ref{remdebtrek}), bei vorgegebenem Darlehensbetrag $R_{0}$,
+Aufzinsfaktor $q$ und Annuit\"at $A$, sehr einfach in einem
+Tabellenkalkulationsprogramm wie {\tt EXCEL} umsetzen.
+
+\medskip
+\noindent
+Bez\"uglich Gl.~(\ref{remdebtex}) l\"asst sich folgende
+Beobachtung machen: Da die konstant bleibende Annuit\"at $A$
+implizit einen Faktor $(q-1)$ enth\"alt [vgl. Gl.~(\ref{annuity2})],
+wachsen die zwei miteinander konkurierenden Terme  jeweils
+exponentiell mit $n$. F\"ur eine erfolgreiche Tilgung der
+Restschuld $R_{n}$ ist es also entscheidend, den freien
+Tilgungsparameter $t$ (bei gegebenem $p>0 \leftrightarrow
+q>1$) derart festzulegen, dass der zweite Term die M\"oglichkeit
+erh\"alt, den ersten (der mit einem Vorsprung $R_{0}>0$
+bei $n=0$ startet) mit $n$ einholen zu k\"onnen. Die notwendige
+Voraussetzung $t>0$, welche aus der Forderung $R_{n}
+\stackrel{!}{\leq} R_{n-1}$ folgt, gew\"ahrleistet gerade
+diese M\"oglichkeit.
+
+\medskip
+\noindent
+Gleichung~(\ref{remdebtex}) stellt eine Beziehung zwischen
+f\"unf Gr\"o\ss en dar. Hat man Werte zu vieren vorgegeben,
+l\"asst sich daraus der resultiernde Wert der f\"unften
+Gr\"o\ss e ausrechnen.
+%
+\begin{itemize}
+\item[(i)] Berechnen der {\bf Laufzeit} (engl.: contract period) 
+$n$ eines Darlehensvertrags, bei vorgegebenem Darlehensbetrag 
+$R_{0}$, Aufzinsfaktor $q$ und Annuit\"at $A$. Aufl\"osen der
+Bedingungsgleichung $R_{n}\stackrel{!}{=}0$ nach $n$
+liefert (nach wenigen algebraischen Schritten)
+%
+\be
+n = \frac{\ln\left(1+\frac{p}{t}\right)}{\ln(q)} \ ;
+\ee
+%
+die Laufzeit ist also unabh\"angig vom Betrag $R_{0}$ des Darlehens.
+
+\item[(ii)] Berechnen der {\bf Annuit\"at} (engl.: annuity) $A$,
+bei vorgegebener Laufzeit $n$, Darlehensbetrag $R_{0}$
+und Aufzinsfaktor $q$. Aufl\"osen der Bedingungsgleichung
+$R_{n}\stackrel{!}{=}0$ nach $A$ liefert unmittelbar
+%
+\be
+\lb{annuity3}
+A = \frac{q^{n}(q-1)}{q^{n}-1}\,R_{0} \ .
+\ee
+%
+Durch Gleichsetzen der Ausdr\"ucke (\ref{annuity3}) und
+(\ref{annuity2}) f\"ur $A$ findet man zus\"atzlich
+%
+\be
+\frac{t}{100} = \frac{q-1}{q^{n}-1} \ .
+\ee
+%
+\end{itemize}
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Rentenrechnung]{Rentenrechnung}
+\lb{sec:rente}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Bei der {\bf Rentenrechnung} (engl.: pension calculations) 
+betrachtet man, ausgehend von einem {\bf Anfangskapital} $K_{0}>0$ 
+(in GE), die (diskrete) zeitliche
+Entwicklung eines {\bf Kontostands} $K_{n}$ (in GE) unter dem
+Einfluss von zwei gegenl\"aufigen Wirkungen: einerseits verdient
+das Rentenkonto Zinsen zu einem {\bf Jahreszinsfu\ss} $p>0$
+(d.h. $q>1$), andererseits werden von diesem Konto in gleichen
+Abst\"anden $m \in \mathbb{N}$ vorsch\"ussige Rentenauszahlungen
+vom {\em konstanten\/} {\bf Betrag} (engl.: amount) $a$ pro 
+Kalenderjahr get\"atigt.
+
+\medskip
+\noindent
+Wir beginnen mit der Berechnung der pro Kalenderjahr anfallenden
+Zinsen. Hierbei ber\"ucksichtigt die Bank die Tatsache, dass
+sich das auf dem Konto befindende Kapital w\"ahrend eines
+Kalenderjahres stetig vermindert. Zinsen werden deshalb
+pro verstrichenem von $m$ Teiljahren anteilsm\"a\ss ig, aber ohne
+Zinseszinseffekt, berechnet. Folglich hat das Konto zum Ende
+des ersten von $m$ Teiljahren anteilsm\"a\ss ig Zinsen vom Betrag
+(in GE)
+%
+\[
+Z_{1/m} = (K_{0}-a)\cdot\frac{p}{m\cdot 100}
+= (K_{0}-a)\,\frac{(q-1)}{m}
+\]
+%
+verdient. Der Zinsbetrag f\"ur das $k$-te von $m$ Teiljahren
+($k \leq m$) ist durch
+%
+\[
+Z_{k/m} = (K_{0}-ka)\,\frac{(q-1)}{m}
+\]
+%
+gegeben. \"Uber Aufsummieren der einzelnen Teilbeitr\"age
+hat also die Zinsgutschrift f\"ur ein erstes verstrichenes
+Kalenderjahr den Wert
+%
+\[
+Z_{1} = \sum_{k=1}^{m}Z_{k/m}
+= \sum_{k=1}^{m}(K_{0}-ka)\,\frac{(q-1)}{m}
+= \frac{(q-1)}{m}\left[mK_{0}-a\sum_{k=1}^{m}k\right] \ .
+\]
+%
+Unter Anwendung der Identit\"at~(\ref{id1}) l\"asst sich dieses
+Ergebnis in die Form
+%
+\be
+\lb{rentezins1}
+Z_{1} = \left[K_{0}-\frac{1}{2}\,(m+1)a\right](q-1)
+\ee
+%
+bringen. Beachten Sie die Tatsache, dass dieser Zinsbetrag linear
+mit dem Auszahlungsbetrag $a$ bzw. mit der Anzahl der
+Auszahlungen $m$ sinkt.
+
+\medskip
+\noindent
+Der Kontostand nach Ablauf eines
+ersten Kalenderjahres ist nun durch
+%
+\[
+K_{1} = K_{0} - ma + Z_{1}
+\overbrace{=}^{\text{Gl.}~(\ref{rentezins1})} K_{0}q
+- \left[m+\frac{1}{2}\,(m+1)(q-1)\right]a
+\]
+%
+gegeben. Nach Ablauf eines zweiten Kalenderjahres gilt
+%
+\[
+Z_{2} = \left[K_{1}-\frac{1}{2}\,(m+1)a\right](q-1) \ ,
+\]
+%
+sowie
+%
+\[
+K_{2} = K_{1} - ma + Z_{2}
+\overbrace{=}^{\text{Einsetzen f\"ur}\ K_{1}
+\ \text{und}\ Z_{2}} K_{0}q^{2}
+- \left[m+\frac{1}{2}\,(m+1)(q-1)\right]a(q+1) \ .
+\]
+%
+In Analogie zu den sich hier abzeichnenden Strukturen,
+haben die im Kalenderjahr $n$ verdienten {\bf Zinsen} (engl.: 
+interest gained) den Wert
+%
+\be
+Z_{n} = \left[K_{n-1}-\frac{1}{2}\,(m+1)a\right](q-1) \ ,
+\ee
+%
+w\"ahrend der {\bf Kontostand} (engl.: account balance) nach $n$ 
+Kalenderjahren
+
+%
+\[
+K_{n} = K_{n-1} - ma + Z_{n}
+\overbrace{=}^{\text{Einsetzen f\"ur}\ K_{n-1}
+\ \text{und}\ Z_{n}} K_{0}q^{n}
+- \left[m+\frac{1}{2}\,(m+1)(q-1)\right]a\sum_{k=0}^{n-1}q^{k}
+\]
+%
+betr\"agt. Unter Verwendung der Identit\"at~(\ref{id2})
+l\"asst sich $K_{n}$ abschlie\ss end schreiben als
+%
+\be
+\lb{pensionex}
+\fbox{$\displaystyle
+\text{explizit:} \quad
+K_{n} = K_{0}q^{n} - \left[m+\frac{1}{2}\,(m+1)(q-1)\right]
+a\,\frac{q^{n}-1}{q-1} \ , \quad
+n, m \in \mathbb{N} \ .
+$
+}
+\ee
+%
+Wie schon bei der Tilgungsrechnung in Abschnitt \ref{sec:tilg},
+wachsen auch hier die beiden gegeneinander agierenden Terme
+auf der rechten Seite %dieser Gleichung
+exponentiell mit $n$. Dabei
+h\"angt es von den Werten der Gr\"o\ss en $K_{0}$, $q$ und $a$
+sowie dem Parameter $m$ ab, ob der zweite Term den ersten (welcher
+mit dem Vorsprung $K_{0}$ bei $n=0$ startet) einholen kann.
+
+\medskip
+\noindent
+Gleichung (\ref{pensionex}) darf wieder beliebig algebraisch
+umgeformt werden (solange nicht durch Null dividiert wird).
+%
+\begin{itemize}
+
+\item[(i)] Die {\bf Laufzeit} (engl.: contract period) $n$ der 
+Rente ergibt sich aus der
+Forderung $K_{n}\stackrel{!}{=}0$ durch entsprechendes Aufl\"osen.
+Unter der Voraussetzung $[\ldots]a-K_{0}(q-1)>0$, findet man
+somit\footnote{Der Platzhalter $[\ldots]$ steht hier f\"ur den
+konstanten Ausdruck $\left[m+\frac{1}{2}\,(m+1)(q-1)\right]$.}
+%
+\be
+\lb{rentelaufzeit}
+n = \frac{\ln\left(\frac{[\ldots]a}{
+[\ldots]a-K_{0}(q-1)}\right)}{\ln(q)} \ .
+\ee
+%
+
+\item[(ii)] Der {\bf Barwert} (engl.: present value) $B_{0}$ einer 
+Rente ergibt sich aus der folgenden Fragestellung: Bei 
+vorgegebenem j\"ahrlichen Aufzinsfaktor $q>1$ f\"ur ein 
+Rentenkonto, welches Anfangskapital $K_{0}$ muss bereit gestellt 
+werden, damit man sich \"uber $n$ Kalenderjahre hinweg $m$-mal 
+j\"ahrlich den konstanten Betrag $a$ vorsch\"ussig auszahlen 
+lassen kann?
+Der Wert von $B_{0}=K_{0}$ ergibt sich wiederum aus der
+Forderung $K_{n}\stackrel{!}{=}0$, die nun jedoch nach $K_{0}$
+aufzul\"osen ist. Es ergibt sich daraus das Resultat
+%
+\be
+\lb{rentebarwert}
+B_{0} = K_{0} = \left[m+\frac{1}{2}\,(m+1)(q-1)\right]a\,
+\frac{q^{n}-1}{q^{n}(q-1)} \ .
+\ee
+%
+
+\item[(iii)] Die sogenannte (vorsch\"ussige) {\bf ewige Rente}
+(engl.: everlasting pension payments) $a_{\rm ewig}$ basiert auf 
+der Strategie, nur die anfallenden
+Zinsen zu verkonsumieren, die ein Anfangskapital $K_{0}>0$ auf
+einem Rentenkonto mit j\"ahrlichem Aufzinsfaktor $q>1$ abwirft.
+Aufzul\"osen ist folglich die Bedingungsgleichung
+$K_{n}\stackrel{!}{=}K_{0}$, f\"ur alle $n$, nach $a$. Dies
+f\"uhrt zum Ergebnis
+%
+\be
+a_{\rm ewig} = \frac{q-1}{m+\frac{1}{2}\,(m+1)(q-1)}\,K_{0} \ ;
+\ee
+%
+$a_{\rm ewig}$ ist direkt proportional zu $K_{0}$!
+
+\end{itemize}
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Lineare und geometrisch--degressive Abschreibungen]%
+{Lineare und geometrisch--degressive Abschreibungen}
+\lb{sec:abschr}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\bf Abschreibung} (engl.: depreciation) nennt man den Versuch 
+einer quantitatitven Beschreibung des materiellen Wertverlusts mit 
+der Zeit eines Wirtschaftsguts vom {\bf Anfangswert} (engl.: 
+initial value) $K_{0}>0$ (in GE). Im Steuerrecht gesetzlich 
+verankert findet man f\"ur Investoren insbesondere die zwei 
+nachfolgend diskutierten mathematischen Varianten der Abschreibung.
+
+%------------------------------------------------------------------
+\subsection{Lineare Abschreibung}
+%------------------------------------------------------------------
+Soll der {\bf Anfangswert} $K_{0}$ \"uber einen vorgegebenen
+Zeitraum von $N$ Kalenderjahren zu gleichen Teilen {\em voll\/}
+abgeschrieben werden, so wird der {\bf Restwert} (engl.: remaining 
+value) nach Ablauf von $n$ Kalenderjahren (in GE) durch die 
+Gleichung
+%
+\be
+\fbox{$\displaystyle
+R_{n} = K_{0} - n\left(\frac{K_{0}}{N}\right) \ ,
+\quad n=1,\ldots,N \ ,
+$}
+\ee
+%
+dargestellt. F\"ur die Restwerte aus benachbarten Kalenderjahren
+gilt hierbei $\displaystyle R_{n}-R_{n-1}
+= -\left(\frac{K_{0}}{N}\right) =: d < 0$. Der {\bf linearen
+Abschreibung} (engl.: straight line depreciation method) 
+unterliegt also die Struktur einer arithmetischen
+Zahlenfolge mit {\em negativer\/} Differenz $d$ zwischen ihren
+Nachbargliedern (vgl. Abschnitt \ref{subsec:arithseq}).
+
+%------------------------------------------------------------------
+\subsection{Geometrisch--degressive Abschreibung}
+%------------------------------------------------------------------
+Grundlage der zweiten Abschreibungsnmethode f\"ur ein
+Wirtschaftsgut mit {\bf Anfangswert} $K_{0}$ ist die \"Uberlegung,
+pro abgelaufenem Kalenderjahr jeweils einen {\bf Prozentsatz} $p>0$
+vom Restwert des Guts im Vorjahr abzuschreiben. Mit der Definition
+eines dimensionslosen positiven {\bf Abschreibungsfaktors}
+%
+\be
+q := 1-\frac{p}{100} < 1 \ ,
+\ee
+%
+gilt dann f\"ur den {\bf Restwert} nach Ablauf von $n$
+Kalenderjahren (in GE)
+%
+\be
+\lb{deprrec}
+\fbox{$\displaystyle
+\text{rekursiv:} \quad
+R_{n} = R_{n-1}q \ , \quad R_{0} \equiv K_{0} \ ,\quad
+n\in\mathbb{N} \ .
+$}
+\ee
+%
+Der {\bf geometrisch--degressiven Abschreibung} (engl.: declining 
+balance depreciation method) unterliegt
+somit die Struktur einer geometrischen Zahlenfolge mit
+konstantem Quotienten $q$ zwischen ihren Nachbargliedern
+(vgl. Abschnitt \ref{subsec:geomseq}). Mit steigendem $n$ wird
+der Wert dieser Glieder immer kleiner. Durch r\"uckwertige
+Substitution kann der Ausdruck (\ref{deprrec}) in die
+alternative Form
+%
+\be
+\lb{deprex}
+\fbox{$\displaystyle
+\text{explizit:} \quad
+R_{n} = K_{0}q^{n} \ , \quad 0 < q < 1 \ , \quad
+n\in\mathbb{N} \ ,
+$}
+\ee
+%
+\"uberf\"uhrt werden.
+
+\medskip
+\noindent
+Aus Gl.~(\ref{deprex}) lassen sich Antworten zu folgenden
+Fragestellungen quantitativer Natur ableiten:
+
+%
+\begin{itemize}
+
+\item[(i)] Vorgegeben seien ein Abschreibungsfaktor $q$ und
+ein projizierter Restwert $R_{n}$ f\"ur ein Wirtschaftsgut.
+Nach welcher {\bf Abschreibungszeit} (engl.: period of time) $n$ 
+wird dieser Restwert erreicht?
+%
+\be
+n = \frac{\ln\left(R_{n}/K_{0}\right)}{\ln(q)} \ .
+\ee
+%
+
+\item[(ii)] Vorgegeben sind eine projizierte Abschreibungszeit
+$n$ mit Restwert $R_{n}$. Zu welchem {\bf Prozentsatz} (engl.: 
+percentage rate) $p$ muss das Wirtschaftsgut abgeschrieben werden?
+%
+\be
+q = \sqrt[n]{\frac{R_{n}}{K_{0}}}
+\quad\Rightarrow\quad
+p = 100 \cdot \left(1-\sqrt[n]{\frac{R_{n}}{K_{0}}}\right) \ .
+\ee
+%
+
+\end{itemize}
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Zusammenfassende Formel]{Zusammenfassende Formel}
+\lb{sec:zus}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Abschlie\ss end wollen wir die Ergebnisse dieses Kapitels nochmals
+rekapitulieren. Bemerkenswerterweise gelingt dies mit einer
+einzigen Formel, aus welcher die oben diskutierten F\"alle durch
+Spezialisierung hervorgehen. Diese Formel, die sich auf einen
+Betrachtungszeitraum von $n$ Kalenderjahren bezieht, ist gegeben
+durch (vgl. Zeh--Marschke (2010) \ct{zeh2010}):
+%
+\be
+\lb{fincmastereq}
+\fbox{$\displaystyle
+K_{n} = K_{0}q^{n} + R\,\frac{q^{n}-1}{q-1} \ , \quad
+q \in \mathbb{R}_{>0}\backslash\{1\} \ , \quad
+n\in\mathbb{N} \ .
+$}
+\ee
+%
+
+\medskip
+\noindent
+Die darin enthaltenen Spezialf\"alle sind:
+%
+\begin{itemize}
+\item[(i)] {\bf Zinseszins} f\"ur ein Anfangskapital $K_{0}>0$:
+mit $R=0$ und $q>1$ reduziert sich Gl.~(\ref{fincmastereq}) auf
+Gl.~(\ref{kap2}).
+
+\item[(ii)] {\bf Vorsch\"ussiges Ratensparen} mit konstantem
+Einzahlungsbetrag $E>0$: mit $K_{0}=0$, $q>1$ und $R=Eq$
+reduziert sich Gl.~(\ref{fincmastereq}) auf Gl.~(\ref{kap4}).
+
+\item[(iii)] {\bf Tilgung in konstanten Annuit\"aten}:
+mit $K_{0}=-R_{0}<0$, $q>1$ und $R=A>0$ reduziert sich
+Gl.~(\ref{fincmastereq}) auf das {\em Negative (!)\/}  von
+Gl.~(\ref{remdebtex}). In dieser Formulierung werden
+Restschulden $K_{n}=R_{n}$ also (sinnvollerweise) durch
+negative Werte zum Ausdruck gebracht.
+
+\item[(iv)] {\bf Rentenrechnung} mit vorsch\"ussigen Auszahlungen
+eines konstanten Betrages $a>0$:
+mit $q>1$ und $\displaystyle R=-\left[m
++\frac{1}{2}\,(m+1)(q-1)\right]a$
+reduziert sich Gl.~(\ref{fincmastereq}) auf
+Gl.~(\ref{pensionex}).
+
+\item[(v)] {\bf Geometrisch--degressive Abschreibung}
+eines Anfangswerts $K_{0}>0$: mit $R=0$ und $0<q<1$
+reduziert sich Gl.~(\ref{fincmastereq}) auf
+Gl.~(\ref{deprex}) f\"ur den Restwert $K_{n}=R_{n}$.
+
+\end{itemize}
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

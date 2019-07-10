@@ -1,0 +1,452 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  File name: ch5.tex
+%  Title:
+%  Version: 10.09.2015 (hve)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter[Lineare Optimierung]{Lineare Optimierung}
+\lb{ch5}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hfill\hbox{\fbox{\vbox{\hsize=10cm
+Der Inhalt dieses Kapitels ist relevant f\"ur das
+Verst\"andnis der in Kapitel 5.3 und 5.4 des Lehrbuchs von
+Schrey\"ogg und Koch (2010)~\ct{schkoc2010} behandelten
+quantitativen Themen.
+%Gleichfalls f\"ur Kapitel 5.3
+%des Lehrbuchs von Schmalen und Pechtl 2006~\ct{schpec2006}.
+}}}
+
+\vspace{10mm}
+\noindent
+Vor dem Hintergrund des {\bf \"Okonomischen Prinzips} besprechen
+wir in diesem Kapitel das L\"osen einer speziellen Klasse von
+quantitativen Problemen, wie sie in nachfolgend beschriebener
+Qualit\"at in der Praxis regelm\"a\ss ig auftreten.
+Grunds\"atzlich unterscheidet man zwei m\"ogliche
+Auspr\"agungen des \"Okonomischen Prinzips: (i) aus begrenzten
+Ressourcen maximalen Nutzen zu ziehen, und (ii) ein vorgegebenes
+Ziel mit minimalem Aufwand zu erreichen. Bez\"uglich der in
+der Einleitung eingef\"uhrten, unseren \"Uberlegungen
+unterliegenden Verh\"altnisgr\"o\ss e
+$(\text{OUTPUT})/(\text{INPUT})$ geht es darum, den Wert dieses
+Quotienten gr\"o\ss tm\"oglich zu gestalten. Dieses Ziel kann
+(i)~bei festgehaltenem Nenner durch Vergr\"o\ss ern des Z\"ahlers,
+oder (ii)~bei festgehaltenem Z\"ahler durch Verkleinern des Nenners
+realisiert werden. Wir werden uns in diesem Kapitel vornehmlich mit
+der ausf\"uhrlichen Behandlung von dem Fall~(i) zugeh\"origen
+Ausgangssituationen besch\"aftigen.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Einf\"uhrung]{Einf\"uhrung}
+\lb{sec:lopeinf}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Zu Maximieren sei eine (nichtnegative) quantitative Gr\"o\ss e~$z$,
+welche in {\em linearer Weise\/} funktional von einer festen
+Anzahl~$n$ (nichtnegativer) variabler Gr\"o\ss en $x_{1}, \ldots,
+x_{n}$ abh\"ange. Diesen $n$~variablen Gr\"o\ss en $x_{1}, \ldots,
+x_{n}$ wiederum seien eine feste Anzahl~$m$ von mengenm\"a\ss igen
+Einschr\"ankungen auferlegt, die ebenfalls in {\em linearer
+Weise\/} von $x_{1}, \ldots, x_{n}$ abh\"angen. Die
+$m$~Einschr\"ankungen, oder Restriktionen, sollen den Charakter
+von vorgegebenen Kapazit\"atsobergrenzen haben.
+
+\medskip
+\noindent
+\underline{\bf Def.:}
+Gegeben seien eine Matrix~$\mathbf{A} \in
+\mathbb{R}^{m \times n}$, ein Vektor~$\vec{b} \in
+\mathbb{R}^{m \times 1}$, zwei Vektoren $\vec{c},\vec{x} \in
+\mathbb{R}^{n \times 1}$, sowie eine Konstante
+$d \in \mathbb{R}$. Eine Aufgabe der Form
+%
+\be
+\fbox{$\displaystyle
+\text{max}\left\{z=\vec{c}^{T}\cdot\vec{x}
++d\left|\mathbf{A}\vec{x}
+\leq \vec{b}, \vec{x} \geq \vec{0}\right.\right\} \ ,
+$}
+\ee
+%
+in Komponentenschreibweise also
+%
+\begin{eqnarray}
+\lb{lops1}
+\text{max}\ z(x_{1},\ldots,x_{n})
+= c_{1}x_{1} + \ldots + c_{n}x_{n} + d & & \\
+a_{11}x_{1}+\ldots+a_{1n}x_{n} & \leq & b_{1} \\
+%
+ & \vdots & \nonumber \\
+%
+a_{m1}x_{1}+\ldots+a_{mn}x_{n} & \leq & b_{m} \\
+%
+x_{1} & \geq & 0 \\
+%
+ & \vdots & \nonumber \\
+%
+\lb{lopsm1}
+x_{n} & \geq & 0 \ ,
+\end{eqnarray}
+%
+wird {\bf Standard--Maximum--Aufgabe} der
+{\bf linearen Optimierung} (engl.: standard maximum problem of 
+linear programming) mit $n$~Variablen genannt.
+
+\medskip
+\noindent
+Allgemein spricht man bei dieser Art von quantitativer
+Fragestellung auch von einem {\bf Linearen Optimierungsproblem
+(LOP)}. Die in der angef\"uhrten Definition auftretenden
+Gr\"o\ss en und Relationen tragen die Bezeichnungen
+
+\begin{itemize}
+
+\item $z(x_{1},\ldots,x_{n})$ ---
+{\bf Lineare Zielfunktion} (engl.: linear objective function) von 
+$n$ Variablen,
+
+\item $\mathbf{A}\vec{x} \leq \vec{b}$ ---
+$m$ {\bf Restriktionen} (engl.: restrictions),
+
+\item $\vec{x} \geq \vec{0}$ ---
+$n$ {\bf Nichtnegativit\"atsbedingungen} (engl.: non-negativity 
+constraints).
+
+\end{itemize}
+
+\noindent
+\underline{\bf Bem.:} In %, zum gerade Beschriebenen,
+analoger Weise  l\"asst sich auch eine
+{\bf Standard--Minimum--Aufgabe} der
+linearen Optimierung formulieren, welche durch
+%
+\[
+\text{min}\left\{z=\vec{c}^{T}\cdot\vec{x}
++d\left|\mathbf{A}\vec{x}
+\geq \vec{b}, \vec{x} \geq \vec{0}\right.\right\}
+\]
+%
+mathematisch beschrieben wird. Die Komponenten
+des Vektors $\vec{b}$ sind hierbei
+als vorgegebene Kapazit\"atsuntergrenzen aufzufassen.
+
+\medskip
+\noindent
+F\"ur eine gegebene lineare Zielfunktion $z(x_{1},\ldots,x_{n})$
+wird die Menge aller Punkte $\vec{x} = (x_{1},\ldots,x_{n})^{T}$
+mit der Eigenschaft
+%
+\be
+\fbox{$\displaystyle
+z(x_{1},\ldots,x_{n}) = C = \text{konstant} \in \mathbb{R}
+$}
+\ee
+%
+eine {\bf Isoquante} (engl.: isoquant) dieser linearen 
+Zielfunktion genannt.
+Isoquanten linearer Zielfunktionen stellen bei $n=2$ Variablen
+Geraden, bei $n=3$ Variablen Ebenen, bei $n=4$ Variablen 
+euklidische R\"aume, und bei $n\geq 5$ Variablen euklidische 
+Hyperr\"aume dar.
+
+\medskip
+\noindent
+In den einfachsten F\"allen von LOP h\"angt die lineare
+Zielfunktion~$z$ nur von $n=2$ Variablen $x_{1}$ und
+$x_{2}$ ab. Eine anschauliche und effektive Methode des L\"osens
+von LOP aus dieser Klasse stellen wir im n\"achsten Abschnitt
+vor.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Grafisches L\"osen von Problemen mit zwei Variablen]%
+{Grafisches L\"osen von Problemen mit zwei Variablen}
+\lb{sec:lopgraf}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Die systematische Vorgehensweise des grafischen L\"osens von
+MAX--LOP mit $n=2$~Variablen umfasst folgende Arbeitsschritte:
+%
+\begin{enumerate}
+
+\item Aufstellen der {\bf linearen Zielfunktion}
+%
+$$
+z(x_{1},x_{2})=c_{1}x_{1}+c_{2}x_{2}+d
+$$
+%
+in Abh\"angigkeit von den Variablen $x_{1}$ und $x_{2}$.
+
+\item Bestimmen des durch die $m$ Restriktionen
+festgelegten {\bf zul"assigen Bereichs} (engl.: feasible region) 
+$D$ von $z$ in der $x_{1},x_{2}$--Ebene.
+Konkret entspricht $D$ dem Definitionsbereich von $z$
+(siehe Kapitel~\ref{ch6}).
+
+\item Einzeichnen der durch den Ursprung ($0=x_{1}=x_{2}$)
+der $x_{1},x_{2}$--Ebene verlaufenden Projektion der
+{\bf Isoquanten} der linearen Zielfunktion~$z$,
+die (falls $c_{2} \neq 0$) durch die Gleichung
+%
+\[
+x_{2} = -(c_{1}/c_{2})x_{1}
+\]
+%
+beschrieben wird.
+
+\item Einzeichnen der durch den konstanten Gradienten
+%
+$$
+(\boldsymbol{\nabla} z)^{T}
+=\left(\begin{array}{c}\frac{\ptl z}{\ptl x_{1}} \\
+\frac{\ptl z}{\ptl x_{2}}\end{array}\right)
+=\left(\begin{array}{c} c_{1} \\ c_{2}\end{array}\right)
+$$
+%
+gegebenen {\bf Optimierungsrichtung} (engl.: direction of 
+optimisation) f\"ur $z$ im Ursprung der $x_{1},x_{2}$--Ebene.
+
+\item {\bf Paralleles Verschieben} (engl.: parallel displacement) 
+in der $x_{1},x_{2}$--Ebene
+der Projektion der Ursprungsisoquanten der linearen
+Zielfunktion~$z$ entlang der
+Optimierungsrichtung~$(\boldsymbol{\nabla} z)^{T}$ \"uber den
+zul\"assigen Bereich~$D$ hinweg, bis dieser gerade noch
+ber\"uhrt wird.
+
+\item Bestimmen der {\bf optimalen L\"osung} (engl.: optimal 
+solution) $(x_{1{\rm O}},
+x_{2{\rm O}})$ als Schnittpunkt bzw. -menge zwischen
+verschobener Projektion der Ursprungsisoquanten und dem
+oberen Rand von $D$.
+
+\item Berechnen des {\bf optimalen Wertes} (engl.: optimal value) 
+der linearen Zielfunktion~$z_{{\rm O}}=z(x_{1{\rm O}},x_{2{\rm O}})$ aus der optimalen L\"osung.
+
+\item Feststellen von m\"oglichen {\bf Restkapazit\"aten} (engl.: 
+remaining resources) durch Einsetzen der optimalen L\"osung 
+$(x_{1{\rm O}}, x_{2{\rm O}})$ in die $m$~Restriktionen.
+
+\end{enumerate}
+%
+Generell findet man, dass die zul\"assigen Bereiche~$D$ von
+linearen Zielfunktionen~$z$ mit $n=2$ Variablen~$x_{1}$ und
+$x_{2}$, sofern sie {\em nichtleer und beschr\"ankt\/} sind,
+{\bf Vielecken} (Drei-, Vier-, F\"unf-, Sechs-,
+\ldots ecke) in der $x_{1},x_{2}$--Ebene entsprechen. Die
+gesuchten Extremwerte der linearen Zielfunktionen~$z$ finden
+sich in diesen F\"allen immer in den Ecken bzw.\ auf den
+R\"andern der zul\"assigen Bereiche~$D$. Ist der zul\"assige
+Bereich~$D$ eines LOP leer, so ist dieses unl\"osbar.
+Bleibt der zul\"assige Bereich~$D$ eines LOP unbeschr\"ankt,
+ist letzteres m\"oglicherweise auch unl\"osbar; es kommt
+hierbei jedoch auf die konktete Fragestellung an.
+
+\medskip
+\noindent
+\underline{\bf Bem.:} Zum grafischen L\"osen einer
+Standard--Minimum--Aufgabe der linearen
+Optimierung parallelverschiebt man die Projektion der
+Ursprungsisoquanten von~$z$ in die $x_{1},x_{2}$--Ebene
+entlang der Optimierungsrichtung~$(\boldsymbol{\nabla} z)^{T}$
+soweit, bis der zul\"assige Bereich~$D$ gerade erreicht (und
+ber\"uhrt) wird. Die optimale L\"osung ergibt sich sodann als
+Schnittpunkt bzw. -menge zwischen verschobener
+Ursprungsisoquante und dem {\em unteren Rand\/} von $D$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Dantzigscher Simplexalgorithmus]%
+{Dantzigscher Simplexalgorithmus}
+\lb{sec:lopsimplex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Ein entscheidender Nachteil der grafischen L\"osungsmethode von
+LOP ist ihre Limitierung auf F\"alle mit nur $n=2$~Variablen.
+In der Praxis hat man es jedoch h\"aufig mit linearen
+Optimierungsproblemen zu tun, die von mehr als zwei variablen
+Gr\"o\ss en abh\"angen. Zur systematischen Behandlung derartiger
+F\"alle hat der US-amerikanische Mathematiker 
+\href{http://www-groups.dcs.st-and.ac.uk/~history/Biographies/Dantzig_George.html}{George
+Bernard Dantzig (1914--2005)} in den 40er-Jahren des zwanzigsten
+Jahrhunderts einen leistungsf\"ahigen Algorithmus entwickelt, der
+sich recht einfach auf Computern programmieren l\"asst; vgl. 
+Dantzig (1949,1955~\ct{dan1949,dan1955}.
+
+\medskip
+\noindent
+Unter einem {\bf Simplex} (engl.: simplex) versteht man in der 
+Mathematik ein konvexes Polyeder (engl.: convex polyhedron), d.h.\ 
+einen vieleckigen K\"orper mit
+entsprechend vielen Kanten und Ecken in mehr als zwei Dimensionen.
+Die zul\"assigen Bereiche von h\"oherdimensionalen LOP bilden
+im allgemeinen solche Simplexe. Da auch in diesen F\"allen die
+optimale L\"osung eines LOP, verbunden mit einem Extremwert der
+linearen Zielfunktion, in einer Ecke oder auf einer Kante
+des Simplex liegen wird, ist Dantzigs so genannter
+{\bf Simplexalgorithmus} darauf ausgelegt, systematisch die
+Ecken und Kanten eines zul\"assigen Bereichs mit m\"oglichst
+wenigen Schritten abzufahren, um die gesuchte Extremall\"osung
+aufzusp\"uren und als optimal zu identifizieren.
+
+\medskip
+\noindent
+Ausgangspunkt ist eine Standard--Maximum--Aufgabe in der Form
+(\ref{lops1})--(\ref{lopsm1}). Die die $m$ zu ber\"ucksichtigenden
+Restriktionen darstellenden Ungleichungen werden mithilfe von
+$m$ nichtnegativen so genannten {\bf Schlupfvariablen} (engl.: 
+slack variables) $s_{1}, \ldots, s_{m}$ in $m$ lineare Gleichungen 
+umgewandelt.
+Aufgabe der Schlupfvariablen ist es, m\"ogliche Differenzen
+zwischen den Werten der linken und der rechten Seiten der $m$
+Ungleichungen in sich zu vereinen. Zusammen mit der
+Definitionsgleichung f\"ur die lineare Zielfunktion~$z$
+ergibt sich somit ein System von $1+m$ linearen Gleichungen
+f\"ur $1+n+m$ Variablen $z, x_{1},
+\ldots, x_{n}, s_{1}, \ldots, s_{m}$, gegeben durch
+
+\medskip
+\noindent
+{\bf Lineares Maximierungsproblem in kanonischer Form}
+\nopagebreak
+%
+\begin{eqnarray}
+\lb{lopk1}
+z - c_{1}x_{1} - c_{2}x_{2} - \ldots - c_{n}x_{n} & = & d \\
+%
+a_{11}x_{1} + a_{12}x_{2} + \ldots + a_{1n}x_{n} + s_{1} & = & b_{1} \\
+%
+a_{21}x_{1} + a_{22}x_{2} + \ldots + a_{2n}x_{n} + s_{2} & = & b_{2} \\
+%
+ & \vdots & \nonumber \\
+%
+\lb{lopkm1}
+a_{m1}x_{1} + a_{m2}x_{2} + \ldots + a_{mn}x_{n} + s_{m} & = & b_{m} \ .
+\end{eqnarray}
+%
+Dieses LGS vom Format $(1+m) \times (1+n+m)$ ist somit
+{\em unterbestimmt\/}, und deshalb h\"ochstens
+{\em mehrdeutig\/} l\"osbar. Der $(1+n+m)$-dimensionale
+allgemeine L\"osungsvektor
+%
+\be
+\vec{x}_{L} = \left(z_{L}, x_{1, L}, \ldots, x_{n, L},
+s_{1, L}, \ldots, s_{m, L}\right)^{T}
+\ee
+%
+enth\"alt also $n$ frei w\"ahlbare Variablen.
+Es ist wichtig, sich dieser Tatsache bewusst zu sein.
+Sie impliziert, dass wir, so das betrachtete LGS \"uberhaupt
+l\"osbar ist, die {\em Auswahl\/} unter mehreren L\"osungen
+haben. Wir k\"onnen uns also unter allen L\"osungen dieses LGS
+die f\"ur unsere Zwecke Optimale aussuchen. Dantzigs
+Simplexalgorithmus stellt ein Werkzeug bereit, diese optimale
+L\"osung systematisch herzuleiten.
+
+\medskip
+\noindent
+Wir beginnen mit dem \"Ubertragen der Koeffizienten und der rechten Seiten (RS) des oben angef\"uhrten unterbestimmten LGS (\ref{lopk1})--(\ref{lopkm1}) in ein geeignetes Zahlentableau.
+
+\medskip
+\noindent
+{\bf Anfangssimplextableau}
+%
+\be
+\lb{tableau1}
+\begin{array}{c|rrcr|cccc|r}
+z & x_{1} & x_{2} & \ldots & x_{n} & s_{1} & s_{2} & \ldots
+& s_{m} & \text{RS} \\
+\hline
+1 & -c_{1} & -c_{2} & \ldots & -c_{n} & 0 & 0 & \ldots & 0 & d \\
+\hline
+0 & a_{11} & a_{12} & \ldots & a_{1n} & 1 & 0 & \ldots & 0 & b_{1} \\
+0 & a_{21} & a_{22} & \ldots & a_{2n} & 0 & 1 & \ldots & 0 & b_{2} \\
+\vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots &
+\ddots & \vdots & \vdots \\
+0 & a_{m1} & a_{m2} & \ldots & a_{mn} & 0 & 0 & \ldots & 1 & b_{m}
+\end{array}
+\ee
+%
+In diesem Zahlentableau (engl.: initial simplex tableau) 
+unterscheiden wir so genannte {\bf Basisvariablen} (engl.: basis 
+variable) von so genannten {\bf Nichtbasisvariablen} (engl.: 
+non-basis variables).
+Basisvariablen sind jene, in deren Spalten $(1+m)$-komponentige
+kanonische Einheitsvektoren [vgl.\ Gl.~(\ref{kanbasis})] zu
+finden sind; hiervon gibt es $1+m$ St\"uck. Nichtbasisvariablen
+sind jene, in deren Spalten {\em keine\/} kanonischen
+Einheitsvektoren enthalten sind; hiervon gibt es $n$ St\"uck.
+Die komplette Basis ist also $(1+m)$-dimensional.
+Anf\"anglich sind $z$ und die $m$ Schlupfvariablen
+$s_{1}, \ldots, s_{m}$ Basisvariablen, die $n$ eigentlichen
+Variablen $x_{1}, \ldots, x_{n}$ Nichtbasisvariablen
+[vgl.\ das Anfangstableau~(\ref{tableau1})]. Die zugeh\"orige
+so genannte (erste) {\bf Basisl\"osung} (engl.: basis solution) hat generell das Aussehen
+%
+\[
+\vec{x}_{B_{1}} = \left(z_{B_{1}},
+x_{1,B_{1}}, \ldots, x_{n, B_{1}},
+s_{1, B_{1}}, \ldots, s_{m, B_{1}}\right)^{T}
+= \left(d, 0, \ldots, 0,
+b_{1}, \ldots, b_{m}\right)^{T} \ ,
+\]
+%
+denn jeder der $n$ Nichtbasisvariablen kann der Einfachheit
+halber der Wert Null zugeordnet werden, da ihre Werte frei
+gew\"ahlt werden d\"urfen. Basisl\"osungen sind immer {\em
+spezielle L\"osungen\/} des unterbestimmten
+LGS~(\ref{lopk1})--(\ref{lopkm1}), %, hier also
+--- des linearen Maximierungsproblems in kanonischer Form.
+
+\medskip
+\noindent
+Ziel des Simplexalgorithmus ist es, m\"oglichst viele der
+$n$ eigentlichen Variablen $x_{1}, \ldots, x_{n}$ mit in
+die $(1+m)$-dimensionale Basis aufzunehmen und gegen
+jeweils eine der Schlupfvariablen $s_{1}, \ldots, s_{m}$
+auszutauschen, um dadurch sukzessiv g\"unstigere spezielle
+L\"osungsvektoren f\"ur das Optimierungsproblem zu
+konstruieren. Letztendlich verbirgt sich hinter dem
+Simplexalgorithmus eine spezielle Form des in
+Kapitel~\ref{ch3} behandelten Gau\ss schen Algorithmus,
+mit fest vorgeschriebenen Schritten der \"aquivalenten
+Umformung des Ausgangs-LGS (\ref{lopk1})--(\ref{lopkm1})
+bzw.\ des Anfangstableaus~(\ref{tableau1}). Diese Schritte
+(engl.: algebraic simplex operations) lassen sich wie folgt 
+zusammenfassen:
+
+\medskip
+\noindent
+{\bf Simplexschritte}
+\nopagebreak
+\begin{itemize}
+\item[S1:] Gilt im aktuellen Tableau $-c_{j} \geq 0$
+f\"ur alle $j \in \{1,\ldots,n\}$? Falls ja, ist die
+Basisl\"osung {\bf optimal}. {\it ENDE}. Andernfalls gehe zu S2.
+
+\item[S2:] W\"ahle {\bf Pivotspaltenindex} (engl.: pivot column 
+index) $j^{*} \in
+\{1,\ldots,n\}$ mit $-c_{j^{*}}:= \text{min}\{-c_{j}|j
+\in \{1,\ldots,n\}\} < 0$.
+
+\item[S3:] Gibt es ein $i^{*} \in \{1,\ldots,m\}$ mit
+$a_{i^{*}j^{*}} > 0$? Falls nein, ist die Zielfunktion
+nach oben unbeschr\"ankt. {\it ENDE}. Andernfalls gehe zu S4.
+
+\item[S4:] W\"ahle {\bf Pivotzeilenindex} (engl.: pivot row index) 
+$i^{*}$ mit
+$a_{i^{*}j^{*}} > 0$ und $b_{i^{*}}/a_{i^{*}j^{*}}
+:=\text{min}\{b_{i}/a_{i^{*}j^{*}}|a_{i^{*}j^{*}} > 0,
+i \in \{1,\ldots,m\}\}$. F\"uhre einen {\bf Pivotschritt} (engl.: 
+pivot operation) mit dem {\bf Pivotelement} (engl.: pivot element) 
+$a_{i^{*}j^{*}}$ durch. Gehe zu S1.
+\end{itemize}
+
+\medskip
+\noindent
+Wenn das Endtableau des Simplexalgorithmus (engl.: final simplex
+tableau) gefunden ist, wird den
+Nichtbasisvariablen wiederum der Wert Null zugeordnet. Die Werte
+der finalen Basisvariablen, also der gesuchten optimalen
+L\"osung eines gegebenen LOP, werden dann aus dem Endtableau
+\"uber r\"uckwertige Substitution zeilenweise von unten nach oben
+ausgerechnet. Schlupfvariablen mit positiven Werten im Endtableau
+geben unmittelbar Auskunft \"uber bestehende Restkapazit\"aten.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,0 +1,1658 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  File name: ch7.tex
+%  Title:
+%  Version: 10.09.2015 (hve)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter[Differenzialrechnung bei reellen Funktionen]%
+{Differenzialrechnung bei reellen Funktionen einer Variablen}
+\lb{ch7}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hfill\hbox{\fbox{\vbox{\hsize=10cm
+Der Inhalt dieses Kapitels ist relevant f\"ur das
+Verst\"andnis der in Kapitel 5.5 des Lehrbuchs von Schrey\"ogg und
+Koch (2010)~\ct{schkoc2010} behandelten quantitativen Themen.
+%Gleichfalls f\"ur Kapitel 5.3, 10.4, 10.5, 11.4, 13.3, 13.4, 14.4
+%des Lehrbuchs von Schmalen und Pechtl 2006~\ct{schpec2006}.
+}}}
+
+\vspace{10mm}
+\noindent
+Die Kapitel \ref{ch1} bis \ref{ch5} dieser Vorlesungsnotizen
+beschr\"ankten
+sich auf die Diskussion {\em linearer\/} funktionaler Beziehungen
+zwischen gegebenen INPUT--Gr\"o\ss en und zugeordneten
+OUTPUT--Gr\"o\ss en. In diesem Kapitel nun betrachten wir
+vornehmlich quantitative Relationen zwischen (einer)
+INPUT--Gr\"o\ss en und (einer) zugeordneten OUTPUT--Gr\"o\ss en,
+die von {\bf nichtlinearer Natur} (engl.: non-linear nature) sind.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Reelle Funktionen einer Variablen]%
+{Reelle Funktionen einer Variablen}
+\lb{sec:fkt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Wir beginnen mit der Einf\"uhrung des Begriffs einer reellen
+Funktion einer Variablen. Das Wesen einer reellen Funktion
+einer Variablen ist das einer {\bf Abbildung} (engl.: 
+mapping),\footnote{Vergleiche
+hierzu unsere Einf\"uhrung von Matrizen als mathematische Objekte
+in Kapitel~\ref{ch2}.} welche eine einfache aber strenge Regel zu
+befolgen hat:
+
+\medskip
+eine Funktion $f$ muss {\em jedem\/} Wert $x$ aus
+einer Menge von reellen Zahlen $D \subseteq \mathbb{R}$
+{\em genau einen\/} Wert $y$ aus einer Menge von reellen Zahlen
+$W\subseteq \mathbb{R}$ zuordnen.
+
+\medskip
+\noindent
+\underline{\bf Def.:}
+Eine {\bf eindeutige} (engl.: unique) Abbildung $f$ einer Teilmenge
+$D\subseteq\mathbb{R}$ der reellen Zahlen auf eine
+Teilmenge $W\subseteq\mathbb{R}$ der reellen Zahlen,
+%
+\be
+\fbox{$\displaystyle
+f\!: D \rightarrow W \ ,
+\hspace{10mm} x \mapsto y=f(x)
+$}
+\ee
+%
+hei\ss t {\bf reelle Funktion einer Variablen} (engl.: real-valued 
+function of one variable).
+
+\medskip
+\noindent
+Zentrale Aspekte des Konzepts einer reellen Funktionen
+einer Variablen werden beschrieben durch die Begriffe:
+\pagebreak
+%
+\begin{itemize}
+\item $D$: {\bf Definitionsbereich} (engl.: domain) von $f$,
+\item $W$: {\bf Wertebereich} (engl.: range) von $f$,
+\item $x \in D$: {\bf unabh\"angige Variable} ((engl.: independent 
+variable) von $f$, auch Argument (engl.: argument) von $f$ genannt,
+\item $y \in W$: {\bf abh\"angige Variable} (engl.: dependent 
+variable) von $f$,
+\item $f(x)$: {\bf Abbildungsvorschrift} (engl.: mapping 
+instruction),
+\item {\bf Graph} (engl.: graph) von $f$: Zahlenpaare 
+$G=\{(x,f(x))|x \in D\} \subset \mathbb{R}^{2}$.
+\end{itemize}
+%
+F\"ur die sp\"atere Analyse der Eigenschaften bestimmter
+reeller Funktionen einer Variablen ben\"otigen wir die
+Definitionen weiterer wichtiger Begriffe.
+
+\medskip
+\noindent
+\underline{\bf Def.:}
+Die einer {\bf eineindeutigen} (engl.: one-to-one and onto) 
+Abbildung $f$, mit $D(f)\subseteq\mathbb{R}$ und 
+$W(f)\subseteq\mathbb{R}$, zugeordnete
+Abbildung $f^{-1}$, mit $D(f^{-1})=W(f)$ und $W(f^{-1})=D(f)$,
+wird {\bf inverse Funktion} (oder Umkehrfunktion) (engl.: inverse 
+function) zu $f$ genannt.
+
+\medskip
+\noindent
+Bei einer eineindeutigen Abbildung $f$ wird nicht nur jedem
+$x \in D(f)$ genau ein $y \in W(f)$ zugeordnet, sondern
+gleichfalls auch jedem $y \in W(f)$ genau ein $x \in D(f)$.
+
+\medskip
+\noindent
+\underline{\bf Def.:}
+Eine reelle Funktion $f$ einer Variablen hei\ss t {\bf stetig
+an der Stelle} $x \in D(f)$ (engl.: continuous at), wenn sie f\"ur
+$\Delta x \in \mathbb{R}_{>0}$ die Bedingungenen
+%
+\be
+\lim_{\Delta x \to 0}f(x-\Delta x)
+= \lim_{\Delta x \to 0}f(x+\Delta x)
+= f(x)
+\ee
+%
+erf\"ullt, wenn also bei $x$ die linken und rechten
+Grenzwerte der Funktion $f$ mit dem Funktionswert $f(x)$
+zusammenfallen. Eine reelle Funktion $f$ hei\ss t {\bf stetig}
+(engl.: continuous), wenn sie {\em f\"ur alle\/} $x \in D(f)$ 
+stetig ist.
+
+\medskip
+\noindent
+\underline{\bf Def.:}
+Gilt f\"ur eine reelle Funktion $f$ einer Variablen die
+Beziehung
+%
+\be
+f(a) < f(b)
+\qquad\text{{\em f\"ur alle\/}}\qquad
+a,b \in D(f)\ \text{mit}\ a < b \ ,
+\ee
+%
+so wird $f$
+{\bf streng monoton steigend} (engl.: strictly monotonously 
+increasing) genannt. Gilt hingegen die Beziehung
+%
+\be
+f(a) > f(b)
+\qquad\text{{\em f\"ur alle\/}}\qquad
+a,b \in D(f)\ \text{mit}\ a < b \ ,
+\ee
+%
+so wird $f$ {\bf streng monoton fallend} (engl.: strictly 
+monotonously decreasing) genannt.
+
+\medskip
+\noindent
+Beachten Sie, dass insbesondere {\em streng monotone stetige
+Funktionen\/} immer eineindeutige Abbildungen darstellen und
+deshalb invertierbar (umkehrbar) sind.
+
+\medskip
+\noindent
+Nun wenden wir uns kurz f\"unf, in wirtschaftswissenschaftlichen
+Anwendungen h\"aufig auftretenden Familien reeller Funktionen
+einer Variablen und deren wichtigsten qualitativen Eigenschaften
+zu.
+
+%------------------------------------------------------------------
+\subsection{Polynome vom Grad $n$}
+\lb{subsec:polynomials}
+%------------------------------------------------------------------
+Polynome vom Grad $n$ (engl.: polynomials of degree $n$) sind 
+reelle Funktionen einer Variablen der Form
+%
+\be
+\lb{npol}
+\fbox{$\displaystyle\begin{array}{c}
+y = f(x) = a_{n}x^{n}+a_{n-1}x^{n-1}+\ldots
++a_{i}x^{i}+\ldots+a_{2}x^{2}+a_{1}x+a_{0}
+\\[5mm]
+\text{mit}\ a_{i}\in\mathbb{R},\ i=1,\ldots,n,
+\ \ n\in\mathbb{N},\ a_{n}\neq 0 \ .
+\end{array}
+$}
+\ee
+%
+Ihr Definitionsbereich ist $D(f)=\mathbb{R}$. Ihr Wertebereich
+h\"angt im konkreten Fall von den Werten der konstanten
+Koeffizienten $a_{i}\in\mathbb{R}$ ab. Diese Funktionen besitzen
+maximal $n$ reelle {\bf Nullstellen}.
+
+%------------------------------------------------------------------
+\subsection{Gebrochen rationale Funktionen}
+%------------------------------------------------------------------
+Gebrochen rationale Funktionen (engl.: rational functions) werden 
+durch den {\bf Quotienten zweier Polynome} vom Grad $m$ bzw.\ vom 
+Grad $n$ gebildet, d.h.
+%
+\be
+\fbox{$\displaystyle\begin{array}{c}
+y = f(x) = \displaystyle{\frac{p_{m}(x)}{q_{n}(x)}
+= \frac{a_{m}x^{m}+\ldots+a_{1}x+a_{0}}{
+b_{n}x^{n}+\ldots+b_{1}x+b_{0}}}
+\\[5mm]
+\text{mit}\ a_{i},b_{j}\in\mathbb{R},\ i=1,\ldots,m,
+\ j=1,\ldots,n,
+\ \ m,n\in\mathbb{N},\ a_{m},b_{n}\neq 0 \ .
+\end{array}
+$}
+\ee
+%
+Ihr Definitionsbereich ist
+$D(f)=\mathbb{R}\backslash\{x|q_{n}(x)=0\}$. Wenn f\"ur die
+Grade $m$ und $n$ der Polynome $p_{m}(x)$ und $q_{n}(x)$ gilt
+\begin{itemize}
+\item[(i)] $m<n$, so wird $f$ {\bf echt gebrochen rational} 
+(engl.: proper rational functions), bzw.
+\item[(ii)] $m\geq n$, so wird $f$ {\bf unecht gebrochen rational} 
+(engl.: improper rational functions)
+\end{itemize}
+genannt. Im zweiten Fall l\"asst sich durch {\em Polynomdivision\/}
+(engl.: polynomial division) immer ein rein polynomialer Anteil 
+von $f$ abspalten. Die {\bf Nullstellen} (engl.: roots) von $f$ 
+sind die Nullstellen des 
+Z\"ahlerpolynoms $p_{m}(x)$, f\"ur welche gleichzeitig $q_{n}(x) 
+\neq 0$ gilt. Nullstellen des Nennerpolynoms $q_{n}(x)$ stellen so 
+genannte {\bf Polstellen} (engl.: poles) von $f$ dar. Echt 
+gebrochen rationale Funktionen tendieren f\"ur sehr kleine ($x \to 
+-\infty$) bzw.\ sehr gro\ss e($x \to +\infty$) Argumentwerte immer 
+gegen Null.
+%{\bf Asymptoten}
+
+%------------------------------------------------------------------
+\subsection{Potenzfunktionen}
+%------------------------------------------------------------------
+Potenzfunktionen (engl.: power-law functions) sind Funktionen der 
+Bauart
+%
+\be
+\fbox{$\displaystyle
+y = f(x) = x^{\alpha} \quad
+\text{mit}\ \alpha\in\mathbb{R} \ .
+$}
+\ee
+%
+Hier beschr\"anken wir uns auf F\"alle mit Definitionsbereich
+$D(f)=\mathbb{R}_{>0}$, sodass als Wertebereich
+$W(f)=\mathbb{R}_{>0}$ folgt. Unter den genannten Bedingungen sind
+Potenzfunktionen streng monoton steigend f\"ur $\alpha > 0$, und
+streng monoton fallend f\"ur $\alpha < 0$; also k\"onnen sie durch
+$y = \sqrt[\alpha]{x} = x^{1/\alpha}$ invertiert werden.
+Nullstellen liegen unter der hier eingef\"uhrten Beschr\"ankung
+keine vor.
+
+%------------------------------------------------------------------
+\subsection{Exponentialfunktionen}
+\lb{subsec:exponentials}
+%------------------------------------------------------------------
+Exponentialfunktionen (engl.: exponential functions) sind durch 
+Konstruktionen der Form
+%
+\be
+\fbox{$\displaystyle
+y = f(x) = a^{x} \quad
+\text{mit}\ a\in\mathbb{R}_{>0}\backslash\{1\}
+$}
+\ee
+%
+gegeben. Ihr Definitionsbereich ist $D(f)=\mathbb{R}$, ihr
+Wertebereich $W(f)=\mathbb{R}_{>0}$. Sie zeigen streng monoton
+steigendes Verhalten f\"ur $a>1$, und streng monoton fallendes
+Verhalten f\"ur $0<a<1$. Folglich k\"onnen sie invertiert werden.
+Ihr $y$--Achsenabschnitt liegt generell bei $y=1$.
+%Nullstellen besitzen sie keine.
+Exponentialfunktionen sind (f\"ur $a>1$) auch
+unter dem Namen {\bf Wachstumsfunktionen} bekannt.
+
+\medskip
+\noindent
+\underline{Spezialfall:} Wird die konstante (!) Basiszahl zu
+$a=e$ gew\"ahlt, wobei $e$ die irrationale {\bf Eulersche Zahl}
+(benannt nach dem schweizer Mathematiker
+\href{http://turnbull.mcs.st-and.ac.uk/history/Biographies/Euler.html}{Leonhard
+Euler, 1707--1783}) darstellt, welche durch die unendliche
+Zahlenreihe
+%
+\[
+e := \sum_{k=0}^{\infty}\frac{1}{k!}
+= \frac{1}{0!} + \frac{1}{1!} + \frac{1}{2!}
++ \frac{1}{3!} + \ldots
+\]
+%
+definiert ist, so spricht man von der
+{\bf nat\"urlichen Exponentialfunktion} (engl.: natural 
+exponential function)
+%
+\be
+y=f(x)=e^{x} =: \exp(x) \ .
+\ee
+%
+Analog zur Definition von $e$ gilt:
+%
+\[
+e^{x} = \exp(x)
+= \sum_{k=0}^{\infty}\frac{x^{k}}{k!}
+= \frac{x^{0}}{0!} + \frac{x^{1}}{1!} + \frac{x^{2}}{2!}
++ \frac{x^{3}}{3!} + \ldots \ .
+\]
+%
+
+%------------------------------------------------------------------
+\subsection{Logarithmusfunktionen}
+%------------------------------------------------------------------
+Logarithmusfunktionen (engl.: logarithmic functions), gegeben durch
+%
+\be
+\fbox{$\displaystyle
+y = f(x) = \log_{a}(x) \quad
+\text{mit}\ a\in\mathbb{R}_{>0}\backslash\{1\} \ ,
+$}
+\ee
+%
+sind als inverse Funktionen (Umkehrfunktionen) der streng monotonen
+Exponentialfunktionen $y=f(x)=a^{x}$ definiert --- und umgekehrt.
+Folglich gilt f\"ur sie $D(f)=\mathbb{R}_{>0}$ und
+$W(f)=\mathbb{R}$. Streng monoton steigendes Verhalten liegt vor
+f\"ur $a>1$, streng monoton fallendes Verhalten f\"ur $0<a<1$.
+Ihr $x$--Achsenabschnitt ist generell $x=1$.
+
+\medskip
+\noindent
+\underline{Spezialfall:} Die {\bf nat\"urliche 
+Logarithmusfunktion} (engl.: natural logarithmic function)
+erhalten wir, wenn die Basiszahl zu $a=e$ gew\"ahlt wird; also
+
+%
+\be
+y=f(x)=\log_{e}(x):=\ln(x) \ .
+\ee
+%
+
+%------------------------------------------------------------------
+\subsection{Zusammengesetzte Funktionen}
+\lb{subsec:kombfkt}
+%------------------------------------------------------------------
+Funktionen aus allen f\"unf hier betrachteten Familien k\"onnen
+sowohl \"uber die vier Grundrechenarten, als auch durch Verkettung
+bzw.\ Verschachtelung (im Rahmen g\"ultiger Rechenregeln) beliebig
+miteinander kombiniert werden (engl.: concatenations of 
+real-valued functions).
+
+\medskip
+\noindent
+\underline{\bf Satz:} Seien $f$ und $g$ auf $D(f)$ bzw.\ $D(g)$
+stetige reelle Funktionen. Dann sind auch die kombinierten
+Funktionen
+%
+\begin{enumerate}
+	\item {\bf Summe/Differenz} $f \pm g$, wobei $(f \pm g)(x)
+	:=f(x) \pm g(x)$ mit $D(f) \cap D(g)$,
+	\item {\bf Produkt} $f \cdot g$, wobei  $(f\cdot g)(x):=f(x)g(x)$
+	mit $D(f) \cap D(g)$,
+	\item {\bf Quotient} ${\displaystyle\frac{f}{g}}$, wobei 
+	${\displaystyle\left(\frac{f}{g}\right)(x):=\frac{f(x)}{g(x)}}$ 
+	mit $g(x) \neq 0$ und $D(f) \cap D(g)
+	\backslash\{x|g(x)=0\}$,
+	\item {\bf Verkettung} $f \circ g$, wobei
+	$(f\circ g)(x):=f(g(x))$ mit $\{x \in D(g)|g(x) \in D(f)\}$,
+\end{enumerate}
+%
+stetig auf den entsprechenden Definitionsbereichen.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Ableitungen einer differenzierbaren reellen Funktion]%
+{Ableitungen einer differenzierbaren reellen Funktion}
+\lb{sec:ablt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Das zentrale Thema dieses Kapitels ist die mathematische
+Beschreibung des {\bf lokalen \"Anderungsverhaltens} (engl.: local 
+variability) von
+{\em stetigen\/} reellen Funktion einer Variablen,
+$f:D\subseteq\mathbb{R} \rightarrow W\subseteq\mathbb{R}$, deren
+Grundlagen wir uns nun zuwenden. Dazu wollen wir eine kleine
+\"Anderung des Wertes des Argumentes $x$ von $f$ betrachten,
+d.h.\ wir ver\"andern $x \rightarrow x+\Delta x$ mit $\Delta x
+\in \mathbb{R}$ und untersuchen, welche Auswirkung auf $f$ diese
+\"Anderung von $x$ nach sich zieht. Wir finden unmittelbar, dass
+sich aus der vorgegebenen \"Anderung die Konsequenz
+$y \rightarrow y+\Delta y = f(x+\Delta x)$ mit $\Delta y
+\in \mathbb{R}$ einstellt. Im Fazit: eine vorgegenene \"Anderung
+des Argumentes $x$ der Gr\"o\ss e $\Delta x$ bewirkt f\"ur $f$
+eine \"Anderung der Gr\"o\ss e $\Delta y = f(x+\Delta x)-f(x)$.
+Interessant ist nun f\"ur uns ein {\bf Gr\"o\ss envergleich}
+dieser beiden \"Anderungen. Dazu bilden wir das Verh\"altnis
+%
+\[
+\frac{\Delta y}{\Delta x} = \frac{f(x+\Delta x)-f(x)}{\Delta x}
+\ ,
+\]
+%
+auch {\em Differenzenquotient\/} f\"ur $f$ genannt. Eine
+naheliegende Frage lautet nun: wie verh\"alt sich der Wert dieses
+Differenzenquotienten im Grenzfall, dass wir die vorgegebene
+\"Anderung $\Delta x$ des Argumentes von $f$ kontinuierlich
+kleiner werden lassen, bis sie auf Null gesunken ist?
+
+\medskip
+\noindent
+\underline{\bf Def.:}
+Eine stetige reelle Funktion $f$ einer Variablen hei\ss t
+{\bf differenzierbar an der Stelle} (engl.: differentiable at) $x 
+\in D(f)$, wenn f\"ur beliebiges $\Delta x \in \mathbb{R}$ der 
+Grenzwert
+%
+\be
+\fbox{$\displaystyle
+f^{\prime}(x) := \lim_{\Delta x \to 0}
+\frac{\Delta y}{\Delta x}
+= \lim_{\Delta x \to 0}
+\frac{f(x+\Delta x)-f(x)}{\Delta x}
+$}
+\ee
+%
+existiert und eindeutig ist. Ist $f$ differenzierbar
+{\em f\"ur alle\/} $x \in D(f)$, so wird $f$ {\bf differenzierbar} 
+(engl.: differentiable) genannt.
+
+\medskip
+\noindent
+Die Existenz dieses Grenzwertes in einem Punkt $(x,f(x))$ setzt
+f\"ur die Funktion $f$ in diesem Punkt faktisch die Abwesenheit
+von "`Spr\"ungen und Knicken"' voraus, dass also $f$ in
+$(x,f(x))$ hinreichend "`glatt"' ist. Die Gr\"o\ss e
+$f^{\prime}(x)$ wird {\bf erste Ableitung} (engl.: first 
+derivative) der (differenzierbaren) Funktion $f$ an der Stelle $x$ 
+genannt. Sie ist ein Ma\ss\ f\"ur die {\bf lokale \"Anderungsrate}
+(engl.: local rate of change) der Funktion $f$ im Punkt $(x,f(x))$.
+Allgemein gilt f\"ur die erste Ableitung $f^{\prime}(x)$ die
+Interpretation: wird das Argument $x$ einer differenzierbaren
+reellen Funktion $f$ um $1$ (eine Einheit) erh\"oht, so \"andert
+sich die Funktion $f$ in Konsequenz dessen n\"aherungsweise um
+$f^{\prime}(x)\cdot 1$ (Einheiten).
+
+\medskip
+\noindent
+Alternative Schreibweise:
+%
+$$
+f^{\prime}(x) \equiv \frac{{\rm d}f(x)}{{\rm d}x} \ .
+$$
+%
+
+\medskip
+\noindent
+Die Differenzialrechnung wurde zusammen mit der Integralrechnung
+(siehe Kapitel~\ref{ch7}) w\"ahrend der zweiten H\"alfte des
+17.\ Jahrhunderts unabh\"angig voneinander von dem englischen
+Physiker, Mathematiker, Astronomen und Philosophen
+\href{http://turnbull.mcs.st-and.ac.uk/history/Biographies/Newton.html}{Sir
+Isaac Newton (1643--1727)} sowie dem deutschen Philosophen,
+Mathematiker und Physiker
+\href{http://turnbull.mcs.st-and.ac.uk/history/Biographies/Leibniz.html}{Gottfried
+Wilhelm Leibniz (1646--1716)} entwickelt.
+
+\medskip
+\noindent
+\"Uber die erste Ableitung einer differenzierbaren Funktion $f$
+an einer Stelle $x_{0} \in D(f)$, also $f^{\prime}(x_{0})$,
+definieren wir die so genannte {\bf Linearisierung} (engl.: 
+linearisation) von $f$ in einer Umgebung der Stelle $x_{0}$. Die 
+damit verbundene Gleichung der {\bf Tangente} (engl.: tangent) an 
+$f$ im Punkt $(x_{0},f(x_{0}))$ ist durch
+%
+\be
+\lb{ftangente}
+\fbox{$\displaystyle
+y = f(x_{0}) + f^{\prime}(x_{0})(x-x_{0})
+$}
+\ee
+%
+gegeben.
+
+\medskip
+\noindent
+\underline{\bf GTR:} Die Berechnung lokaler Ableitungswerte
+$f^{\prime}(x_{0})$ kann, f\"ur vorgegebenes, eingespeichertes $f$,
+im Modus {\tt CALC} mit der vorprogrammierten interaktiven
+Funktion {\tt dy/dx} durchgef\"uhrt werden.
+
+\medskip
+\noindent
+F\"ur die in Abschnitt~\ref{sec:fkt} besprochenen f\"unf Familien
+elementarer reeller Funktionen, sowie f\"ur (u.a.\ aus diesen
+nach diversen M\"oglichkeiten) zusammengesetze Funktionen, gelten
+folgende Differenziationsregeln:
+
+\medskip
+\noindent
+{\bf Differenziationsregeln}
+%f\"ur reelle Funktionen einer Variablen}
+%
+\begin{enumerate}
+\item $(c)^{\prime} = 0$ f\"ur $c = \text{konstant} \in \mathbb{R}$
+\hfill ({\bf Konstanten})
+\item $(x)^{\prime} = 1$ \hfill ({\bf Lineare Funktion})
+\item $(x^{n})^{\prime} = nx^{n-1}$ f\"ur $n \in \mathbb{N}$
+\hfill ({\bf Nat\"urliche Potenzfunktionen})
+\item $(x^{\alpha})^{\prime} = \alpha x^{\alpha-1}$ f\"ur
+$\alpha \in \mathbb{R}$ und $x \in \mathbb{R}_{> 0}$
+\hfill ({\bf Allgemeine Potenzfunktionen})
+\item $(a^{x})^{\prime} = \ln(a)a^{x}$ f\"ur
+$a \in \mathbb{R}_{> 0}\backslash\{1\}$
+\hfill ({\bf Exponentialfunktionen})
+\item $(e^{ax})^{\prime} = ae^{ax}$ f\"ur $a \in \mathbb{R}$
+\hfill ({\bf Nat\"urliche Exponentialfunktionen})
+\item $\displaystyle (\log_{a}(x))^{\prime} = \frac{1}{x\ln(a)}$
+f\"ur $a \in \mathbb{R}_{> 0}\backslash\{1\}$ und $x \in
+\mathbb{R}_{> 0}$ \hfill ({\bf Logarithmusfunktionen})
+\item $(\displaystyle \ln(x))^{\prime} = \frac{1}{x}$
+f\"ur $x \in \mathbb{R}_{> 0}$
+\hfill ({\bf Nat\"urliche Logarithmusfunktion}).
+\end{enumerate}
+%
+F\"ur differenzierbare reelle Funktionen $f$ und $g$ 
+gilt:\footnote{(Engl.: summation rule, product rule, quotient 
+rule, chain rule, logarithmic differentiation, differentiation of 
+an inverse function.)}
+%
+\begin{enumerate}
+\item $(cf(x))^{\prime} = cf^{\prime}(x)$ f\"ur
+$c = \text{konstant} \in \mathbb{R}$
+\item $(f(x) \pm g(x))^{\prime} = f^{\prime}(x) \pm g^{\prime}(x)$
+\hfill ({\bf Summenregel})
+\item $(f(x)g(x))^{\prime} = f^{\prime}(x)g(x) + f(x)g^{\prime}(x)$
+\hfill ({\bf Produktregel})
+\item $\displaystyle \left(\frac{f(x)}{g(x)}\right)^{\prime}
+= \frac{f^{\prime}(x)g(x) - f(x)g^{\prime}(x)}{(g(x))^{2}}$
+\hfill ({\bf Quotientenregel})
+\item $((f \circ g)(x))^{\prime}
+%= (f(g(x)))^{\prime}
+= \left.f^{\prime}(g)\right|_{g=g(x)}\cdot
+g^{\prime}(x)$ \hfill ({\bf Kettenregel})
+\item $\displaystyle (\ln(f(x)))^{\prime}
+= \frac{f^{\prime}(x)}{f(x)}$ f\"ur $f(x) > 0$
+\hfill ({\bf Logarithmisches Differenzieren})
+\item $\displaystyle (f^{-1}(x))^{\prime}
+= \left.\frac{1}{f^{\prime}(y)}
+\right|_{y=f^{-1}(x)}$, falls $f$ eineindeutig ist.
+
+\hfill ({\bf Differenzieren einer inversen Funktion}).
+\end{enumerate}
+%
+Die Methoden der Differenzialrechnung wollen wir nun exemplarisch
+zur Beschreibung des \"Anderungsverhaltens einiger in
+\"okonomischen Anwendungen h\"aufig wiederkehrender einfacher
+Funktionen heranziehen, sowie zur Bestimmung von m\"oglichen
+Extremwerten dieser. Die im folgenden Abschnitt bereit gestellte
+Liste bietet einen kurzen \"Uberblick \"uber verschiedene
+g\"angige Beispiele.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[\"Okonomische Funktionen der Wirtschaftstheorie]%
+{\"Okonomische Funktionen der Wirtschaftstheorie}
+\lb{sec:oekfkt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\begin{enumerate}
+
+\item {\bf Kostenfunktion} (engl.: total cost function) $K(x) \geq 
+0$ \hfill (dim: GE) \\
+Argument: Ausbringungsmenge (engl.: level of physical output) $x 
+\geq 0$ (dim: ME)
+
+\item {\bf Grenzkostenfunktion} (engl.: marginal cost function) 
+$K^{\prime}(x) > 0$ \hfill (dim: GE/ME) \\
+Argument: Ausbringungsmenge $x \geq 0$ (dim: ME)
+
+\item {\bf Durchschnittskostenfunktion} (engl.: average cost 
+function) $K(x)/x > 0$ \hfill (dim: GE/ME) \\
+Argument: Ausbringungsmenge $x > 0$ (dim: ME)
+
+\item {\bf St\"{u}ckpreisfunktion} (engl.: unit price function) 
+$p(x) \geq 0$ \hfill (dim: GE/ME) \\
+Argument: Ausbringungsmenge $x > 0$ (dim: ME)
+
+\item {\bf Ertragsfunktion} (engl.: total revenue function) $E(x) 
+:= xp(x) \geq 0$ \hfill (dim: GE) \\
+Argument: Ausbringungsmenge $x > 0$ (dim: ME)
+
+\item {\bf Grenzertragsfunktion} (engl.: marginal revenue function)
+$E^{\prime}(x) = xp^{\prime}(x)+p(x)$
+\hfill (dim: GE/ME) \\
+Argument: Ausbringungsmenge $x > 0$ (dim: ME)
+
+\item {\bf Gewinnfunktion} (engl.: profit function)
+$G(x) := E(x)-K(x)$
+\hfill (dim: GE) \\
+Argument: Ausbringungsmenge $x > 0$ (dim: ME)
+
+\item {\bf Grenzgewinnfunktion} (engl.: marginal profit function)
+$G^{\prime}(x) := E^{\prime}(x)-K^{\prime}(x)
+= xp^{\prime}(x)+p(x)-K^{\prime}(x)$
+\hfill (dim: GE/ME) \\
+Argument: Ausbringungsmenge $x > 0$ (dim: ME)
+
+\item {\bf Nutzenfunktion}\footnote{Nutzenfunktionen werden in der 
+Wirtschaftstheorie nicht notwendigerweise als differenzierbar 
+vorausgesetzt.} (engl.: utility function) $U(x)$ \hfill (dim: 
+fallabh\"angig) \\
+Argument: Wohlstand, Handlungsm\"oglichkeit (engl.: wealth, 
+opportunity, action) $x$ (dim: fallabh\"angig)
+
+Das Konzept einer Nutzenfunktion zur Quantifizierung des 
+psychologischen Werts, den ein Wirtschaftsakteur einer bestimmten 
+Geldsumme oder dem Besitz eines bestimmten Guts zuschreibt, wurde 
+von dem Schweizerischen Mathematiker und Physiker 
+\href{http://www-history.mcs.st-and.ac.uk/Biographies/Bernoulli_Daniel.html}{Daniel Bernoulli (1700--1782)} 
+im Jahre 1738 in die {\bf Wirtschaftstheorie} (engl: economic 
+theory) eingef\"uhrt; vgl. Bernoulli (1738)~\ct{ber1738}. Die 
+Existenz einer Nutzenfunktion geh\"ort zu den Grundanahmen der 
+Theorie und wird allgemein als rechtsgekr\"ummte Funktion 
+dargestellt, $U^{\prime\prime}(x) < 0$, vor dem Hintergrund der 
+\emph{Annahme} abnehmenden Grenznutzens mit steigendem Wohlstand.
+
+\item {\bf Wirtschaftlichkeit} (engl.: economic efficiency)
+$W(x) := E(x)/K(x) \geq 0$
+\hfill (dim: 1) \\
+Argument: Ausbringungsmenge $x > 0$ (dim: ME)
+
+\item {\bf Nachfragefunktion} (engl.: demand function) $N(p) \geq 
+0$, monoton fallend \hfill (dim: ME) \\
+Argument: Preis pro ME $p$, ($0 \leq p \leq p_{\rm max}$)
+(dim: GE/ME)
+
+\item {\bf Angebotsfunktion} (engl.: supply function) $A(p) \geq 
+0$, monoton steigend \hfill (dim: ME) \\
+Argument: Preis pro ME $p$, ($p_{\rm min} \leq p$)
+(dim: GE/ME).
+
+\end{enumerate}
+%
+
+\medskip
+\noindent
+Ein besonders prominentes Beispiel einer reellen 
+\"{o}konomischen Funktion einer Variablen stellt die 
+{\bf psychologische Wertfunktion} (engl.: psychological value 
+function) dar, welche die Israelisch--US-Amerikanischen 
+experimentellen Psychologen Daniel Kahneman und Amos Tversky 
+(1937--1996) im Rahmen ihrer {\bf Neuen Erwartungstheorie} (engl.: 
+Prospect Theory), einem Fundament der {\bf Verhaltens\"{o}konomik} 
+(engl.: Behavioural Economics), entwickelt haben (vgl. Kahneman 
+und Tversky (1979)~\ct[S.~279]{kahtve1979}, und Kahneman 
+(2011)~\ct[S.~282f]{kah2011}). Geehrt wurden die Untersuchungen 
+dieser Autoren im Jahre 2002 mit dem
+\href{http://www.nobelprize.org/nobel_prizes/economics/laureates/2002/}{Preis f\"ur Wirtschaftswissenschaften im Gedenken an Alfred 
+Nobel}. Eine m\"{o}gliche Representation dieser psychologischen 
+Wertfunktion wird durch abschnittsweise Beschreibung
+%
+\be
+\lb{psychvaluefct}
+v(x)=
+\begin{cases}
+a\log_{10}\left(1+x\right) & \text{f\"{u}r}\quad
+x \in \mathbb{R}_{\geq 0} \\
+\\
+-2a\log_{10}\left(1-x\right) & \text{f\"{u}r}\quad
+x \in \mathbb{R}_{< 0}
+\end{cases} \ ,
+\ee
+%
+mit Parameter $a \in \mathbb{R}_{>0}$, gegeben. Im Kontrast zu 
+Bernoullis Nutzenfunktion, stellt hierbei das Argument~$x$ die 
+\emph{\"{A}nderung einer quantitativen Wohlstandsgr\"{o}\ss e} 
+bez\"{u}glich eines vorgegebenen Referenzpunktes dar (anstatt die 
+quantitative Wohlstandsgr\"{o}\ss e selbst).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Kurvendiskussion}
+\lb{sec:kurvdisk}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Bevor wir zur Anwendung der Differenzialrechnung auf einige
+einfache quantitative Probleme aus den Wirtschaftswissenschaften
+schreiten, fassen wir in diesem Abschnitt kurz die
+grundlegenden Schritte einer umfassenden Kurvendiskussion (engl.: 
+curve sketching) f\"ur
+reelle Funktionen einer Variablen zusammen. Wesentlicher Aspekte
+einer Kurvendiskussion bedienen wir uns sodann in drei
+nachfolgenden Betrachtungen \"okonomischer Art.
+%
+\begin{enumerate}
+
+\item {\bf Definitionsbereich} (engl.: domain): $D(f)=\{x \in 
+\mathbb{R}|f(x) \ \text{ist regul\"ar}\}$
+
+\item {\bf Symmetrien} (engl.: symmetries): f\"ur alle $x \in D(f)$, ist
+\begin{itemize}
+\item[(i)] $f(-x) = f(x)$, d.h. $f$ {\bf gerade} (engl.: even), 
+oder
+\item[(ii)] $f(-x) = -f(x)$, d.h. $f$ {\bf ungerade} (engl.: odd), 
+oder
+\item[(iii)] $f(-x) \neq f(x) \neq -f(x)$, d.h. $f$ hat {\bf keine
+Symmetrie}?
+\end{itemize}
+
+\item {\bf Nullstellen} (engl.: roots): alle $x_{N} \in D(f)$, die 
+die Bedingung $f(x) \stackrel{!}{=} 0$ erf\"ullen.
+
+\item {\bf Lokale Extremwerte} (engl.: local extremal values):
+\begin{itemize}
+\item[(i)] lokale {\bf Minima} (engl.: local minima) von $f$ liegen vor bei allen $x_{E} \in D(f)$, die die
+
+notwendige Bedingung $f^{\prime}(x) \stackrel{!}{=} 0$, und die
+
+hinreichende Bedingung $f^{\prime\prime}(x) \stackrel{!}{>} 0$
+simultan erf\"ullen.
+
+\item[(ii)] lokale {\bf Maxima} (engl.: local maxima) von $f$ 
+liegen vor bei allen $x_{E} \in D(f)$, die die
+
+notwendige Bedingung $f^{\prime}(x) \stackrel{!}{=} 0$, und die
+
+hinreichende Bedingung $f^{\prime\prime}(x) \stackrel{!}{<} 0$
+simultan erf\"ullen.
+\end{itemize}
+
+\item {\bf Wendepunkte} (engl.: points of inflection): alle $x_{W} 
+\in D(f)$, die die
+
+notwendige Bedingung $f^{\prime\prime}(x) \stackrel{!}{=} 0$, und 
+die
+
+hinreichende Bedingung $f^{\prime\prime\prime}(x) 
+\stackrel{!}{\neq} 0$
+simultan erf\"ullen.
+
+\item {\bf Monotonie} (engl.: monotonous behaviour):
+\begin{itemize}
+\item[(i)] $f$ monoton {\bf steigend} (engl.: monotonously 
+increasing) f\"ur $x \in D(f)$ mit $f^{\prime}(x) > 0$
+\item[(ii)] $f$ monoton {\bf fallend} (engl.: monotonously 
+decreasing) f\"ur $x \in D(f)$ mit $f^{\prime}(x) < 0$
+\end{itemize}
+
+\item {\bf Lokale Kr\"ummung} (engl.: local curvature):
+\begin{itemize}
+\item[(i)] $f$ {\bf linksgekr\"ummt} (engl.: left-handedly curved) 
+f\"ur $x \in D(f)$ mit $f^{\prime\prime}(x) > 0$
+\item[(ii)] $f$ {\bf rechtsgekr\"ummt} (engl.: right-handedly 
+curved) f\"ur $x \in D(f)$ mit $f^{\prime\prime}(x) < 0$
+\end{itemize}
+
+\item {\bf Asymptoten} (engl.: asymptotic behaviour):
+\begin{itemize}
+\item[(i)] Geraden $y=ax+b$ mit den Eigenschaften
+$\lim_{x \to +\infty}[f(x)-ax-b]=0$
+oder $\lim_{x \to -\infty}[f(x)-ax-b]=0$
+\item[(ii)] Geraden $x=x_{0}$ an Polstellen
+$x_{0} \notin D(f)$
+\end{itemize}
+
+\item {\bf Wertebereich} (engl.: range): $W(f)=\{y \in 
+\mathbb{R}|y=f(x)\}$.
+
+\end{enumerate}
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Analytische Untersuchungen \"okonomischer Funktionen]%
+{Analytische Untersuchungen \"okonomischer Funktionen}
+\lb{sec:extroekfkt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%------------------------------------------------------------------
+\subsection{Kostenfunktionen nach Turgot und von Th\"unen}
+%------------------------------------------------------------------
+Nach dem wirtschaftstheoretischen {\bf Ertragsgesetz} (engl.: law 
+of diminishing returns), welches auf den franz\"osischen 
+Staatsmann und \"Okonomen 
+\href{http://en.wikipedia.org/wiki/Anne-Robert-Jacques_Turgot,_Baron_de_Laune}{Anne
+Robert Jacques Turgot (1727--1781)} sowie den deutschen Agrar- und
+Wirtschaftswissenschaftler
+\href{http://en.wikipedia.org/wiki/Johann_Heinrich_von_Thünen}{Johann
+Heinrich von Th\"unen (1783--1850)} zur\"uckgeht, wird f\"ur eine
+nichtnegative {\bf Kostenfunktion} (engl.: total cost function) 
+$K(x)$ (in GE) mit
+{\bf Ausbringungsmenge} (engl.: level of physical output) $x \geq 
+0~\text{ME}$ als quantitative
+Abbildungsvorschrift die mathematische Form eines speziellen
+{\em Polynoms dritten Grades\/} [vgl.\ Gl.~(\ref{npol})]
+angenommen, welches durch
+%
+\be
+\lb{totalcostfct}
+\fbox{$\displaystyle\begin{array}{c}
+K(x) = \underbrace{a_{3}x^{3}
++ a_{2}x^{2} + a_{1}x}_{=K_{v}(x)}
++ \underbrace{a_{0}}_{=K_{f}} \\[10mm]
+\text{mit}\ a_{3},a_{1} > 0,\, a_{2} < 0,
+\, a_{0} \geq 0,
+\, a_{2}^{2}-3a_{3}a_{1} < 0
+\end{array}
+$}
+\ee
+%
+beschrieben wird und somit vier freie Parameter besitzt.
+Es handelt sich hierbei um ein konkretes Beispiel einer
+empirisch motivierten, aus einer {\bf Regressionsanalyse}
+hervorgegangenen {\bf Modellierung} eines
+{\bf nichtlinearen} (engl.: non-linear) funktionalen Zusammenhangs 
+zwischen zwei gegebenen \"okonomischen Gr\"o\ss en: hier konkret
+der Ausbringungsmenge $x$ eines Produktes einerseits,
+und den daran gekoppelten Produktionskosten $K(x)$
+andererseits. Die f\"ur $K(x)$ angenommene funktionale Form
+ist aus der Praxis abgeleitet; sie soll folgende empirisch
+beobachtete Eigenschaften der Produktionskosten reflektieren:
+f\"ur Ausbringungsmengen $x \geq 0~\text{ME}$ liegt streng monoton
+steigendes Verhalten vor, insbesondere gibt es {\em keine\/}
+Nullstellen, {\em keine\/} lokalen Extremwerte,\footnote{Die
+letzte Bedingung in Gl.~(\ref{totalcostfct}) gew\"ahrleistet
+eine erste Ableitung von $K(x)$, welche {\em keine\/} reellen
+Nullstellen zul\"asst; vgl. $0\stackrel{!}{=}ax^{2}+bx+c$ mit
+$b^{2}-4ac<0$.} jedoch {\em genau eine\/} Wendestelle. Als
+Kurve betrachtet stellt $K(x)$ in dieser speziellen Form
+einen seitenverkehrten, langestreckten Gro\ss buchstaben
+"`S"' dar: ausgehend von einem Fixkostenwert, steigen die
+Produktionskosten zun\"achst degressiv bis zu einem
+Wendepunkt, um danach progressiv weiterzuwachsen.
+
+\medskip
+\noindent
+Allgemein setzt sich eine
+Kostenfunktion in Abh\"angigkeit einer Ausbringungsmenge
+aus {\bf variablen Kosten} (engl.: variable costs) $K_{v}(x)$ und 
+{\bf fixen Kosten} (engl.: fixed costs)
+$K_{f}=a_{0}$ zusammen. Diese Tatsache bringen wir durch
+den einfachen Ansatz
+%
+\be
+K(x)=K_{v}(x)+K_{f}
+\ee
+%
+zum Ausdruck.
+
+\medskip
+\noindent
+Ertragsgesetzliche Kostenfuntionen unterteilt man in der
+Betriebswirtschaftslehre in vier Phasen, deren Grenzen durch
+besonders ausgezeichnete Werte der Ausbringungsmenge
+festgelegt werden: 
+%
+\begin{itemize}
+
+\item {\bf Phase I} ($0~\text{ME} \leq x \leq x_{W}$):
+
+Die Kostenfunktion $K(x)$ besitzt f\"ur
+die Ausbringungsmenge $x_{W} = -a_{2}/(3a_{3}) > 0~\text{ME}$
+einen {\bf Wendepunkt}. F\"ur kleinere Werte von $x$
+ist $K^{\prime\prime}(x) < 0~\text{GE}/\text{ME}^{2}$, d.h.
+$K(x)$ w\"achst hier degressiv, f\"ur gr\"o\ss ere
+$x$ ist $K^{\prime\prime}(x) > 0~\text{GE}/\text{ME}^{2}$,
+d.h. $K(x)$ w\"achst hier progressiv. Die {\bf Grenzkosten} 
+(engl.: marginal costs)
+%
+\be
+K^{\prime}(x) = 3a_{3}x^{2}+2a_{2}x+a_{1}
+> 0~\text{GE}/\text{ME} \ \text{f\"ur\ alle} \ x \geq 0~\text{ME}
+\ee
+%
+erreichen bei der Ausbringungsmenge
+$x_{W} = -a_{2}/(3a_{3})$ ein %(lokales)
+{\bf Minimum}.
+
+\item {\bf Phase II} ($x_{W} < x \leq x_{g_{1}}$):
+
+Die {\bf variablen Durchschnittskosten} (bzw.\ variablen
+St\"uckkosten) (engl.: variable average costs)
+%
+\be
+\frac{K_{v}(x)}{x} = a_{3}x^{2} + a_{2}x + a_{1}
+\ ,\quad x > 0~\text{ME}
+\ee
+%
+werden {\bf minimal} f\"ur eine Ausbringungsmenge
+$x_{g_{1}}=-a_{2}/(2a_{3}) > 0~\text{ME}$. Bei diesem Wert
+von $x$ liegt \emph{Gleichheit der variablen Durchschnittskosten 
+und der Grenzkosten} vor, also
+%
+\be
+\lb{betrmin}
+\frac{K_{v}(x)}{x} = K^{\prime}(x) \ ,
+\ee
+%
+was \"uber die Quotientenregel des Ableitens aus der
+notwendigen Extremalbedingung
+%
+\[
+0 \stackrel{!}{=} \left(\frac{K_{v}(x)}{x}\right)^{\prime}
+= \frac{(K(x)-K_{f})^{\prime}\cdot x - K_{v}(x)\cdot 1}{x^{2}}
+\ ,
+\]
+%
+mit $K_{f}^{\prime}=0~\text{GE/ME}$, folgt. Man spricht
+vom Wertepaar $(x_{g_{1}},K(x_{g_{1}}))$ als
+dem {\bf Betriebsminimum}. F\"{u}r die Tangente an $K(x)$
+in diesem Punkt [vgl. Gl.~(\ref{ftangente})] gilt unter
+Verwendung der Eigenschaft (\ref{betrmin})
+%
+\[
+T(x) = K(x_{g_{1}}) + K^{\prime}(x_{g_{1}})(x-x_{g_{1}})
+= K_{v}(x_{g_{1}}) + K_{f} + \frac{K_{v}(x_{g_{1}})}{x_{g_{1}}}\,
+(x-x_{g_{1}})
+= K_{f} + \frac{K_{v}(x_{g_{1}})}{x_{g_{1}}}\,x \ ,
+\]
+%
+d.h. sie schneidet die $K$-Achse an der Stelle $K_{f}$.
+
+\item {\bf Phase III} ($x_{g_{1}} < x \leq x_{g_{2}}$):
+
+Die {\bf Durchschnittskosten} (bzw.\ St\"uckkosten) (engl.: 
+average costs)
+%
+\be
+\frac{K(x)}{x} = a_{3}x^{2} + a_{2}x + a_{1}
++ \frac{a_{0}}{x} \ ,\quad x > 0~\text{ME}
+\ee
+%
+werden {\bf minimal} f\"ur eine Ausbringungsmenge
+$x_{g_{2}} > 0~\text{ME}$, welche die Bedingungsgleichung
+$0~\text{GE}\stackrel{!}{=}2a_{3}x_{g_{2}}^{3}+a_{2}x_{g_{2}}^{2}-a_{0}$
+erf\"ullt. Bei diesem Wert von $x$ liegt {\em Gleichheit der
+Durchschnittskosten und der Grenzkosten\/} vor, also
+%
+\be
+\lb{betropt1}
+\frac{K(x)}{x} = K^{\prime}(x) \ ,
+\ee
+%
+was \"uber die Quotientenregel des Ableitens aus der
+notwendigen Extremalbedingung
+%
+\[
+0 \stackrel{!}{=} \left(\frac{K(x)}{x}\right)^{\prime}
+= \frac{K^{\prime}(x)\cdot x - K(x)\cdot 1}{x^{2}}
+\]
+%
+folgt. Alternativ findet man aus dieser Bedingung durch Umstellen
+die Beziehung
+%
+\be
+\lb{betropt2}
+\frac{K^{\prime}(x)}{K(x)/x}
+=x\,\frac{K^{\prime}(x)}{K(x)}=1
+\quad\text{f\"ur}\quad x=x_{g_{2}} \ .
+\ee
+%
+Man spricht vom Wertepaar $(x_{g_{2}},K(x_{g_{2}}))$ als dem
+{\bf Betriebsoptimum} (engl.: minimum efficient scale (MES)). 
+Betriebswirtschaftlich betrachtet ist f\"ur eine Ausbringungsmenge 
+$x=x_{g_{2}}$ das (bez\"uglich der in der Einleitung genannten 
+Gr\"o\ss e inverse) Verh\"altnis "`INPUT zu OUTPUT"', also 
+$K(x)/x$, am g\"unstigsten. F\"{u}r die Tangente an $K(x)$
+in diesem Punkt [vgl. Gl~(\ref{ftangente})] gilt unter
+Verwendung der Eigenschaft (\ref{betropt1})
+%
+\[
+T(x) = K(x_{g_{2}}) + K^{\prime}(x_{g_{2}})(x-x_{g_{2}})
+= K(x_{g_{2}}) + \frac{K(x_{g_{2}})}{x_{g_{2}}}\,(x-x_{g_{2}})
+= \frac{K(x_{g_{2}})}{x_{g_{2}}}\,x \ ,
+\]
+%
+d.h. sie schneidet die $K$-Achse an der Stelle $0~\text{GE}$.
+
+\item {\bf Phase IV} ($x > x_{g_{2}}$):
+
+Es gilt $K^{\prime}(x)/K(x)/x>1$; die mit der Fertigung einer
+zus\"atzlichen ME des betrachteten Produkts verbundenen Kosten,
+$K^{\prime}(x)$, fallen jetzt h\"oher aus als die
+Durchschnittskosten des Produkts, $K(x)/x$. Diese Situation
+ist betriebswirtschaftlich betrachtet ung\"unstig.
+\end{itemize}
+%
+
+%------------------------------------------------------------------
+\subsection{Ertragsgesetzliche Gewinnfunktionen}
+%------------------------------------------------------------------
+In diesem Abschnitt seien unsere \"Uberlegungen auf die
+Preispolitik im {\bf Monopol} (engl.: monopoly) beschr\"ankt. 
+Dar\"uber hinaus
+wollen wir die Annahme der G\"ultigkeit eines {\bf \"okonomischen
+Gleichgewichtes} (engl.: economic equilibrium) machen, dass sich 
+also das Angebot/der Absatz
+bzgl.\ eines Produktes und die Nachfrage bzgl.\ desselben
+Produktes mengenm\"a\ss ig entsprechen; als Formel
+%
+\be
+x(p) = N(p)
+\ee
+%
+geschrieben. Deshalb identifizieren wir im Folgenden $x(p)$
+mit einer nichtnegativen {\bf Nachfragefunktion} (engl.: demand 
+function) (in ME), die
+von einem {\bf St\"uckpreis} (engl.: price per unit) $p$ (in 
+GE/ME) abh\"angt, den
+ein Monopolist beliebig vorgeben kann. Je nach herangezogenem
+Wirtschaftsmodell k\"onnte $x(p)$ beispielsweise linear oder
+quadratisch von $p$ abh\"angen. Wichtig ist jedoch, dass wir
+$x(p)$ realistischerweise als streng monoton fallende Funktion
+annehmen wollen und sie somit auch {\em umkehrbar\/} sei. Die
+Nachfragefunktion $x(p)$ wird durch zwei spezielle Werte
+gekennzeichnet. Der so genannte {\bf Prohibitivpreis} (engl.: 
+prohibitive price) $p_{proh}$
+der Nachfrage wird durch die Bedingung $x(p_{proh}) = 0~\text{ME}$
+definiert; er gibt also eine Nullstelle von $x(p)$ an. Die so
+genannte {\bf S\"attigungsmenge} (engl.: saturation quantity) 
+$x_{satt}$ der Nachfrage 
+definiert sich durch die Bedingung
+$x_{satt}:=x(0~\text{GE/ME})$.\footnote{Prohibitivpreis und
+S\"attigungsmenge geben also die Werte der "`$x$-
+und $y$-Achsenabschnitte"' einer nichtnegativen
+Nachfragefunktion an.}
+
+\medskip
+\noindent
+Die zur streng monoton fallenden, nichtnegativen Nachfragefunktion
+$x(p)$ geh\"orige inverse Funktion ist durch die ebenfalls streng
+monoton fallende, nichtnegative {\bf Preis--Absatz--Funktion} 
+(engl.: price vs sales function)  $p(x)$
+(in GE/ME) gegeben. \"Uber $p(x)$ berechnet sich der {\bf Ertrag} 
+(engl.: total revenue) (in GE) eines Monopolisten in 
+Abh\"angigkeit einer Ausbringungsmenge nach 
+Abschnitt~\ref{sec:oekfkt} zu
+%
+\be
+\lb{eq:ertrag}
+E(x) = xp(x) \ .
+\ee
+%
+Unter der Annahme ertragsgesetzlich modellierter Kosten $K(x)$
+(in GE) f\"ur die Produktion, etc., hat im Monopol eine
+ertragsgesetzliche {\bf Gewinnfunktion} (engl.: profit function) 
+(in GE) in Abh\"angigkeit einer Ausbringungsmenge die Form
+%
+\be
+\lb{eq:gewinn}
+G(x) = E(x) - K(x)
+= \underbrace{x\overbrace{p(x)}^{\text{Preis--Absatz}}}_{
+\text{Ertrag}}
+- \underbrace{\left[a_{3}x^{3}+a_{2}x^{2}
++a_{1}x+a_{0}\right]}_{\text{Kosten}} \ .
+\ee
+%
+Ihre ersten zwei Ableitungen nach $x$ sind folglich durch
+die Ausdr\"ucke
+%
+\begin{eqnarray}
+G^{\prime}(x) = E^{\prime}(x) - K^{\prime}(x)
+& = & xp^{\prime}(x)+p(x)
+-\left[3a_{3}x^{2}+2a_{2}x+a_{1}\right] \\
+%
+G^{\prime\prime}(x) = E^{\prime\prime}(x) - K^{\prime\prime}(x)
+& = & xp^{\prime\prime}(x)
++2p^{\prime}(x)-\left[6a_{3}x+2a_{2}\right]
+\end{eqnarray}
+%
+gegeben. Mit den in Abschnitt~\ref{sec:kurvdisk} zur
+Kurvendiskussion angef\"uhrten Regeln berechnen sich
+damit f\"ur $G(x)$ die folgenden charakteristischen Kennwerte:
+%\pagebreak
+%
+\begin{itemize}
+
+\item {\bf Gewinnschwelle} (engl.: break-even point)
+
+$x_{S} > 0~\text{ME}$ als L\"osung von
+%
+\be
+G(x) \stackrel{!}{=} 0~\text{GE} \quad\text{(notwendige Bedingung)}
+\ee
+%
+und
+%
+\be
+G^{\prime}(x) \stackrel{!}{>} 0~\text{GE}/\text{ME}
+\quad\text{(hinreichende Bedingung)} \ ,
+\ee
+%
+
+\item {\bf Gewinngrenze} (engl.: end of profitable zone)
+
+$x_{G} > 0~\text{ME}$ als L\"osung von
+%
+\be
+G(x) \stackrel{!}{=} 0~\text{GE} \quad\text{(notwendige Bedingung)}
+\ee
+%
+und
+%
+\be
+G^{\prime}(x) \stackrel{!}{<} 0~\text{GE}/\text{ME}
+\quad\text{(hinreichende Bedingung)} \ ,
+\ee
+%
+
+\item {\bf Gewinnmaximum} (engl.: maximum profit)
+
+$x_{M} > 0~\text{ME}$ als L\"osung von
+%
+\be
+G^{\prime}(x) \stackrel{!}{=} 0~\text{GE}/\text{ME}
+\quad\text{(notwendige Bedingung)}
+\ee
+%
+und
+%
+\be
+G^{\prime\prime}(x) \stackrel{!}{<} 0~\text{GE}/\text{ME}^{2}
+\quad\text{(hinreichende Bedingung)} \ .
+\ee
+%
+\end{itemize}
+%
+Beachte insbesondere die folgende spezielle geometrische
+Eigenschaft: im Gewinnmaximum besitzen Ertrags- und
+Kostenfunktion grunds\"atzlich immer
+zueinander {\em parallele Tangenten\/}. Diese Tatsache folgt
+aus der notwendigen Bedingung
+%
+\be
+0~\text{GE}/\text{ME} \stackrel{!}{=} G^{\prime}(x)
+= E^{\prime}(x) - K^{\prime}(x)
+\qquad\Leftrightarrow\qquad
+E^{\prime}(x) \stackrel{!}{=} K^{\prime}(x) \ .
+\ee
+%
+
+\medskip
+\noindent
+\underline{\bf GTR:} Die Berechnung von Nullstellen und
+lokalen Maxima (bzw.\ Minima) kann f\"ur eine
+eingespeicherte Funktion im Modus {\tt CALC} leicht mit den
+vorprogrammierten interaktiven Funktionen {\tt zero} und
+{\tt maximum} (bzw.\ {\tt minimum}) durchgef\"uhrt werden.
+
+\medskip
+\noindent
+Von besonderem mathematischen Interesse ist in diesem Zusammenhang
+die folgende Betrachtung. Bekannt sei eine Gewinnfunktion $G(x)$
+der polynomialen Form
+%
+\be
+G(x) = -a_{3}(x+a)(x-b)(x-c)
+= a_{3}\left[-x^{3}+(b+c-a)x^{2}+(ab-bc+ca)x-abc\right] \ ,
+\ee
+%
+mit $a,b,c > 0$, $b < c$ und $x \geq 0~\text{ME}$, der nach Gln. 
+(\ref{eq:ertrag}) und (\ref{eq:gewinn}) eine {\em lineare\/} 
+Preis--Absatz--Funktion $p(x)$ zugrunde liegt. Dann
+\"uberf\"uhren die simultanen {\bf Skalentransformationen} (engl.: 
+scale transformation)
+%
+\be
+x \mapsto \lambda x \ , \qquad
+G(x) \mapsto \frac{1}{\lambda^{3}}\,G(\lambda x) \ ,
+\qquad
+\lambda > 0
+\ee
+%
+von unabh\"angiger und abh\"angiger Variable die
+Gewinnfunktion $G(x)$ in eine zweite, zu $G(x)$
+{\bf selbst\"ahnliche} (engl.: self-similar) Gewinnfunktion
+%
+\bea
+\tilde{G}(x) & = & -a_{3}\left(x+\frac{a}{\lambda}\right)
+\left(x-\frac{b}{\lambda}\right)\left(x-\frac{c}{\lambda}\right)
+\nonumber \\
+& = & a_{3}\left[-x^{3}+\frac{(b+c-a)}{\lambda}\,x^{2}
++\frac{(ab-bc+ca)}{\lambda^{2}}\,x
+-\frac{abc}{\lambda^{3}}\right] \ .
+\eea
+%
+Analog l\"asst sich mit polynomialen \"okonomischen 
+Funktionen $p(x)$, $E(x)$ und $K(x)$ verfahren.
+
+\medskip
+\noindent
+Diese Betrachtung abschlie\ss end wenden wir uns kurz dem Begriff
+des {\bf Cournotschen Punktes} (engl.: Cournot's point) (benannt 
+nach dem franz\"osischen Mathematiker und Wirtschaftstheoretiker
+\href{http://turnbull.mcs.st-and.ac.uk/history/Biographies/Cournot.html}{Antoine--Augustin
+Cournot, 1801--1877}) zu. Man versteht hierunter ganz einfach die
+gewinnmaximale Mengen--\-Preis--\-Wertekom\-bi\-na\-tion
+$(x_{M}, p(x_{M}))$ der Preis--Absatz--Funktion $p(x)$ im Monopol.
+F\"ur diese Wertekombination gilt die
+{\bf Amoroso--Robinson--Relation} (engl.: Amoroso--Robinson 
+formula) (\href{http://en.wikipedia.org/wiki/Luigi_Amoroso}{Luigi 
+Amoroso, 1886--1965}, italienischer Mathematiker und
+Wirtschaftswissenschaftler;
+\href{http://en.wikipedia.org/wiki/Joan_Robinson}{Joan Violet
+Robinson, 1903--1983}, britische \"Okonomin)
+%
+\be
+p(x_{M}) = \frac{K^{\prime}(x_{M})}{1+\varepsilon_{p}(x_{M})} \ ,
+\ee
+%
+mit $K^{\prime}(x_{M})$ dem Wert der Grenzkosten bei $x_{M}$,
+und $\varepsilon_{p}(x_{M})$ dem Wert der {\bf Elastizit\"at}
+(engl.: elasticity)
+(siehe den nachfolgenden Abschnitt~\ref{sec:elast})
+der Preis--Absatz--Funktion bei $x_{M}$.
+Ausgehend von $E(x)=xp(x)$, erfolgt ihre Herleitung durch
+Umstellen aus dem gewinnmaximalen Grenzertag
+%
+\[
+E^{\prime}(x_{M}) = p(x_{M}) + x_{M}p^{\prime}(x_{M})
+= p(x_{M})\left[1
++ x_{M}\,\frac{p^{\prime}(x_{M})}{p(x_{M})}\right]
+\overbrace{=}^{\text{Abschn.~\ref{sec:elast}}} p(x_{M})\left[1
++ \varepsilon_{p}(x_{M})\right] \ ,
+\]
+%
+unter Verwendung der Extremaleigenschaft $E^{\prime}(x_{M})
+=K^{\prime}(x_{M})$.
+
+\medskip
+\noindent
+\underline{\bf Bem.:} Bei einer Marktsituation mit {\bf totaler
+Konkurrenz} (engl.: perfect competition) wird davon ausgegangen, 
+dass die Preis--Absatz--Funktion einen vom Markt fest vorgegebenen
+{\em konstanten\/} Wert annimmt, also
+$p(x)=p=\text{konstant}>0~\text{GE/ME}$ (und deshalb
+$p^{\prime}(x)=0~\text{GE/ME}^{2}$) gilt.
+
+%------------------------------------------------------------------
+\subsection{Extremwerte von Verh\"altnisgr\"o\ss en}
+%------------------------------------------------------------------
+Wir wollen nun kurz die Bestimmung von Extremwerten
+\"okonomischer Funktionen im Fall von Verh\"altnisgr\"o\ss en im
+Sinne der in der Einleitung genannten Konstruktion
+%
+\[
+\frac{\text{OUTPUT}}{\text{INPUT}}
+\]
+%
+besprechen. Die technische Vorgehensweise bleibt dabei nat\"urlich
+gleich; lediglich der ben\"otigte Rechenaufwand steigt
+m\"oglicherweise an, kann aber gegebenenfalls von einem GTR
+\"ubernommen werden.
+
+\medskip
+\noindent
+Zwei Beispiele von {\bf Maximalwertbestimmungen} wollen wir
+betrachten: 
+%
+\begin{itemize}
+\item[(i)]
+Wir beginnen mit dem {\bf Durchschnittsgewinn} (engl.: average 
+profit)
+%
+\be
+\frac{G(x)}{x}
+\ee
+%
+in Abh\"angigkeit von der Ausbringungsmenge
+$x \geq 0~\text{ME}$. Die Bedingungen zur Bestimmung
+eines Maximalwertes lauten dann $[G(x)/x]^{\prime}
+\stackrel{!}{=} 0~\text{GE/ME}^{2}$ und $[G(x)/x]^{\prime\prime}
+\stackrel{!}{<} 0~\text{GE/ME}^{3}$. Unter Beachtung der
+Quotientenregel des Ableitens (siehe Abschnitt~\ref{sec:ablt})
+liefert die erste Bedingung
+%
+\be
+\frac{G^{\prime}(x)x-G(x)}{x^{2}} = 0~\text{GE/ME}^{2} \ .
+\ee
+%
+Da ein Quotient den Wert Null aber nur annehmen kann, wenn sein
+Z\"ahler zu Null wird und gleichzeitig sein Nenner ungleich Null
+bleibt, folgt daraus
+%
+\be
+\lb{dgextr2}
+G^{\prime}(x)x-G(x) = 0~\text{GE}
+\quad\Rightarrow\quad
+x\,\frac{G^{\prime}(x)}{G(x)} = 1 \ .
+\ee
+%
+Zu Bestimmen sind Ausbringungsmengen, die die letztgenannte
+Bedingung erf\"ullen, und f\"ur welche zus\"atzlich die
+zweite Ableitung des Durchschnittsgewinns negativ wird.
+
+\item[(ii)]
+Als Ma\ss zahlen zum Vergleich zweier Unternehmen, beispielsweise
+ihrer Leistungsf\"ahigkeit bezogen auf einen vorgegebenen Zeitraum,
+eignen sich letztendlich nur dimensionslose,
+d.h.\ {\em einheitenunabh\"angige\/} Verh\"altnisgr\"o\ss en.
+Eine Gr\"o\ss e dieser Art ist die {\bf Wirtschaftlichkeit} 
+(engl.: economic efficiency)
+%
+\be
+W(x)=\frac{E(x)}{K(x)} \ ,
+\ee
+%
+gebildet aus den Kosten- und Ertragsfunktionen (in $\text{GE}$)
+eines Unternehmens in Abh\"angigkeit von der Ausbringungsmenge
+$x \geq 0~\text{ME}$. Analog zu oben lauten hier die Bedingungen
+zur Bestimmung eines Maximalwertes $[E(x)/K(x)]^{\prime}
+\stackrel{!}{=} 0 \cdot 1/\text{ME}$ und $[E(x)/K(x)]^{\prime\prime}
+\stackrel{!}{<} 0 \cdot 1/\text{ME}^{2}$. \"Uber die
+Quotientenregel des Ableitens (siehe Abschnitt~\ref{sec:ablt})
+ergibt sich aus der ersten Bedingung
+%
+\be
+\frac{E^{\prime}(x)K(x)-E(x)K^{\prime}(x)}{K^{2}(x)}
+= 0\cdot 1/\text{ME} \ ,
+\ee
+%
+also f\"ur $K(x) > 0~\text{GE}$
+%
+\be
+\lb{wirtextr1}
+E^{\prime}(x)K(x)-E(x)K^{\prime}(x) = 0~\text{GE}^{2}/\text{ME}
+\ .
+\ee
+%
+Nach Umstellen und Durchmultiplizieren mit $x > 0~\text{ME}$,
+l\"asst sich diese letzte Bedingung auch als
+%
+\be
+\lb{wirtextr2}
+x\,\frac{E^{\prime}(x)}{E(x)} = x\,\frac{K^{\prime}(x)}{K(x)}
+\ee
+%
+schreiben. Hintergrund dieser auf den ersten Blick ein wenig
+seltsam anmutenden Darstellungsweise [ebenso in
+Gl.~(\ref{dgextr2})] sind \"Uberlegungen, auf welche wir
+unmittelbar im n\"achsten Abschnitt eingehen
+werden. Abschlie\ss end bemerken wir: die Kennzahl
+Wirtschaftlichkeit wird maximal f\"ur Ausbringungsmengen, f\"ur
+welche Gl.~(\ref{wirtextr2}) erf\"ullt und zus\"atzlich die zweite
+Ableitung der Wirtschaftlichkeit negativ ist.
+\end{itemize}
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Elastizit\"aten]{Elastizit\"aten}
+\lb{sec:elast}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Wir wenden uns nun nochmals dem {\bf lokalen \"Anderungsverhalten} 
+(engl.: local variability)
+von differenzierbaren reellen Funktionen einer Variablen
+$f:D\subseteq\mathbb{R} \rightarrow W\subseteq\mathbb{R}$ zu. Aus
+Gr\"unden, die wir in K\"urze erl\"autern werden, wollen wir uns
+hierbei ausschlie\ss lich auf Bereiche von $f$ mit {\em 
+positiven\/} Werten des Argumentes $x$ und {\em positiven\/} 
+Funktionswerten $y=f(x)$ beschr\"anken. Wie schon zuvor in 
+Abschnitt~\ref{sec:ablt}, gehen wir wieder von einer kleinen 
+\"Anderung eines vorgegebenen Wertes des Argumentes~$x$ aus, und 
+untersuchen die daraus resultierende Wirkung auf $y=f(x)$:
+%
+\be
+x \stackrel{\Delta x \in \mathbb{R}}{\longrightarrow} x+\Delta x
+\qquad \Longrightarrow \qquad
+y=f(x) \stackrel{\Delta y \in \mathbb{R}}{\longrightarrow}
+y+\Delta y=f(x+\Delta x) \ .
+\ee
+%
+
+%\pagebreak
+\medskip
+\noindent
+Folgende Begriffe spielen in dieser Betrachtung eine wichtige
+Rolle:
+%
+\begin{itemize}
+\item Vorgegebene {\bf absolute \"Anderung} (engl.: absolute 
+change) der Variablen $x$:
+\qquad $\Delta x$\ ,
+\item Resultierende {\bf absolute \"Anderung} der Funktion $f$:
+\qquad $\Delta y=f(x+\Delta x)-f(x)$\ ,
+\item Vorgegebene {\bf relative \"Anderung} (engl.: relative 
+change) der Variablen $x$:
+\qquad $\displaystyle \frac{\Delta x}{x}$\ ,
+\item Resultierende {\bf relative \"Anderung} der
+Funktion $f$:
+\qquad $\displaystyle \frac{\Delta y}{y}
+=\frac{f(x+\Delta x)-f(x)}{f(x)}$\ .
+\end{itemize}
+%
+{\bf Relative \"Anderungen} nichtnegativer
+quantitativer Gr\"o\ss en sind definiert durch die
+Berechnungsvorschrift
+%
+\[
+\displaystyle
+\frac{\text{Neuer\ Wert}-\text{Alter\ Wert}}{\text{Alter\ 
+Wert}} \ ,
+\]
+%
+unter der Vorraussetzung, dass "`$\text{Alter\ Wert}>0$"' gilt. 
+Aus dieser Berechnungsvorschrift ergibt sich folglich "`$-1$"' als 
+Minimalwert f\"ur eine relative \"Anderung (was einer Reduzierung 
+um "`minus 100\%"' entspricht).
+
+\medskip
+\noindent
+Nun wollen wir die Gr\"o\ss enordnungen der beiden relativen
+\"Anderungen $\displaystyle \frac{\Delta x}{x}$ und $\displaystyle 
+\frac{\Delta y}{y}$ miteinander vergleichen. Hierzu betrachten wir 
+deren Quotienten, d.h. "`resultierende relative \"Anderung von
+$f$ zu vorgegebener relativer \"Anderung von $x$"':
+%
+\[
+\frac{\displaystyle\frac{\Delta y}{y}}{\displaystyle\frac{\Delta 
+x}{x}}
+=\frac{\displaystyle\frac{f(x+\Delta 
+x)-f(x)}{f(x)}}{\displaystyle\frac{\Delta x}{x}} \ .
+\]
+%
+Da $f$ als differenzierbar angenommen wurde, k\"onnen wir den
+Grenzwert dieses Quotienten f\"ur den Fall immer kleiner
+werdender vorgegebener relativer \"Anderungen $\displaystyle 
+\frac{\Delta x}{x} \to 0 \Rightarrow \Delta x \to 0$ bei $x > 0$ 
+betrachten und definieren:
+
+\medskip
+\noindent
+\underline{\bf Def.:}
+F\"ur eine differenzierbare reelle Funktion $f$ einer Variablen
+wird die \emph{einhei\-ten\-unabh\"angige Gr\"o\ss e}
+%
+\be
+\fbox{$\displaystyle
+\varepsilon_{f}(x)
+:=\lim_{\Delta x\to 0}\frac{\displaystyle\frac{\Delta y}{y}}{
+\displaystyle\frac{\Delta x}{x}}
+= \lim_{\Delta x\to 0}\frac{\displaystyle\frac{f(x+\Delta 
+x)-f(x)}{f(x)}}{\displaystyle\frac{\Delta x}{x}}
+= x\,\frac{f^{\prime}(x)}{f(x)}
+$}
+\ee
+%
+die {\bf Elastizit\"at} (engl.: elasticity) der Funktion $f$ an 
+der Stelle $x$ genannt.
+
+\medskip
+\noindent
+Die Elastizit\"at gibt die resultierende relative \"Anderung
+von $f$ bei vorgegebener infinitesimal kleiner relativer
+\"Anderung von $x$, ausgehend von $x>0$, an und ist somit ein
+Ma\ss\ f\"ur die {\bf relative lokale \"Anderungsrate} (engl.: 
+relative local rate of change) der Funktion $f$ im Punkt 
+$(x,f(x))$. Allgemein gilt insbesondere in der Wirtschaftstheorie 
+f\"ur die Elastizit\"at $\varepsilon_{f}(x)$ die Interpretation: 
+wir das Argument $x$ einer differenzierbaren positiven reellen 
+Funktion $f$ um $1~\%$ erh\"oht, so \"andert sich die Funktion $f$ 
+in Konsequenz dessen n\"aherungsweise um $\varepsilon_{f}(x)\cdot 
+1~\%$.
+
+\medskip
+\noindent
+%\underline{\bf Bem.:}
+In der Fachliteratur dr\"uckt man die
+Elastizit\"at von $f$ oft auch mithilfe von logarithmischen
+Ableitungen wie folgt aus:
+%
+$$
+\varepsilon_{f}(x)
+:= \frac{{\rm d}\ln[f(x)]}{{\rm d}\ln(x)}
+\qquad\text{f\"ur}\ x>0 \ \text{und} \ f(x)>0 \ ,
+$$
+%
+denn es gilt mit der Kettenregel der Differenziation
+%
+$$
+\frac{{\rm d}\ln[f(x)]}{{\rm d}\ln(x)}
+= \frac{\displaystyle\frac{{\rm 
+d}f(x)}{f(x)}}{\displaystyle\frac{{\rm d}x}{x}}
+= x\,\frac{\displaystyle\frac{{\rm d}f(x)}{{\rm d}x}}{f(x)}
+= x\,\frac{f^{\prime}(x)}{f(x)} \ .
+$$
+%
+In dieser logarithmischen Schreibweise der Regel f\"ur das
+Berechnen der Elastizit\"at einer differenzierbaren
+reellen Funktion $f$ erschlie\ss t sich direkt, wieso wir zu Beginn
+dieser Betrachtung die Einschr\"ankung auf Bereiche von $f$
+mit positiven Argumenten und positiven Funktionswerten
+vornahmen: der Definitionsbereich einer jeden
+Logarithmusfunktion umfasst nur {\em positive\/} reelle
+Zahlen.\footnote{Um den Anwendungsbereich der Messgr\"o\ss e
+$\varepsilon_{f}$ zu erweitern, k\"onnte man in
+verallgemeinernder Weise mit den Betr\"agen $|x|$ und $|f(x)|$
+arbeiten. In diesem Fall m\"usste man die vier M\"oglichkeiten
+(i) $x>0$, $f(x)>0$, (ii) $x<0$, $f(x)>0$, (iii) $x<0$,
+$f(x)<0$ und (iv) $x>0$, $f(x)<0$ getrennt betrachten.}
+Ein kurzer Blick auf die in Abschnitt \ref{sec:oekfkt}
+bereit gestellte Liste \"okonomischer Funktionen zeigt:
+in wirtschaftswissenschaftlichen Anwendungen der
+Differenzialrechnung treten h\"aufig (aber nicht
+ausschlie\ss lich) Funktionen mit nichtnegativen
+Argumenten und nichtnegativen Funktionswerten auf.
+
+%\pagebreak
+\medskip
+\noindent
+F\"ur die in Abschnitt~\ref{sec:fkt} diskutierten
+Familien elementarer reeller Funktionen einer Variablen
+gilt:
+
+\medskip
+\noindent
+{\bf Standardelastizit\"aten}
+%Alternativ: Liste in Tabellenform
+
+%
+\begin{enumerate}
+\item $f(x)=x^{n}$ f\"ur $n \in \mathbb{N}$
+und $x \in \mathbb{R}_{> 0}
+\ \Rightarrow\ \varepsilon_{f}(x)=n$
+\hfill ({\bf Nat\"urliche Potenzfunktionen})
+\item $f(x)=x^{\alpha}$ f\"ur $\alpha \in \mathbb{R}$
+und $x \in \mathbb{R}_{> 0}
+\ \Rightarrow\ \varepsilon_{f}(x)=\alpha$
+\hfill ({\bf Allgemeine Potenzfunktionen})
+\item $f(x)=a^{x}$ f\"ur $a \in \mathbb{R}_{> 0}\backslash\{1\}$
+und $x \in \mathbb{R}_{> 0}
+\ \Rightarrow\ \varepsilon_{f}(x)=\ln(a)x$
+\hfill ({\bf Exponentialfunktionen})
+\item $f(x)=e^{ax}$ f\"ur $a \in \mathbb{R}$
+und $x \in \mathbb{R}_{> 0}
+\ \Rightarrow\ \varepsilon_{f}(x)=ax$
+\hfill ({\bf Nat\"urliche Exponentialfunktionen})
+\item $f(x)=\log_{a}(x)$ f\"ur $a \in \mathbb{R}_{> 0}
+\backslash\{1\}$ und $x \in \mathbb{R}_{> 0}$
+
+\hfill\hfill$\displaystyle \quad\Rightarrow\quad
+\varepsilon_{f}(x)=\frac{1}{\ln(a)\log_{a}(x)}$
+\hfill ({\bf Logarithmusfunktionen})
+\item $f(x)=\ln(x)$ f\"ur $\displaystyle
+x \in \mathbb{R}_{> 0}
+\quad\Rightarrow\quad \varepsilon_{f}(x)=\frac{1}{\ln(x)}$
+\hfill ({\bf Nat\"urliche Logarithmusfunktion}).
+\end{enumerate}
+%
+Beachten Sie die Tatsache, dass f\"ur allgemeine Potenzfunktionen
+die Elastizit\"at $\varepsilon_{f}(x)$ eine $x$--unabh\"angige,
+{\em konstante\/} Gr\"o\ss e darstellt. {\bf Allgemeine
+Potenzfunktionen} werden deshalb auch {\bf skaleninvariant}
+(engl.: scale-invariant) genannt. Unter Skaleninvarianz reduzieren 
+sich einheitenunabh\"angige Verh\"altnisgr\"o\ss en, also 
+Quotienten von Variablen gleicher Dimension, generell zu 
+Konstanten. In diesem Zusammenhang ist zu bemerken, dass 
+skaleninvariante (fraktale) Potenzgesetze der Form 
+$f(x)=Kx^{\alpha}$, mit $K > 0$ und $\alpha \in 
+\mathbb{R}_{<0}\backslash \{-2,-1\}$, h\"aufig als 
+Wahrscheinlichkeitsverteilungsfunktionen beim mathematischen 
+Modellieren von Unsicherheit in den Wirtschafts-
+und Sozialwissenschaften zum Einsatz kommen, da sie bei geeigneter
+Wahl des Wertespektrums der Variablen $x$ und des Wertes ihrer 
+Potenz $\alpha$ zu unbeschr\"ankter Varianz f\"uhren; siehe z.B.
+Gleick (1987) \ct[S.~86]{gle1987}, Taleb (2007) 
+\ct[S.~326ff]{tal2007}, oder Ref.~\ct[Sec.~8.9]{hve2013}.
+
+\medskip
+\noindent
+Praktische Anwendungen des Konzepts der Elastizit\"at st\"utzen
+sich auf folgende einfache (lineare!) N\"aherungsformel zur
+Berechnung der Konsequenzen kleiner prozentualer \"Anderungen
+des Argumentes $x$ einer differenzierbaren reellen Funktion $f$:
+Ausgehend vom Wert $x_{0}>0$, gilt f\"ur vorgegebene prozentuale
+\"Anderungen von $x$ im Werteintervall
+$0~\% < {\displaystyle\frac{\Delta x}{x_{0}}} \leq 5~\%$
+f\"ur die resultierenden prozentualen \"Anderungen von $f$
+n\"aherungsweise die Relation
+%
+\be
+(\text{Prozentuale\ \"Anderung\ von}\ f)
+\approx (\text{Elastizit\"at\ von}\ f\ \text{bei}\ x_{0}) \times
+(\text{Prozentuale\ \"Anderung\ von}\ x) \ ,
+\ee
+%
+oder als Formel
+%
+\be
+\frac{f(x_{0}+\Delta x)-f(x_{0})}{f(x_{0})}
+\approx \varepsilon_{f}(x_{0})
+\frac{\Delta x}{x_{0}} \ .
+\ee
+%
+
+\medskip
+\noindent
+Nun wenden wir uns noch einer in den Wirtschaftswissenschaften
+praktizierten speziellen Sprachregelung zu.
+Das relative lokale \"Anderungsverhalten einer Funktion $f$
+hei\ss t f\"ur jene $x \in D(f)$
+\begin{itemize}
+	\item {\bf unelastisch} (engl.: inelastic), f\"ur welche 
+	$|\varepsilon_{f}(x)|<1$,
+	\item {\bf proportional elastisch} (engl.: unit elastic) , f\"ur 
+	welche $|\varepsilon_{f}(x)|=1$,
+	\item {\bf elastisch} (engl.: elastic), f\"ur welche 
+	$|\varepsilon_{f}(x)|>1$.
+\end{itemize}
+%\medskip
+%\noindent
+Beispielsweise weist eine ertragsgesetzliche Kostenfunktion
+$K(x)$ im Betriebsoptimum $x=x_{g_{2}}$  die Eigenschaft
+$\varepsilon_{K}(x_{g_{2}})=1$ auf [vgl.\ Gl.~(\ref{betropt2})].
+Ebenso gilt im Maximum eines Durchschnittsgewinns $G(x)/x$, dass
+$\varepsilon_{G}(x)=1$ [vgl.\ Gl.~(\ref{dgextr2})].
+
+%\pagebreak
+\medskip
+\noindent
+Die folgenden Rechenregeln erweisen sich als n\"utzlich bei der 
+Berechnung der Elastizit\"aten von zusammengesetzten Funktionen in 
+Sinne von Abschnitt~\ref{subsec:kombfkt} hin:
+
+%\pagebreak
+\medskip
+\noindent
+{\bf Rechenregeln f\"ur Elastizit\"aten}
+
+\noindent
+Sind $f$ und $g$ differenzierbare reelle Funktionen einer 
+Variablen, mit Elastizit\"aten $\varepsilon_{f}$ und 
+$\varepsilon_{g}$, so gilt:
+%
+\begin{enumerate}
+	\item {\bf Produkt} $f \cdot g$: \qquad\qquad
+	$\varepsilon_{f \cdot g}(x)
+	= \varepsilon_{f}(x) + \varepsilon_{g}(x)$,
+	\item {\bf Quotient} ${\displaystyle\frac{f}{g}}$, $g \neq 0$: 
+	\qquad\qquad 	$\varepsilon_{f/g}(x)
+	= \varepsilon_{f}(x) - \varepsilon_{g}(x)$,
+	\item {\bf Verkettung} $f \circ g$: \qquad\qquad
+	$\varepsilon_{f \circ g}(x)
+	= \varepsilon_{f}(g(x))\cdot\varepsilon_{g}(x)$,
+	\item {\bf Inverse Funktion} $f^{-1}$: \qquad\qquad
+	$\displaystyle \varepsilon_{f^{-1}}(x)
+	= \left.\frac{1}{\varepsilon_{f}(y)}\right|_{y=f^{-1}(x)}$.
+	%= 1/\varepsilon_{f}(f^{-1}(x))$
+\end{enumerate}
+%
+
+\medskip
+\noindent
+Zum Schluss dieses Kapitels wollen wir uns noch mit einer 
+m\"oglichen Erweiterung des Elastizit\"atsbegriffs befassen. F\"ur 
+positive differenzierbare reellwertige Funktionen~$f$ einer 
+positiven reellen Variablen~$x$ l\"asst sich eine zweite 
+Elastizit\"at nach der Ableitungsvorschrift
+%
+\be
+\lb{eq:secondelasticity}
+\varepsilon_{f}\left[\varepsilon_{f}(x)\right]
+:= x\,\frac{{\rm d}}{{\rm d}x}\left[\frac{x}{f(x)}\,\frac{{\rm 
+d}f(x)}{{\rm d}x}\right]
+\ee
+%
+definieren. Ohne Schwierigkeiten l\"ast sich diese Vorgehensweise 
+auch noch auf h\"ohere Ableitungen von~$f$ verallgemeinern.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
