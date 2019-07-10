@@ -1,0 +1,2 @@
+# WirtMathVorlesungsskript
+Wirtschaftsmathematik
